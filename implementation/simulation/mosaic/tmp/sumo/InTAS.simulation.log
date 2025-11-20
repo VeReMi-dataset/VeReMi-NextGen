@@ -1,0 +1,20 @@
+***Starting server on port 59835 ***
+Loading net-file from 'ingolstadt.net.xml' ... done (1134ms).
+Loading additional-files from 'mosaic_types.add.xml' ... done (0ms).
+Loading additional-files from 'BusStations.add.xml' ... done (26ms).
+Loading additional-files from 'InTAS_E1.add.xml' ... done (27ms).
+Loading additional-files from 'InTAS.poly.xml' ... done (1141ms).
+Loading done.
+Simulation version 1.20.0 started with time: 0.00.
+Error: Answered with error to command 0xa9: Junction 'gneJ137' is not known
+Error: Answered with error to command 0xa9: Junction 'gneJ143' is not known
+Error: Answered with error to command 0xa9: Junction 'gneJ144' is not known
+Error: Answered with error to command 0xa9: Junction 'gneJ205' is not known
+Error: Answered with error to command 0xa9: Junction 'gneJ207' is not known
+Error: Answered with error to command 0xa9: Junction 'gneJ208' is not known
+Error: Answered with error to command 0xa9: Junction 'gneJ210' is not known
+Error: Answered with error to command 0xa9: Junction 'gneJ214' is not known
+Error: tcpip::Socket::recvAndCheck @ recv: Socket reset by peer
+Quitting (on error).
+DijkstraRouter answered 537 queries and explored 4211.78 edges on average.
+DijkstraRouter spent 1.43s answering queries (2.66ms on average).

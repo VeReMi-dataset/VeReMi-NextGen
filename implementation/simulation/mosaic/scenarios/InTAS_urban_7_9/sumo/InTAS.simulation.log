@@ -1,0 +1,18 @@
+Loading net-file from 'D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\ingolstadt.net.xml' ... done (1334ms).
+Loading additional-files from 'D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\BusStations.add.xml' ... done (15ms).
+Loading additional-files from 'D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\InTAS_E1.add.xml' ... done (14ms).
+Loading additional-files from 'D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\InTAS.poly.xml' ... done (1156ms).
+Loading done.
+Simulation ended at time: 0.00
+Performance: 
+ Duration: 2373.92s
+ Real time factor: 0
+ UPS: 0.000000
+Vehicles: 
+ Inserted: 0 (Loaded: 265)
+ Running: 0
+ Waiting: 0
+Persons: 
+ Inserted: 2
+ Running: 0
+
