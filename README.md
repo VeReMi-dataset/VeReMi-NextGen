@@ -34,13 +34,6 @@ VeReMi-NextGen/
 
 TBA
 
-### Run Detection
-
-```bash
-cd Implementation/MBD_systems
-python main.py --input_folder ../../VeReMi_NextGen/constantPositionOffset --type 0
-```
-
 ### Generate Attacks
 
 ```bash
@@ -53,6 +46,13 @@ python attackGenerator.py ./clean_traces suddenStop ./scenario.sumocfg
 ```bash
 cd Implementation/parameter_optimization
 python test.py ../../Test_Train_Split/mixAll/train results.json 0
+```
+
+### Run Detection
+
+```bash
+cd Implementation/MBD_systems
+python main.py --input_folder ../../VeReMi_NextGen/constantPositionOffset --type 0
 ```
 
 ---
