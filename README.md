@@ -38,4 +38,4 @@ VeReMi-NextGen/
 - [Attack Generator](../../wiki/Attack-Generator) – Attack types & parameters
 - [Parameter Optimization](../../wiki/Parameter-Optimization) – Tuning guide
 - [Data Enrichment](../../wiki/Data-Enrichment) – SUMO integration
-- [Eclipse MOSAIC](../../wiki/Eclipse-Mosaic)
+- [Eclipse MOSAIC](../../wiki/Eclipse-Mosaic) - Eclipse MOSAIC Simulation Setup
