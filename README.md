@@ -9,10 +9,11 @@ An extended dataset and evaluation framework for **Misbehavior Detection** in Ve
 VeReMi NextGen provides:
 
 - **Dataset** with 15+ attack types on V2X Basic Safety Messages
-- **Detection System** implementing 9 plausibility/consistency checks
+- **Detection System** implementing CATCH adopted to VeReMi NextGen
 - **Attack Generator** to create custom attack scenarios
 - **Parameter Optimization** via Optuna hyperparameter tuning
 - **Train/Test Splits** for machine learning experiments
+- **Simulation Setup** for reproduce VeReMi NextGen Baseline
 
 ---
 
@@ -28,6 +29,10 @@ VeReMi-NextGen/
 ---
 
 ## Quick Start
+
+### Run Eclipse Mosaic
+
+TBA
 
 ### Run Detection
 
