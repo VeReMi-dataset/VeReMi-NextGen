@@ -9,7 +9,7 @@ An extended dataset and evaluation framework for **Misbehavior Detection** in Ve
 VeReMi NextGen provides:
 
 - **Dataset** with 15+ attack types on V2X Basic Safety Messages
-- **Detection System** implementing CATCH adopted to VeReMi NextGen
+- **CaTCH-MBD System** implementing CATCH adopted to VeReMi NextGen
 - **Attack Generator** to create custom attack scenarios
 - **Parameter Optimization** via Optuna hyperparameter tuning
 - **Train/Test Splits** for machine learning experiments
@@ -33,8 +33,8 @@ VeReMi-NextGen/
 **[Full Documentation (Wiki)](../../wiki)**
 
 - [Home](../../wiki/Home) – Overview, message format, quick start
-- [Architecture](../../wiki/Architecture) – System design, data flow
-- [MBD Systems](../../wiki/MBD-Systems) – Detection checks explained
+- [Architecture](../../wiki/Architecture) – System design & Overview
+- [CaTCH-MBD Systems](../../wiki/MBD-Systems) – CaTCH-MBD System explained
 - [Attack Generator](../../wiki/Attack-Generator) – Attack types & parameters
 - [Parameter Optimization](../../wiki/Parameter-Optimization) – Tuning guide
 - [Data Enrichment](../../wiki/Data-Enrichment) – SUMO integration
