@@ -28,17 +28,6 @@ VeReMi-NextGen/
 
 ---
 
-## Requirements
-
-- Python 3.10+
-- SUMO 1.18+ (for data enrichment)
-
-```bash
-pip install pandas numpy optuna traci shapely
-```
-
----
-
 ## Documentation
 
 **[Full Documentation (Wiki)](../../wiki)**
