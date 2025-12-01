@@ -22,7 +22,7 @@ VeReMi NextGen provides:
 VeReMi-NextGen/
 ├── VeReMi_NextGen/          # Dataset (15+ attack subsets)
 ├── Test_Train_Split/        # Pre-computed 70/30 ML splits
-└── Implementation/          # Processing pipeline & tools
+└── Implementation/          # Simulation Setup, Processing pipeline & tools
 ```
 
 ---
