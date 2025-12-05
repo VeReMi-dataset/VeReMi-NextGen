@@ -30,12 +30,18 @@ def read_csv_to_2d_array(file_path):
     with open(file_path, 'r') as file:
         csv_reader = csv.reader(file)
 
-        # Iterate through each line in the CSV and append to the array
         for row in csv_reader:
-            two_d_array.append([row[0],float(row[1]),int(row[2]),int(row[3])])
+            two_d_array.append([
+                row[0],
+                float(row[1]),
+                int(row[2]),
+                int(row[3]),
+                int(row[4]),
+                int(row[5]),
+                int(row[6])
+            ])
 
     return two_d_array
-
 
 def split_array_by_sum(data, target_ratio, random_seed=None):
     if random_seed is not None:
