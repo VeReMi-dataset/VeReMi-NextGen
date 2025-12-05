@@ -2,7 +2,7 @@
 
 ZIP_DIR="../../../veremi_nextGen"
 OUTPUT_ROOT="../../../test_train_splits/"
-TRAIN_RATIO=0.1
+TRAIN_RATIO=0.8
 
 python3 -m venv venv
 source venv/bin/activate
