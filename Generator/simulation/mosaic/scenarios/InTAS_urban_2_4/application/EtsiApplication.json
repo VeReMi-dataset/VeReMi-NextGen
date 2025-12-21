@@ -6,7 +6,7 @@
   "positionChange": 4,
   "headingChange": 4,
   "velocityChange": 0.5,
-  "jsonPath" : "/home/ubuntu/simulation_with_receiver/JSON_urban_2_4/",
+  "jsonPath" : "<your path>",
   "simulationTime": {
     "start": 7200,
     "end": 14400
