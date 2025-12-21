@@ -46,7 +46,7 @@ Output: `<attack>_output.csv` with columns:
 ## 3. Train/Test Split
 
 ```bash
-python Splitting/train_test_dataset.py -file stats.csv -attack attackName -division 0.7
+python Splitting/train_validation_test_dataset.py -file stats.csv -attack attackName -division 0.7
 ```
 
 Uses **Kolmogorov-Smirnov test** to ensure train and test sets have similar distributions. Runs 30,000 iterations and selects the split with highest average p-value (all p > 0.05).

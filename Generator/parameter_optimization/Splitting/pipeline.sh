@@ -1,8 +1,9 @@
 #!/bin/bash
 
-ZIP_DIR="../../../veremi_nextGen"
-OUTPUT_ROOT="../../../test_train_splits/"
-TRAIN_RATIO=0.8
+ZIP_DIR="../../../Dataset/veremi_nextGen"
+OUTPUT_ROOT="../../../Dataset/train_validation_test_splits/"
+TRAIN_RATIO=0.7
+VAL_RATIO=0.1
 
 python3 -m venv venv
 source venv/bin/activate
@@ -17,7 +18,7 @@ for zipfile in "$ZIP_DIR"/*.zip; do
     NAME=$(basename "$zipfile" .zip)
     UNPACK_DIR="./temp_$NAME"
     mkdir -p "$UNPACK_DIR"
-    
+
     if [[ ! "$NAME" =~ _[A-Za-z]+$ ]]; then
         echo "Skipping due to none attack suffix: $NAME"
         continue
@@ -29,7 +30,7 @@ for zipfile in "$ZIP_DIR"/*.zip; do
       DATA_DIR="$UNPACK_DIR/$NAME"
     else
       DATA_DIR="$UNPACK_DIR"
-    fi  
+    fi
 
     # 2. create CSV table
     echo "Running CSV Table Script"
@@ -37,26 +38,32 @@ for zipfile in "$ZIP_DIR"/*.zip; do
 
     # 3. Dataset Split
     CSV_FILE="${NAME}_output.csv"
-    echo "Running Train/Test Split"
-    python3 train_test_dataset.py -file "$CSV_FILE" -attack "$NAME" -division "$TRAIN_RATIO"
+    echo "Running Train/Validation/Test Split"
+    python3 train_validation_test_dataset.py -file "$CSV_FILE" -attack "$NAME" -train_ratio "$TRAIN_RATIO" -val_ratio "$VAL_RATIO"
 
     TRAIN_CSV="${NAME}_train.csv"
+    VAL_CSV="${NAME}_val.csv"
     TEST_CSV="${NAME}_test.csv"
 
     # 4. Save data to specified folders
     TRAIN_DST="$OUTPUT_ROOT/${NAME}/train/"
+    VAL_DST="$OUTPUT_ROOT/${NAME}/val/"
     TEST_DST="$OUTPUT_ROOT/${NAME}/test/"
-    mkdir -p "$TRAIN_DST" "$TEST_DST"
+    mkdir -p "$TRAIN_DST" "$VAL_DST" "$TEST_DST"
 
-    echo "Copy Train Files"
-    python3 copy_files.py -csvFile "$TRAIN_CSV" -sourceDirectory "$DATA_DIR" -destinationDirectory "$TRAIN_DST"
+    echo "Copy Train/Validation/Test Files"
+    python3 copy_files.py \
+        -trainCsv "$TRAIN_CSV" \
+        -valCsv "$VAL_CSV" \
+        -testCsv "$TEST_CSV" \
+        -sourceDirectory "$DATA_DIR" \
+        -trainDestination "$TRAIN_DST" \
+        -valDestination "$VAL_DST" \
+        -testDestination "$TEST_DST"
 
-    echo "Copy Test Files"
-    python3 copy_files.py -csvFile "$TEST_CSV" -sourceDirectory "$DATA_DIR" -destinationDirectory "$TEST_DST"
-    
     sudo mv *_p_d_values.csv "$OUTPUT_ROOT"/
     rm ./*.csv
-    echo "Results stored in: $OURPUT_ROOT"
+    echo "Results stored in: $OUTPUT_ROOT"
 
     # 5. create output ZIP
     echo "ZIP Output"
