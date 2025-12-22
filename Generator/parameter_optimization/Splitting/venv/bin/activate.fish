@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV /home/ubuntu/veremi_nextgen/VeReMi-NextGen/implementation/parameter_optimization/Splitting/venv
+set -gx VIRTUAL_ENV /home/ubuntu/VeReMi-NextGen/Generator/parameter_optimization/Splitting/venv
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/"bin $PATH

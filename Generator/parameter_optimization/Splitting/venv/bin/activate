@@ -39,10 +39,10 @@ deactivate nondestructive
 if [ "${OSTYPE:-}" = "cygwin" ] || [ "${OSTYPE:-}" = "msys" ] ; then
     # transform D:\path\to\venv to /d/path/to/venv on MSYS
     # and to /cygdrive/d/path/to/venv on Cygwin
-    export VIRTUAL_ENV=$(cygpath /home/ubuntu/veremi_nextgen/VeReMi-NextGen/implementation/parameter_optimization/Splitting/venv)
+    export VIRTUAL_ENV=$(cygpath /home/ubuntu/VeReMi-NextGen/Generator/parameter_optimization/Splitting/venv)
 else
     # use the path as-is
-    export VIRTUAL_ENV=/home/ubuntu/veremi_nextgen/VeReMi-NextGen/implementation/parameter_optimization/Splitting/venv
+    export VIRTUAL_ENV=/home/ubuntu/VeReMi-NextGen/Generator/parameter_optimization/Splitting/venv
 fi
 
 _OLD_VIRTUAL_PATH="$PATH"
