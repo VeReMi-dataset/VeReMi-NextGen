@@ -1,7 +1,6 @@
 # VeReMi NextGen
 
-An extended dataset and evaluation framework for **Misbehavior Detection** in Vehicle-to-Everything (V2X) communication.
-
+A comprehensive dataset and dataset generator for evaluating **Misbehavior Detection** in Vehicle-to-Everything (V2X) communication.
 ---
 
 ## Overview
@@ -9,11 +8,11 @@ An extended dataset and evaluation framework for **Misbehavior Detection** in Ve
 VeReMi NextGen provides:
 
 - **Dataset** with 15+ attack types on V2X Basic Safety Messages
-- **CaTCH-MBD System** implementing CATCH adopted to VeReMi NextGen
-- **Attack Generator** to create custom attack scenarios
+- **CaTCH-MBD System** implementing CaTCH adopted to VeReMi NextGen
+- **Attack Generator** to create custom attack scenarios 
 - **Parameter Optimization** via Optuna hyperparameter tuning
-- **Train/Test Splits** for machine learning experiments
-- **Simulation Setup** for reproduce VeReMi NextGen Baseline
+- **Train/Val/Test Splits** for machine learning experiments
+- **Plug'n Play Solution** for recreating the VeReMi Baseline with the option to change parameters
 
 ---
 
@@ -21,16 +20,16 @@ VeReMi NextGen provides:
 
 ```
 VeReMi-NextGen/
-├── VeReMi_NextGen/          # Dataset (15+ attack subsets)
-├── Test_Train_Split/        # Pre-computed 70/30 ML splits
-└── Implementation/          # Simulation Setup, Processing pipeline & tools
+├── Dataset/          # VeReMi-NextGen and Train/Val/Test Split
+├── Generator/        # Everything to recreate VeReMi NextGen or an own new Dataset
+└── Dokumentation/    # Detailed documentation of VeReMi NextGen 
 ```
 
 ---
 
 ## Documentation
 
-**[Full Documentation (Wiki)](../../wiki)**
+**[Full Documentation (Wiki)](./Documentation)**
 
 - [Home](../../wiki/Home) – Overview, message format, quick start
 - [Architecture](../../wiki/Architecture) – System design & Overview
