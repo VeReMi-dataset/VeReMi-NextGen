@@ -22,7 +22,7 @@ VeReMi NextGen provides:
 VeReMi-NextGen/
 ├── Dataset/          # VeReMi-NextGen and Train/Val/Test Split
 ├── Generator/        # Everything to recreate VeReMi NextGen or an own new Dataset
-└── Dokumentation/    # Detailed documentation of VeReMi NextGen 
+└── Documentation/    # Detailed documentation of VeReMi NextGen 
 ```
 
 ---
@@ -36,4 +36,4 @@ VeReMi-NextGen/
 - [Processes](./Documentation/Processes) – Processes that occure during simulation
 - [Evaluation](./Documentation/Evaluation) – Tools used for evluating VeReMi NextGen 
 - [Post-Processing](./Documentation/Post-Processing) – Post-Processing pipeline for integrating MB and more
-- [Eclipse MOSAIC](./Documentation/'Eclipse MOSAIC') - Eclipse MOSAIC Simulation Setup
+- [Eclipse MOSAIC](./Documentation/Eclipse%20MOSAIC) - Eclipse MOSAIC Simulation Setup
