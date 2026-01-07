@@ -49,7 +49,7 @@ VeReMi-NextGen/
 ├── Dataset/
 │   └── [project documentation]
 │
-└── Genertator/  
+└── Generator/  
     │── simulation/                                                 # Simulation Setup
     │   └── mosaic/
     │       ├── bin/                                                # bin of federates
