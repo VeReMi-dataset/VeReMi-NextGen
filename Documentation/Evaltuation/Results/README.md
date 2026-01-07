@@ -1,6 +1,41 @@
 # Results
 
-This page provides all results regarding the creation and evaluation of the VeReMi NextGen Dataset.
+Documentation of all metrics used and results regarding the creation and evaluation of the VeReMi NextGen Dataset.
+
+## Metrics
+
+### Definition of classification
+
+- TP (True Positive): A message was predicted as an attacker and is indeed an attacker.
+- TN (True Negative): A message was not predicted as an attacker and is indeed not an attacker.
+- FP (False Positive): A message was predicted as an attacker, but is not an attacker.
+- FN (False Negative): A message was not predicted as an attacker, although it is an attacker.
+
+### Confusion Matrix
+|                     |                  | **Actual Class** |                  |
+| ------------------- | ---------------- | ---------------- | ---------------- |
+|                     |                  | **Attacker**     | **Non-Attacker** |
+| **Predicted Class** | **Attacker**     | TP               | FP               |
+|                     | **Non-Attacker** | FN               | TN               |
+
+### Evaluation Metrics
+
+$$
+\text{Precision} = \frac{TP}{TP + FP}
+$$
+
+$$
+\text{Recall} = \frac{TP}{TP + FN}
+$$
+
+$$
+\text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
+$$
+
+$$
+\text{F1} = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}
+{\text{Precision} + \text{Recall}}
+$$
 
 ## Driver Profiles
 The following tables show the average values for the different driver profiles generated in the four simulations.
