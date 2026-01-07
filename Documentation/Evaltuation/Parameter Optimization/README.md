@@ -91,20 +91,20 @@ Performs hyperparameter optimization using Optuna to find the best MBD parameter
 
 ### Parameter Search Space
 
-| Parameter | Range         | Unit | Description                 |
-|-----------|---------------|------|-----------------------------|
-| mdi       | 1.0 - 5.0     | s    | MAX_DELTA_INTERSECTION      |
-| mpr       | 300.0 - 500.0 | m    | MAX_PLAUSIBLE_RANGE         |
-| mps       | 30.0 - 70.0   | m/s  | MAX_PLAUSIBLE_SPEED         |
-| mpa       | 3.0 - 10.0    | m/s² | MAX_PLAUSIBLE_ACCEL         |
-| mpd       | 3.0 - 20.0    | m/s² | MAX_PLAUSIBLE_DECEL         |
-| mhc       | 45.0 - 145.0  | °    | MAX_HEADING_CHANGE          |
-| mpdn      | -5.0 - 0.0    | m    | MAX_PLAUSIBLE_DIST_NEGATIVE |
-| mtd       | 1.0 - 5.0     | s    | MAX_TIME_DELTA              |
-| pht       | 1.0 - 5.0     | s    | POS_HEADING_TIME            |
-| mmru      | 0.0 - 7.0     | m    | MAX_MGT_RNG_UP              |
-| mmrd      | 0.0 - 7.0     | m    | MAX_MGT_RNG_DOWN            |
-| mnrs      | 0.0 - 3.0     | m/s  | MAX_NON_ROUTE_SPEED         |
+| Parameter | Range         | Unit | 
+|-----------|---------------|------|
+| mdi       | 1.0 - 5.0     | s    | 
+| mpr       | 300.0 - 500.0 | m    |
+| mps       | 30.0 - 70.0   | m/s  |
+| mpa       | 3.0 - 10.0    | m/s² |
+| mpd       | 3.0 - 20.0    | m/s² | 
+| mhc       | 45.0 - 145.0  | °    | 
+| mpdn      | -5.0 - 0.0    | m    |
+| mtd       | 1.0 - 5.0     | s    | 
+| pht       | 1.0 - 5.0     | s    | 
+| mmru      | 0.0 - 7.0     | m    | 
+| mmrd      | 0.0 - 7.0     | m    |
+| mnrs      | 0.0 - 3.0     | m/s  |
 
 ### Output
 
