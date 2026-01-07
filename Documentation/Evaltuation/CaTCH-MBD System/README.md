@@ -42,7 +42,7 @@ if any(check_result == 0 for check_result in all_checks):
 | Flag     | Name                        | Unit | Description                                         |
 |----------|-----------------------------|------|-----------------------------------------------------|
 | `--mpr`  | MAX_PLAUSIBLE_RANGE         | m    | Maximum V2X communication range                     |
-| `--mps`  | MAX_PLAUSIBLE_SPEED         | m/s  | Maximum physically possible speed (~224 km/h)       |
+| `--mps`  | MAX_PLAUSIBLE_SPEED         | m/s  | Maximum physically possible speed      |
 | `--mpa`  | MAX_PLAUSIBLE_ACCEL         | m/s² | Maximum acceleration                                |
 | `--mpd`  | MAX_PLAUSIBLE_DECEL         | m/s² | Maximum deceleration (braking)                      |
 | `--mhc`  | MAX_HEADING_CHANGE          | °    | Maximum heading change between messages             |
