@@ -164,9 +164,9 @@ The application implements distance- and time-based pseudonym changes:
 A CAM is sent when one of the following conditions is met:
 
 1. **MAX_INTERVAL**: Time since last CAM ≥ `maxInterval`
-2. **HEADING_CHANGE**: |Δheading| > `headingChange`
-3. **VELOCITY_CHANGE**: Δvelocity > `velocityChange`
-4. **POSITION_CHANGE**: Position delta > `positionChange`
+2. **HEADING_CHANGE**: Δheading > `headingChange`
+3. **VELOCITY_CHANGE**: Δspeed > `velocityChange`
+4. **POSITION_CHANGE**: Δposition > `positionChange`
 
 The check is performed at the `minInterval` rate.
 
