@@ -12,7 +12,7 @@ The project consists of three main components:
 
 1. **Datasets/** – Containing both the dataset itself and the Train/Validation/Test Split for every attack type, incl. ground truth files and base datasets without MB implementation
 2. **Documentation/** – Containing the project documentation
-3. **Implementation/** – Containing the dataset generator to recreate and extend **VeReMi NextGen**
+3. **Generator/** – Containing the dataset generator to recreate and extend **VeReMi NextGen**
 
 ---
 
