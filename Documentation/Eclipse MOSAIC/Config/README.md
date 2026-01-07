@@ -2,8 +2,6 @@
 
 This wiki page documents the configuration files for the **InTAS** (Ingolstadt Traffic Scenario) Eclipse MOSAIC simulation, designed for generating V2X communication datasets with CAM (Cooperative Awareness Message) transmission.
 
----
-
 ## Overview
 
 This simulation setup uses the following Eclipse MOSAIC federates:
@@ -17,8 +15,6 @@ This simulation setup uses the following Eclipse MOSAIC federates:
 | Cell        | ❌       | Cellular communication (disabled)        |
 | SNS         | ❌       | Simple Network Simulator (disabled)      |
 | NS3         | ❌       | NS-3 network simulator (disabled)        |
-
----
 
 ## Scenario Configuration
 
@@ -55,8 +51,6 @@ IP address ranges for different entity types:
 | Charging Stations | `10.24.0.0`     |               |
 | Servers           | `10.32.0.0`     |               |
 | TMC               | `10.40.0.0`     |               |
-
----
 
 ## Application Configuration
 
@@ -116,8 +110,6 @@ Only vehicle in this defined area and the defined time window will send and rece
 | `jsonPath`             | /      | Output path for JSON files      |
 | `enableDriverProfiles` | `true` | Enable driver behavior profiles |
 
----
-
 ## Mapping Configuration
 
 **File:** `mapping/mapping_config.json`
@@ -135,8 +127,6 @@ The configuration defines **45 vehicle prototypes**, all running the `etsi.Vehic
 All prototypes have a weight of `1.0`, meaning equal probability of spawning.
 
 **Note:** The `bus` prototype has no applications assigned, meaning buses do not participate in V2X communication.
-
----
 
 ## OMNeT++ Configuration
 
@@ -204,8 +194,6 @@ All prototypes have a weight of `1.0`, meaning equal probability of spawning.
 | Path Loss     | `FreeSpacePathLoss`                |
 | Obstacle Loss | None (not supported by MOSAIC yet) |
 
----
-
 ## SUMO Configuration
 
 **File:** `sumo/sumo_config.json`
@@ -214,8 +202,6 @@ All prototypes have a weight of `1.0`, meaning equal probability of spawning.
 |-------------------------|---------------------------|---------------------------------------|
 | `sumoConfigurationFile` | `InTAS_full_poly.sumocfg` | SUMO scenario configuration file      |
 | `updateInterval`        | `1000` ms                 | Time step for SUMO updates (1 second) |
-
----
 
 ## Output Configuration
 
@@ -261,5 +247,3 @@ Real-time visualization via WebSocket.
 |--------------|---------|
 | Port         | `46587` |
 | Synchronized | `true`  |
-
----

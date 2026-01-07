@@ -43,8 +43,6 @@ Calculates the **distance to the nearest road edge** (`distance_to_road_edge`) f
  </em>
 </p>
 
----
-
 ## TraCI Functions
 
 | Function                              | Usage                       |

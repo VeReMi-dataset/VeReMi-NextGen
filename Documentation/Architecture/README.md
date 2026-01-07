@@ -103,8 +103,6 @@ Implementation/
         └── copy_files.py                 # File organization
 ```
 
----
-
 ## Parallelization Strategy
 
 ### Multi-Processing Architecture
@@ -142,8 +140,6 @@ Implementation/
 | **Attack Generator** | Sequential | Cross-message dependencies |
 | **Optuna** | Parallel per trial | Independent evaluations |
 
----
-
 ## File Format Conversions
 
 ```
@@ -160,5 +156,3 @@ Implementation/
   • Per-vehicle       • All vehicles       • Column-wise
                                            • operations
 ```
-
----

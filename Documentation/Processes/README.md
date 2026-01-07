@@ -11,8 +11,6 @@ Documentation of processes occurring during the simulation.
 </p>
 <br>
 
----
-
 ## Data Changed-Process
 
 <br>
@@ -23,8 +21,6 @@ Documentation of processes occurring during the simulation.
 </p>
 <br>
 
----
-
 ## Send CAM
 <br>
 <p align="center">
@@ -34,8 +30,6 @@ Documentation of processes occurring during the simulation.
     the message was successfully send.</em>
 </p>
 <br>
-
----
 
 ## Receive Message-Process
 <br>

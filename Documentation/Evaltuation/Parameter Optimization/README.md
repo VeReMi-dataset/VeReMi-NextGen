@@ -22,8 +22,6 @@ Hyperparameter optimization of MBD system parameters using Optuna.
 5. Optimization                 (test.py)
 ```
 
----
-
 ## 1. JSON to Parquet (`convert_to_bin.py`)
 
 Aggregates all JSON files from a folder into a single Parquet file for faster I/O access.
@@ -36,8 +34,6 @@ Aggregates all JSON files from a folder into a single Parquet file for faster I/
 
 **Output:** Statistics on processed files, message count, and file size.
 
----
-
 ## 2. Generate Statistics (`csv_table.py`)
 
 Extracts statistical features from each JSON file for subsequent distribution analysis.
@@ -49,8 +45,6 @@ Extracts statistical features from each JSON file for subsequent distribution an
 - **Driver Profile Distribution**: Count of NORMAL, AGGRESSIVE, and CAUTIOUS profiles
 
 **Output:** `output.csv` with one row per file.
-
----
 
 ## 3. Train/Validation/Test Split (`train_validation_test_dataset.py`)
 
@@ -72,8 +66,6 @@ Splits the dataset into train/validation/test sets and ensures similar distribut
 - `train.csv`, `val.csv`, `test.csv` – File lists
 - `p_d_values.csv` – KS test results (p-values and D-statistics)
 
----
-
 ## 4. Copy Files (`copy_files.py`)
 
 Copies the actual JSON files based on the split CSVs into separate folders.
@@ -81,8 +73,6 @@ Copies the actual JSON files based on the split CSVs into separate folders.
 **Process:**
 - Reads filenames from the first column of each CSV
 - Copies the corresponding files from source to destination folder
-
----
 
 ## 5. Optuna Optimization (`test.py`)
 

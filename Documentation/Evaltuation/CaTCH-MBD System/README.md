@@ -13,8 +13,6 @@ The core module for detecting misbehavior in V2X messages using plausibility and
 | `legacy_checks.py`   | Binary checks {0,1}                                     |
 | `mdm_lib.py`         | Mathematical helper functions (geometry, intersections) |
 
----
-
 ## Catch vs Legacy: Key Differences
 
 | Aspect          | Catch Checks                          | Legacy Checks                |
@@ -24,8 +22,6 @@ The core module for detecting misbehavior in V2X messages using plausibility and
 | **Geometry**    | Circle-circle intersections, ellipses | Simple distance comparisons  |
 | **Decision**    | `factor < 0.5` → Misbehavior          | `result == 0` → Misbehavior  |
 | **Accuracy**    | Higher (fewer false positives)        | Lower (more false positives) |
-
----
 
 ## Detection Logic
 
@@ -40,8 +36,6 @@ if any(check_result < 0.5 for check_result in all_checks):
 if any(check_result == 0 for check_result in all_checks):
     prediction = 1  # Misbehavior detected
 ```
-
----
 
 ## Parameters
 
@@ -61,8 +55,6 @@ if any(check_result == 0 for check_result in all_checks):
 | `--mnrs` | MAX_NON_ROUTE_SPEED         | m/s  | Speed below which off-road position is allowed      |
 | `--msar` | MAX_SA_RANGE                | m    | Range for sudden appearance check                   |
 | `--msat` | MAX_SA_TIME                 | s    | Time threshold for sudden appearance                |
-
----
 
 ## Implemented Checks
 
@@ -101,8 +93,6 @@ def range_plausibility_check(self, sender_pos, receiver_pos):
 **Misbehavior detected when:**
 - CaTCH: `factor < 0.5` (less than 50% of uncertainty area within range)
 - Legacy: `distance >= MAX_PLAUSIBLE_RANGE`
-
----
 
 ### 2. Position Plausibility Check
 
@@ -171,8 +161,6 @@ def position_plausibility_check(self, sender_speed, distance_to_road):
 - CaTCH: `factor < 0.5` (most of uncertainty area off-road)
 - Legacy: `distance < MAX_PLAUSIBLE_DIST_NEGATIVE`
 
----
-
 ### 3. Speed Plausibility Check
 
 **Purpose:** Verify that reported speed is physically possible.
@@ -208,8 +196,6 @@ def speed_plausibility_check(self, speed):
 **Misbehavior detected when:**
 - CaTCH: `factor < 0.5`
 - Legacy: `|speed| >= MAX_PLAUSIBLE_SPEED`
-
----
 
 ### 4. Position Consistency Check
 
@@ -249,8 +235,6 @@ def position_consistency_check(self, cur_pos, old_pos, time_delta):
 
 **Misbehavior detected when:**
 - Position change exceeds what's possible at maximum speed
-
----
 
 ### 5. Speed Consistency Check
 
@@ -297,8 +281,6 @@ def speed_consistency_check(self, cur_speed, old_speed, time_delta):
 
 **Misbehavior detected when:**
 - Acceleration or deceleration exceeds physical limits
-
----
 
 ### 6. Position-Speed Consistency Check
 
@@ -409,8 +391,6 @@ def position_speed_consistency_check(self, cur_pos, old_pos,
 **Misbehavior detected when:**
 - Traveled distance doesn't match what's possible with reported speeds
 
----
-
 ### 7. Position-Heading Consistency Check
 
 **Purpose:** Verify that heading (driving direction) matches actual movement direction.
@@ -510,8 +490,6 @@ def position_heading_consistency_check(self, cur_heading, cur_pos,
 **Misbehavior detected when:**
 - Reported heading differs significantly from actual movement direction
 
----
-
 ### 8. Intersection Check
 
 **Purpose:** Verify that two vehicles don't occupy the same physical space.
@@ -570,8 +548,6 @@ def intersection_check(self, pos_1, pos_2, node_size_1, node_size_2,
 **Misbehavior detected when:**
 - Two vehicles claim positions that would physically overlap
 
----
-
 ### 9. Sudden Appearance Check
 
 **Purpose:** Detect vehicles that suddenly appear within communication range.
@@ -615,8 +591,6 @@ def sudden_appearance_check(self, sender_pos, receiver_pos):
 
 **Misbehavior detected when:**
 - A vehicle appears inside the detection zone without being tracked approaching
-
----
 
 ## Mathematical Helper Functions (mdm_lib.py)
 

@@ -2,8 +2,6 @@
 
 This page provides all results regarding the creation and evaluation of the VeReMi NextGen Dataset.
 
----
-
 ## Driver Profiles
 The following tables show the average values for the different driver profiles generated in the four simulations.
 They provide insight how the profiles are actually distributed and how they differ.
@@ -40,8 +38,6 @@ They provide insight how the profiles are actually distributed and how they diff
 | Aggressive  | 17.40 (σ = 19.70) | -1.19 (σ = 2.38) | 8.65 %           |
 
 
----
-
 ## Parameter Optimization
 
 The following values were used to run the given MBD systems and assess the values provided later.
@@ -60,8 +56,6 @@ The following values were used to run the given MBD systems and assess the value
 | MMRU          | 1.118         | 1.182         | 1.168           | 1.123           |
 | MMRD          | 2.584         | 2.137         | 2.902           | 1.438           |
 | MNRS          | 0.051         | 0.000         | 0.490           | 0.265           |
-
----
 
 ## MBD Results of VeReMi NextGen
 The following tables show the values assessed by using the newly generated dataset with the proposed MBD system 
@@ -213,8 +207,6 @@ The following tables show the values assessed by using the newly generated datas
 | DoS Attack                  |        0.607 |         0.733 |      0.138 |        0.232 |
 | Traffic Congestion Sybil    |        0.543 |         0.787 |      0.142 |        0.241 |
 | Data Replay                 |        0.820 |         0.546 |      0.298 |        0.385 |
-
----
 
 ## Comparison of VeReMi Extension vs VeReMi NextGen
 The following values show the direct comparison of VeReMi Extension and VeReMi NextGen.

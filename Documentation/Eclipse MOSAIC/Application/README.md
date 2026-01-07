@@ -7,8 +7,6 @@ The CamApp is an Eclipse MOSAIC application for simulating Cooperative Awareness
 >[!NOTE]
 > If you are interested in the detailed processes during the simulation, have a look at the [Processes](../../Processes) documentation
 
----
-
 ## Architecture
 
 ```
@@ -28,8 +26,6 @@ util/
 ├── SerializationUtils.java       # Byte serialization
 └── Pair.java                     # Utility class
 ```
-
----
 
 ## Configuration
 
@@ -93,8 +89,6 @@ Defines the geographic area where CAMs are sent and received.
 }
 ```
 
----
-
 ## Driver Profiles
 
 When `enableDriverProfiles` is enabled, each vehicle is randomly assigned a profile:
@@ -111,8 +105,6 @@ When `enableDriverProfiles` is enabled, each vehicle is randomly assigned a prof
 - **speedFactor**: Factor relative to allowed speed
 - **sigma**: Imperfection parameter (driver error)
 - **minGap**: Minimum gap to the vehicle ahead
-
----
 
 ## Sensor Error Model
 
@@ -152,8 +144,6 @@ initialError: Uniform(-20°, +20°)
 currentError = initialError × exp(-0.1 × velocity)
 ```
 
----
-
 ## Pseudonym Change (Alias)
 
 The application implements distance- and time-based pseudonym changes:
@@ -169,8 +159,6 @@ The application implements distance- and time-based pseudonym changes:
 ### Alias Format
 10-digit random number: `1,000,000,000` to `9,999,999,999`
 
----
-
 ## CAM Trigger Logic
 
 A CAM is sent when one of the following conditions is met:
@@ -181,8 +169,6 @@ A CAM is sent when one of the following conditions is met:
 4. **POSITION_CHANGE**: Position delta > `positionChange`
 
 The check is performed at the `minInterval` rate.
-
----
 
 ## JSON Output Format
 
@@ -242,8 +228,6 @@ Each received CAM is stored as a JSON object:
 | `hed_noise`             | float   | Heading uncertainty              |
 | `driversProfile`        | ENUM    | NORMAL, AGGRESSIVE, or CAUTIOUS  |
 | `distance_to_road_edge` | float   | Distance to road edge (m)        |
-
----
 
 ## VehicleAdditionalInformation
 

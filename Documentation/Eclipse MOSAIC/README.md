@@ -2,8 +2,6 @@
 
 Documentation for the Eclipse MOSAIC V2X simulation for generating CAM communication datasets.
 
----
-
 ### [Simulation Configuration](./Config)
 
 Configuration of the simulation environment:
@@ -19,5 +17,3 @@ ETSI CAM Sending Application:
 - Driver profiles (Aggressive, Normal, Passive)
 - Pseudonym changes (Alias)
 - JSON output format
-
----

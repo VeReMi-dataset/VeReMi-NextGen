@@ -3,8 +3,6 @@
 Documentation of the evaluation of the VeReMi NextGen, incl. the MBD Systems used, the way the parameter were optimized
 and the results.
 
----
-
 ### [CaTCH-MBD System](./CaTCH-MBD%20System)
 
 Overview of the CaTCH-MBD system:
