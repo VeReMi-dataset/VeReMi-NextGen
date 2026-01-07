@@ -12,7 +12,7 @@ VeReMi NextGen provides:
 - **Plug'n Play Solution** for recreating the VeReMi Baseline with the option to change parameters
 - **Attack Generator** to create custom attack scenarios 
 - **CaTCH-MBD System** implementing CaTCH adopted to VeReMi NextGen
-- **Parameter Optimization** via Optuna hyperparameter tuning
+- **Parameter Optimization** for systematically obtaining the best thresholds  
   
 ---
 
