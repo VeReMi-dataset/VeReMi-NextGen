@@ -93,7 +93,10 @@ The following values were used to run the given MBD system and obtain the values
 | MNRS          | 0.051         | 0.000         | 0.490           | 0.265           |
 
 ## MBD Results of VeReMi NextGen
-The following tables show the values obtained by using the newly generated dataset with the proposed MBD system 
+The following tables show the values obtained by using the newly generated dataset with the proposed MBD system.
+
+> [!NOTE]
+> For this evaluation only the CaTCH-Checks were used.
 
 ### Urban - low density
 | **Attack Type**             | **TP** | **TN** | **FP** | **FN** |
