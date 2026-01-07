@@ -105,22 +105,7 @@ This prevents false positives when a vehicle legitimately stops.
 
 ---
 
-#### `suddenStop`
 
-Simulates a sudden stop - the vehicle reports stopped position/speed while actually moving.
-
-| Parameter | Value | Description |
-|-----------|-------|-------------|
-| `suddenStop` | 0.05 (5%) | Probability to trigger the stop |
-| `msg` | Saved message | Position where "stop" occurred |
-| `stop_time` | Timestamp | When the stop was triggered |
-
-**Attack labeling:**
-- `attacker=1` at trigger: Only if original speed > 1 m/s AND acceleration ≥ 0
-- `attacker=1` after trigger: Only if original speed > 1 m/s OR distance to "stopped" position ≥ 20m
-- `attacker=0`: If vehicle was already slow/stopping
-
----
 
 #### `suddenConstantSpeed`
 
@@ -138,21 +123,7 @@ Speed value freezes at a certain point while actual speed changes.
 
 ---
 
-### Heading/Acceleration Attacks
-
-#### `reversedHeading`
-
-Reports heading rotated by 180° (driving direction reversed).
-
-| Parameter | Value | Description |
-|-----------|-------|-------------|
-| Heading modification | +180° | Added to original heading (mod 360) |
-
-**Attack labeling:**
-- `attacker=1`: Only if speed > 1 m/s AND vehicle has moved > 1m
-- `attacker=0`: If vehicle is stationary (heading doesn't matter when not moving)
-
----
+### Acceleration-based Attacks
 
 #### `feignedBraking`
 
@@ -182,6 +153,22 @@ Multiplies the reported acceleration value.
 
 ---
 
+### Heading-based Attacks
+
+#### `reversedHeading`
+
+Reports heading rotated by 180° (driving direction reversed).
+
+| Parameter | Value | Description |
+|-----------|-------|-------------|
+| Heading modification | +180° | Added to original heading (mod 360) |
+
+**Attack labeling:**
+- `attacker=1`: Only if speed > 1 m/s AND vehicle has moved > 1m
+- `attacker=0`: If vehicle is stationary (heading doesn't matter when not moving)
+
+---
+
 ### Time-based Attacks
 
 #### `timeDelayAttack`
@@ -197,25 +184,7 @@ Delays the timestamps of messages.
 
 ---
 
-#### `dataReplay`
-
-Replays messages from nearby vehicles as if they were the attacker's own.
-
-| Parameter | Value Range | Description |
-|-----------|-------------|-------------|
-| `max_replay_seq` | 4-8 | Messages to replay from same victim |
-| `replay_seq` | Counter | Current replay count |
-| `saved_alias` | Vehicle ID | Currently replayed victim |
-| Detection radius | 400m | Range to find victim vehicles |
-| Time window | 5 seconds | How far back to look for messages |
-
-**Attack labeling:**
-- `attacker=1`: Always when a message is replaced with replayed data
-- Messages without nearby victims remain unchanged
-
----
-
-### Sybil Attacks
+### Multi-parameter Attacks
 
 #### `dosAttack`
 
@@ -247,6 +216,41 @@ Creates phantom vehicles around the attacker to simulate traffic congestion.
 **Attack labeling:**
 - `attacker=1`: Always (all phantom vehicles)
 - Original attacker message remains unchanged
+
+---
+
+#### `suddenStop`
+
+Simulates a sudden stop - the vehicle reports stopped position/speed while actually moving.
+
+| Parameter | Value | Description |
+|-----------|-------|-------------|
+| `suddenStop` | 0.05 (5%) | Probability to trigger the stop |
+| `msg` | Saved message | Position where "stop" occurred |
+| `stop_time` | Timestamp | When the stop was triggered |
+
+**Attack labeling:**
+- `attacker=1` at trigger: Only if original speed > 1 m/s AND acceleration ≥ 0
+- `attacker=1` after trigger: Only if original speed > 1 m/s OR distance to "stopped" position ≥ 20m
+- `attacker=0`: If vehicle was already slow/stopping
+
+---
+
+#### `dataReplay`
+
+Replays messages from nearby vehicles as if they were the attacker's own.
+
+| Parameter | Value Range | Description |
+|-----------|-------------|-------------|
+| `max_replay_seq` | 4-8 | Messages to replay from same victim |
+| `replay_seq` | Counter | Current replay count |
+| `saved_alias` | Vehicle ID | Currently replayed victim |
+| Detection radius | 400m | Range to find victim vehicles |
+| Time window | 5 seconds | How far back to look for messages |
+
+**Attack labeling:**
+- `attacker=1`: Always when a message is replaced with replayed data
+- Messages without nearby victims remain unchanged
 
 ---
 

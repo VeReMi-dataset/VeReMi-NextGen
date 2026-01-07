@@ -215,4 +215,4 @@ Each split folder contains `<scenario>_<attack type>_p_d_values.csv` with:
 - [Eclipse MOSAIC](./Eclipse%20MOSAIC)
 - [Evaluation](./Evaltuation)
 - [Post-Processing](./Post-Processing)
-- [Processes in the Generation](./Processes)
+- [Processes during the simulation](./Processes)

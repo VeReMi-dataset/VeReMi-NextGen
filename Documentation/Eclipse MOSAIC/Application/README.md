@@ -5,7 +5,7 @@
 The CamApp is an Eclipse MOSAIC application for simulating Cooperative Awareness Messages (CAM). It extends the standard MOSAIC framework with realistic sensor error models, driver profiles, and pseudonym changes for creating Misbehavior Detection datasets.
 
 >[!NOTE]
-> If you are intressted in the detailed processes during the simulation and the post-processing, have a look at the [Processes](../../Processes) documentation
+> If you are interested in the detailed processes during the simulation, have a look at the [Processes](../../Processes) documentation
 
 ---
 

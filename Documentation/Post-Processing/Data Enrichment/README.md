@@ -4,18 +4,46 @@ Calculates the **distance to the nearest road edge** (`distance_to_road_edge`) f
 
 ## Algorithm
 
-1. Get position of the nearest lane
-   ![](../../Resources/distance-Step1.pdf)
-2. Get Heading of the lane
-   ![](../../Resources/distance-Step2.pdf)
-3. Calculate road center (considering all lanes)
-   ![](../../Resources/distance-Step3.pdf)
-4. Calculate distance from position to road center
-   ![](../../Resources/distance-Step4.pdf)
-5. Calculate the total width of the street (one direction)
-   ![](../../Resources/distance-Step5.pdf)
-6. Add total width to the distance from the car to the middle
-   ![](../../Resources/distance-Step6.pdf)
+<p align="center">
+   <img src="../../Resources/distance-Step1.png" width="40%" alt="Step 1"><br>
+   <em> 1. Get position of the nearest lane </em>
+</p>
+<br>
+
+<p align="center">
+   <img src="../../Resources/distance-Step2.png" width="23%" alt="Step 1"><br>
+   <em> 2. Get heading of the lane   </em>
+</p>
+<br>
+
+<p align="center">
+   <img src="../../Resources/distance-Step3.png" width="40%" alt="Step 1"><br>
+   <em> 3. Calculate road center (considering all lanes)
+ </em>
+</p>
+<br>
+
+<p align="center">
+   <img src="../../Resources/distance-Step4.png" width="40%" alt="Step 1"><br>
+   <em> 4. Calculate distance from position to road center
+ </em>
+</p>
+<br>
+
+<p align="center">
+   <img src="../../Resources/distance-Step5.png" width="40%" alt="Step 1"><br>
+   <em> 5. Calculate the total width of the street (one direction)
+ </em>
+</p>
+<br>
+
+<p align="center">
+   <img src="../../Resources/distance-Step6.png" width="40%" alt="Step 1"><br>
+   <em> 6. Add total width to the distance from the car to the middle
+ </em>
+</p>
+
+---
 
 ## TraCI Functions
 
