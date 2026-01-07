@@ -100,7 +100,7 @@ VeReMi-NextGen/
 
 ---
 
-## Dataset: VeReMi_NextGen
+## Dataset: VeReMi NextGen
 
 The dataset contains V2X Basic Safety Messages (BSMs) captured from traffic simulations with injected misbehavior. Each subset represents a different attack type.
 
@@ -188,7 +188,7 @@ Each JSON file contains an array of BSM messages:
 
 ---
 
-## Train/Validation/Test Splits
+## Train/Validation/Test-Splits
 
 Pre-computed splits for machine learning experiments. Each attack type has its own Train/Validation/Test split ensuring:
 

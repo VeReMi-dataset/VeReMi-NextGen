@@ -4,44 +4,26 @@ The core module for detecting misbehavior in V2X messages using plausibility and
 
 ## Files
 
-| File | Function |
-|------|----------|
-| `main.py` | Entry point, CLI, parallelization |
-| `data_processing.py` | Check orchestration, metrics calculation |
-| `data_structures.py` | Data classes, parameters, mapper |
-| `catch_checks.py` | Probabilistic checks with confidence factors [0,1] |
-| `legacy_checks.py` | Binary checks {0,1} |
-| `mdm_lib.py` | Mathematical helper functions (geometry, intersections) |
-
----
-
-## Usage
-
-```bash
-# Catch-based checks (Type 0) - recommended
-python main.py --input_folder ./data --type 0
-
-# Legacy checks (Type 1) - simpler, binary
-python main.py --input_folder ./data --type 1
-
-# With optimized parameters from file
-python main.py --input_folder ./data --type 0 --parameter best_trial.json
-
-# With custom parameters
-python main.py --input_folder ./data --type 0 --mpr 400 --mps 50
-```
+| File                 | Function                                                |
+|----------------------|---------------------------------------------------------|
+| `main.py`            | Entry point, CLI, parallelization                       |
+| `data_processing.py` | Check orchestration, metrics calculation                |
+| `data_structures.py` | Data classes, parameters, mapper                        |
+| `catch_checks.py`    | Probabilistic checks with confidence factors [0,1]      |
+| `legacy_checks.py`   | Binary checks {0,1}                                     |
+| `mdm_lib.py`         | Mathematical helper functions (geometry, intersections) |
 
 ---
 
 ## Catch vs Legacy: Key Differences
 
-| Aspect | Catch Checks | Legacy Checks |
-|--------|--------------|---------------|
-| **Output** | Confidence factor [0.0 - 1.0] | Binary {0, 1} |
-| **Uncertainty** | Uses `pos_noise`, `spd_noise` etc. | Ignores noise values |
-| **Geometry** | Circle-circle intersections, ellipses | Simple distance comparisons |
-| **Decision** | `factor < 0.5` → Misbehavior | `result == 0` → Misbehavior |
-| **Accuracy** | Higher (fewer false positives) | Lower (more false positives) |
+| Aspect          | Catch Checks                          | Legacy Checks                |
+|-----------------|---------------------------------------|------------------------------|
+| **Output**      | Confidence factor [0.0 - 1.0]         | Binary {0, 1}                |
+| **Uncertainty** | Uses `pos_noise`, `spd_noise` etc.    | Ignores noise values         |
+| **Geometry**    | Circle-circle intersections, ellipses | Simple distance comparisons  |
+| **Decision**    | `factor < 0.5` → Misbehavior          | `result == 0` → Misbehavior  |
+| **Accuracy**    | Higher (fewer false positives)        | Lower (more false positives) |
 
 ---
 
@@ -63,22 +45,22 @@ if any(check_result == 0 for check_result in all_checks):
 
 ## Parameters
 
-| Flag | Name | Default | Unit | Description |
-|------|------|---------|------|-------------|
-| `--mpr` | MAX_PLAUSIBLE_RANGE | 418.1 | m | Maximum V2X communication range |
-| `--mps` | MAX_PLAUSIBLE_SPEED | 62.3 | m/s | Maximum physically possible speed (~224 km/h) |
-| `--mpa` | MAX_PLAUSIBLE_ACCEL | 5.4 | m/s² | Maximum acceleration |
-| `--mpd` | MAX_PLAUSIBLE_DECEL | 5.0 | m/s² | Maximum deceleration (braking) |
-| `--mhc` | MAX_HEADING_CHANGE | 76.2 | ° | Maximum heading change between messages |
-| `--mdi` | MAX_DELTA_INTERSECTION | 4.3 | s | Time window for intersection check |
-| `--mtd` | MAX_TIME_DELTA | 4.7 | s | Maximum Δt for consistency checks |
-| `--mpdn` | MAX_PLAUSIBLE_DIST_NEGATIVE | -4.5 | m | Minimum distance to road edge (negative = off-road) |
-| `--pht` | POS_HEADING_TIME | 0.4 | s | Time window for heading consistency |
-| `--mmru` | MAX_MGT_RNG_UP | 0.7 | m | Upper tolerance margin for position-speed |
-| `--mmrd` | MAX_MGT_RNG_DOWN | 1.0 | m | Lower tolerance margin for position-speed |
-| `--mnrs` | MAX_NON_ROUTE_SPEED | 0.68 | m/s | Speed below which off-road position is allowed |
-| `--msar` | MAX_SA_RANGE | 150.0 | m | Range for sudden appearance check |
-| `--msat` | MAX_SA_TIME | 2.1 | s | Time threshold for sudden appearance |
+| Flag     | Name                        | Unit | Description                                         |
+|----------|-----------------------------|------|-----------------------------------------------------|
+| `--mpr`  | MAX_PLAUSIBLE_RANGE         | m    | Maximum V2X communication range                     |
+| `--mps`  | MAX_PLAUSIBLE_SPEED         | m/s  | Maximum physically possible speed (~224 km/h)       |
+| `--mpa`  | MAX_PLAUSIBLE_ACCEL         | m/s² | Maximum acceleration                                |
+| `--mpd`  | MAX_PLAUSIBLE_DECEL         | m/s² | Maximum deceleration (braking)                      |
+| `--mhc`  | MAX_HEADING_CHANGE          | °    | Maximum heading change between messages             |
+| `--mdi`  | MAX_DELTA_INTERSECTION      | s    | Time window for intersection check                  |
+| `--mtd`  | MAX_TIME_DELTA              | s    | Maximum Δt for consistency checks                   |
+| `--mpdn` | MAX_PLAUSIBLE_DIST_NEGATIVE | m    | Minimum distance to road edge (negative = off-road) |
+| `--pht`  | POS_HEADING_TIME            | s    | Time window for heading consistency                 |
+| `--mmru` | MAX_MGT_RNG_UP              | m    | Upper tolerance margin for position-speed           |
+| `--mmrd` | MAX_MGT_RNG_DOWN            | m    | Lower tolerance margin for position-speed           |
+| `--mnrs` | MAX_NON_ROUTE_SPEED         | m/s  | Speed below which off-road position is allowed      |
+| `--msar` | MAX_SA_RANGE                | m    | Range for sudden appearance check                   |
+| `--msat` | MAX_SA_TIME                 | s    | Time threshold for sudden appearance                |
 
 ---
 
@@ -92,23 +74,33 @@ if any(check_result == 0 for check_result in all_checks):
 - `receiver_pos`, `receiver_pos_conf` - Receiver position and confidence
 - `sender_pos`, `sender_pos_conf` - Sender position and confidence
 
-**Logic (Catch):**
-```
-distance = euclidean_distance(sender_pos, receiver_pos)
-factor = circle_circle_intersection_factor(distance, sender_conf, receiver_conf, MAX_PLAUSIBLE_RANGE)
+**CaTCH Implementation:**
+```python
+def range_plausibility_check(self, receiver_pos, receiver_pos_conf,
+                             sender_pos, sender_pos_conf):
+    distance = self.mdm_lib.calculate_distance(sender_pos, receiver_pos)
+    
+    # Calculate what fraction of the uncertainty circles 
+    # lies within the communication range
+    factor = self.mdm_lib.circle_circle_factor(
+        distance, 
+        sender_pos_conf.x,    # sender uncertainty radius
+        receiver_pos_conf.x,  # receiver uncertainty radius
+        self.params.MAX_PLAUSIBLE_RANGE
+    )
+    return factor
 ```
 
-The `circle_circle_factor` calculates what fraction of the uncertainty circles lies within the communication range. This accounts for GPS noise in both positions.
-
-**Logic (Legacy):**
-```
-distance = euclidean_distance(sender_pos, receiver_pos)
-return 1.0 if distance < MAX_PLAUSIBLE_RANGE else 0.0
+**Legacy Implementation:**
+```python
+def range_plausibility_check(self, sender_pos, receiver_pos):
+    distance = self.mdm_lib.calculate_distance(sender_pos, receiver_pos)
+    return 1.0 if distance < self.params.MAX_PLAUSIBLE_RANGE else 0.0
 ```
 
 **Misbehavior detected when:**
-- Catch: `factor < 0.5` (less than 50% of uncertainty area within range)
-- Legacy: `distance ≥ MAX_PLAUSIBLE_RANGE`
+- CaTCH: `factor < 0.5` (less than 50% of uncertainty area within range)
+- Legacy: `distance >= MAX_PLAUSIBLE_RANGE`
 
 ---
 
@@ -121,34 +113,63 @@ return 1.0 if distance < MAX_PLAUSIBLE_RANGE else 0.0
 - `sender_speed`, `sender_speed_conf` - Speed and confidence
 - `distance_to_road_edge` - Calculated by Data Enrichment module
 
-**Logic (Catch):**
+**CaTCH Implementation:**
 ```python
-# Stationary vehicles may be off-road (parking)
-if speed - speed_conf <= MAX_NON_ROUTE_SPEED and distance <= 0:
-    return 1.0  # OK
-
-# Calculate what fraction of uncertainty circle is on valid road area
-# Using circle segment geometry
-if distance + radius <= MAX_PLAUSIBLE_DIST_NEGATIVE:
-    return 0.0  # Entirely off-road
-elif distance - radius >= MAX_PLAUSIBLE_DIST_NEGATIVE:
-    return 1.0  # Entirely on-road
-else:
-    # Partial overlap - calculate area ratio
-    factor = valid_area / total_circle_area
+def position_plausibility_check(self, sender_pos_conf, sender_speed,
+                                sender_speed_conf, distance):
+    # Adjust speed by confidence
+    speed = max(0, sender_speed - sender_speed_conf)
+    
+    # Stationary vehicles may be off-road (parking)
+    if speed <= self.params.MAX_NON_ROUTE_SPEED and distance <= 0:
+        return 1.0
+    
+    radius = sender_pos_conf.x  # uncertainty radius
+    circle_area = np.pi * radius * radius
+    min_allowed = self.params.MAX_PLAUSIBLE_DIST_NEGATIVE
+    
+    # No uncertainty: simple threshold check
+    if radius <= 0.0:
+        return 1.0 if distance >= min_allowed else 0.0
+    
+    # Entirely off-road
+    elif distance + radius <= min_allowed:
+        return 0.0
+    
+    # Entirely on-road
+    elif distance - radius >= min_allowed:
+        return 1.0
+    
+    # Partial overlap: calculate area ratio using circle segment
+    elif distance > min_allowed > distance - radius:
+        d = abs(min_allowed - distance)
+        seg = self.mdm_lib.berechne_kreisabschnitts_flaeche(radius, d)
+        inside_area = circle_area - seg
+        return max(0.0, min(1.0, inside_area / circle_area))
+    
+    elif distance < min_allowed < distance + radius:
+        d = abs(min_allowed - distance)
+        seg = self.mdm_lib.berechne_kreisabschnitts_flaeche(radius, d)
+        return max(0.0, min(1.0, seg / circle_area))
+    
+    else:
+        return 1.0
 ```
 
-**Logic (Legacy):**
+**Legacy Implementation:**
 ```python
-if speed <= MAX_NON_ROUTE_SPEED:
-    return 1.0  # Slow vehicles allowed off-road
-
-return 1.0 if distance >= MAX_PLAUSIBLE_DIST_NEGATIVE else 0.0
+def position_plausibility_check(self, sender_speed, distance_to_road):
+    # Slow vehicles allowed off-road (parking)
+    if sender_speed <= self.params.MAX_NON_ROUTE_SPEED:
+        return 1.0
+    
+    return 1.0 if self.params.MAX_PLAUSIBLE_DIST_POSITIVE >= distance_to_road >= \
+                  self.params.MAX_PLAUSIBLE_DIST_NEGATIVE else 0.0
 ```
 
 **Misbehavior detected when:**
-- Catch: `factor < 0.5` (most of uncertainty area off-road)
-- Legacy: `distance < MAX_PLAUSIBLE_DIST_NEGATIVE` (position too far from road)
+- CaTCH: `factor < 0.5` (most of uncertainty area off-road)
+- Legacy: `distance < MAX_PLAUSIBLE_DIST_NEGATIVE`
 
 ---
 
@@ -160,25 +181,33 @@ return 1.0 if distance >= MAX_PLAUSIBLE_DIST_NEGATIVE else 0.0
 - `speed` - Reported speed
 - `speed_conf` - Speed confidence/uncertainty
 
-**Logic (Catch):**
+**CaTCH Implementation:**
 ```python
-if |speed| + speed_conf/2 < MAX_PLAUSIBLE_SPEED:
-    return 1.0  # Definitely plausible
-elif |speed| - speed_conf/2 > MAX_PLAUSIBLE_SPEED:
-    return 0.0  # Definitely implausible
-else:
-    # Partial overlap with threshold
-    factor = (speed_conf/2 + (MAX_PLAUSIBLE_SPEED - |speed|)) / speed_conf
+def speed_plausibility_check(self, speed, speed_conf):
+    # Definitely plausible (entire confidence interval below max)
+    if abs(speed) + abs(speed_conf) / 2 < self.params.MAX_PLAUSIBLE_SPEED:
+        return 1.0
+    
+    # Definitely implausible (entire confidence interval above max)
+    elif abs(speed) - abs(speed_conf) / 2 > self.params.MAX_PLAUSIBLE_SPEED:
+        return 0.0
+    
+    # Partial overlap: calculate proportion within valid range
+    else:
+        factor = (abs(speed_conf) / 2 + 
+                  (self.params.MAX_PLAUSIBLE_SPEED - abs(speed))) / abs(speed_conf)
+        return factor
 ```
 
-**Logic (Legacy):**
+**Legacy Implementation:**
 ```python
-return 1.0 if |speed| < MAX_PLAUSIBLE_SPEED else 0.0
+def speed_plausibility_check(self, speed):
+    return 1.0 if abs(speed) < self.params.MAX_PLAUSIBLE_SPEED else 0.0
 ```
 
 **Misbehavior detected when:**
-- Catch: `factor < 0.5`
-- Legacy: `|speed| ≥ MAX_PLAUSIBLE_SPEED`
+- CaTCH: `factor < 0.5`
+- Legacy: `|speed| >= MAX_PLAUSIBLE_SPEED`
 
 ---
 
@@ -191,20 +220,31 @@ return 1.0 if |speed| < MAX_PLAUSIBLE_SPEED else 0.0
 - `old_pos`, `old_pos_conf` - Previous position and confidence
 - `time_delta` - Time between messages (seconds)
 
-**Logic (Catch):**
+**CaTCH Implementation:**
 ```python
-distance = euclidean_distance(cur_pos, old_pos)
-max_possible_distance = MAX_PLAUSIBLE_SPEED × time_delta
-
-factor = circle_circle_factor(distance, cur_conf, old_conf, max_possible_distance)
+def position_consistency_check(self, cur_pos, cur_pos_conf,
+                               old_pos, old_pos_conf, time_delta):
+    distance = self.mdm_lib.calculate_distance(cur_pos, old_pos)
+    
+    # Maximum possible distance at max speed
+    max_range = self.params.MAX_PLAUSIBLE_SPEED * time_delta
+    
+    # Calculate overlap factor considering both position uncertainties
+    factor = self.mdm_lib.circle_circle_factor(
+        distance, 
+        cur_pos_conf.x,   # current position uncertainty
+        old_pos_conf.x,   # previous position uncertainty
+        max_range
+    )
+    return factor
 ```
 
-**Logic (Legacy):**
+**Legacy Implementation:**
 ```python
-distance = euclidean_distance(cur_pos, old_pos)
-max_distance = MAX_PLAUSIBLE_SPEED × time_delta
-
-return 1.0 if distance < max_distance else 0.0
+def position_consistency_check(self, cur_pos, old_pos, time_delta):
+    distance = self.mdm_lib.calculate_distance(cur_pos, old_pos)
+    max_distance = self.params.MAX_PLAUSIBLE_SPEED * time_delta
+    return 1.0 if distance < max_distance else 0.0
 ```
 
 **Misbehavior detected when:**
@@ -221,24 +261,38 @@ return 1.0 if distance < max_distance else 0.0
 - `old_speed`, `old_speed_conf` - Previous speed and confidence
 - `time_delta` - Time between messages
 
-**Logic (Catch):**
+**CaTCH Implementation:**
 ```python
-speed_delta = cur_speed - old_speed
-
-if speed_delta > 0:  # Accelerating
-    max_change = MAX_PLAUSIBLE_ACCEL × time_delta
-else:  # Decelerating
-    max_change = MAX_PLAUSIBLE_DECEL × time_delta
-
-factor = segment_segment_factor(|speed_delta|, cur_conf, old_conf, max_change)
+def speed_consistency_check(self, cur_speed, cur_speed_conf, 
+                            old_speed, old_speed_conf, delta_time):
+    speed_delta = cur_speed - old_speed
+    
+    if speed_delta > 0:  # Accelerating
+        max_change = self.params.MAX_PLAUSIBLE_ACCEL * delta_time
+    else:  # Decelerating
+        max_change = self.params.MAX_PLAUSIBLE_DECEL * delta_time
+    
+    # Calculate factor using segment-segment overlap
+    factor = self.mdm_lib.segment_segment_factor(
+        abs(speed_delta), 
+        cur_speed_conf, 
+        old_speed_conf,
+        max_change
+    )
+    return factor
 ```
 
-**Logic (Legacy):**
+**Legacy Implementation:**
 ```python
-speed_delta = cur_speed - old_speed
-max_delta = (MAX_PLAUSIBLE_ACCEL if speed_delta > 0 else MAX_PLAUSIBLE_DECEL) × time_delta
-
-return 1.0 if |speed_delta| < max_delta else 0.0
+def speed_consistency_check(self, cur_speed, old_speed, time_delta):
+    speed_delta = cur_speed - old_speed
+    
+    if speed_delta > 0:
+        max_delta = self.params.MAX_PLAUSIBLE_ACCEL * time_delta
+    else:
+        max_delta = self.params.MAX_PLAUSIBLE_DECEL * time_delta
+    
+    return 1.0 if abs(speed_delta) < max_delta else 0.0
 ```
 
 **Misbehavior detected when:**
@@ -253,37 +307,107 @@ return 1.0 if |speed_delta| < max_delta else 0.0
 **Inputs:**
 - `cur_pos`, `cur_pos_conf`, `old_pos`, `old_pos_conf`
 - `cur_speed`, `cur_speed_conf`, `old_speed`, `old_speed_conf`
-- `time_delta`
+- `delta_time`
 
-**Logic (Catch):**
+**CaTCH Implementation:**
 ```python
-if time_delta >= MAX_TIME_DELTA:
-    return 1.0  # Skip for large time gaps
-
-# Skip for very slow vehicles
-if max(cur_speed, old_speed) < 1.0:
-    if distance - position_confidence <= max_possible_dist:
+def position_speed_consistency_check(self, cur_pos, cur_pos_conf, old_pos, old_pos_conf,
+                                     cur_speed, cur_speed_conf, old_speed, old_speed_conf,
+                                     delta_time):
+    # Skip for large time gaps
+    if delta_time >= self.params.MAX_TIME_DELTA:
         return 1.0
+    
+    # Special case: very slow vehicles
+    if max(cur_speed, old_speed) < 1.0:
+        distance = self.mdm_lib.calculate_distance(cur_pos, old_pos)
+        max_possible_dist = max(cur_speed, old_speed) * delta_time
+        if distance - (cur_pos_conf.x + old_pos_conf.x) <= max_possible_dist:
+            return 1.0
+    
+    distance = self.mdm_lib.calculate_distance(cur_pos, old_pos)
+    
+    # Three speed scenarios for robust checking:
+    # 1. Optimistic: cur_speed + conf, old_speed - conf
+    cur_speed_test_1 = cur_speed + cur_speed_conf
+    old_speed_test_1 = old_speed - old_speed_conf
+    
+    # 2. Pessimistic: cur_speed - conf, old_speed + conf
+    cur_speed_test_2 = cur_speed - cur_speed_conf
+    old_speed_test_2 = old_speed + old_speed_conf
+    
+    # Ensure pessimistic scenario is consistent
+    if cur_speed_test_2 < old_speed_test_2:
+        cur_speed_test_2 = (cur_speed + old_speed) / 2
+        old_speed_test_2 = (cur_speed + old_speed) / 2
+    
+    # Speed-dependent tolerance (quadratic formula)
+    min_speed = min(cur_speed, old_speed)
+    addon_mgt_range = max(0, self.params.MAX_MGT_RNG_DOWN + 
+                          0.3571 * min_speed - 0.01694 * min_speed ** 2)
+    
+    # Calculate expected distance ranges for each scenario
+    min_dist_1, max_dist_1 = self.mdm_lib.calculate_max_min_dist(
+        cur_speed_test_1, old_speed_test_1, delta_time,
+        self.params.MAX_PLAUSIBLE_ACCEL, self.params.MAX_PLAUSIBLE_DECEL)
+    
+    min_dist_2, max_dist_2 = self.mdm_lib.calculate_max_min_dist(
+        cur_speed_test_2, old_speed_test_2, delta_time,
+        self.params.MAX_PLAUSIBLE_ACCEL, self.params.MAX_PLAUSIBLE_DECEL)
+    
+    min_dist_0, max_dist_0 = self.mdm_lib.calculate_max_min_dist(
+        cur_speed, old_speed, delta_time,
+        self.params.MAX_PLAUSIBLE_ACCEL, self.params.MAX_PLAUSIBLE_DECEL)
+    
+    # Calculate factors for minimum distance violations
+    factor_min_1 = 1 - self.mdm_lib.circle_circle_factor(
+        distance, cur_pos_conf.x, old_pos_conf.x, min_dist_1)
+    factor_min_2 = self.mdm_lib.one_sided_circle_segment_factor_minimum(
+        distance, cur_pos_conf.x, old_pos_conf.x, min_dist_2 - addon_mgt_range)
+    factor_min_0 = self.mdm_lib.one_sided_circle_segment_factor_minimum(
+        distance, cur_pos_conf.x, old_pos_conf.x, min_dist_0 - addon_mgt_range)
+    
+    # Calculate factors for maximum distance violations
+    factor_max_1 = self.mdm_lib.one_sided_circle_segment_factor(
+        distance, cur_pos_conf.x, old_pos_conf.x, max_dist_1 + self.params.MAX_MGT_RNG_UP)
+    factor_max_2 = self.mdm_lib.one_sided_circle_segment_factor(
+        distance, cur_pos_conf.x, old_pos_conf.x, max_dist_2 + self.params.MAX_MGT_RNG_UP)
+    factor_max_0 = self.mdm_lib.one_sided_circle_segment_factor(
+        distance, cur_pos_conf.x, old_pos_conf.x, max_dist_0 + self.params.MAX_MGT_RNG_UP)
+    
+    # Average across all scenarios
+    factor_min = (factor_min_1 + factor_min_0 + factor_min_2) / 3
+    factor_max = (factor_max_0 + factor_max_1 + factor_max_2) / 3
+    
+    return min(factor_min, factor_max)
+```
 
-# Calculate expected distance range based on speeds
-# Uses three speed scenarios: optimistic, nominal, pessimistic
-# Accounts for acceleration/deceleration during interval
-
-min_dist, max_dist = calculate_expected_distance_range(...)
-
-# Additional tolerance based on speed (higher speed = more tolerance)
-addon_tolerance = MAX_MGT_RNG_DOWN + 0.3571×min_speed - 0.01694×min_speed²
-
-# Calculate how well actual distance matches expected range
-factor_min = one_sided_circle_segment_factor(distance, ..., min_dist - addon_tolerance)
-factor_max = one_sided_circle_segment_factor(distance, ..., max_dist + MAX_MGT_RNG_UP)
-
-return min(factor_min, factor_max)
+**Legacy Implementation:**
+```python
+def position_speed_consistency_check(self, cur_pos, old_pos,
+                                     cur_speed, old_speed, time_delta):
+    if time_delta >= self.params.MAX_TIME_DELTA:
+        return 1.0
+    
+    distance = self.mdm_lib.calculate_distance(cur_pos, old_pos)
+    
+    min_speed = min(cur_speed, old_speed)
+    addon_mgt_range = max(0, self.params.MAX_MGT_RNG_DOWN + 
+                          0.3571 * min_speed - 0.01694 * min_speed ** 2)
+    
+    min_dist, max_dist = self.mdm_lib.calculate_max_min_dist(
+        cur_speed, old_speed, time_delta,
+        self.params.MAX_PLAUSIBLE_ACCEL, self.params.MAX_PLAUSIBLE_DECEL,
+        self.params.MAX_PLAUSIBLE_SPEED)
+    
+    delta_min = distance - min_dist + addon_mgt_range
+    delta_max = max_dist - distance + self.params.MAX_MGT_RNG_UP
+    
+    return 1.0 if (delta_min >= 0 and delta_max >= 0) else 0.0
 ```
 
 **Misbehavior detected when:**
 - Traveled distance doesn't match what's possible with reported speeds
-- Example: High speed reported but position barely changed
 
 ---
 
@@ -295,47 +419,96 @@ return min(factor_min, factor_max)
 - `cur_heading`, `cur_heading_conf` - Reported heading and confidence
 - `cur_pos`, `cur_pos_conf`, `old_pos`, `old_pos_conf`
 - `cur_speed`, `cur_speed_conf`
-- `time_delta`
+- `delta_time`
 
-**Logic (Catch):**
+**CaTCH Implementation:**
 ```python
-if time_delta >= POS_HEADING_TIME:
-    return 1.0  # Skip for large time gaps
-
-distance = euclidean_distance(cur_pos, old_pos)
-if distance < 1:
-    return 1.0  # Not enough movement to determine direction
-
-if cur_speed - cur_speed_conf < 1:
-    return 1.0  # Too slow to reliably determine heading
-
-# Calculate actual movement direction from position change
-position_angle = atan2(Δx, Δy)
-
-# Compare with reported heading
-angle_delta = |cur_heading - position_angle|
-if angle_delta > 180:
-    angle_delta = 360 - angle_delta
-
-# Calculate factor based on angle difference and uncertainties
-# Uses circle segment geometry to account for position noise
-factor = average(cur_factor_low, old_factor_low, cur_factor_high, old_factor_high)
+def position_heading_consistency_check(self, cur_heading, cur_heading_conf, 
+                                       old_pos, old_pos_conf, cur_pos, cur_pos_conf, 
+                                       delta_time, cur_speed, cur_speed_conf):
+    # Skip for large time gaps
+    if delta_time >= self.params.POS_HEADING_TIME:
+        return 1.0
+    
+    distance = self.mdm_lib.calculate_distance(cur_pos, old_pos)
+    
+    # Not enough movement to determine direction
+    if distance < 1:
+        return 1.0
+    
+    # Too slow to reliably determine heading
+    if cur_speed - cur_speed_conf < 1:
+        return 1.0
+    
+    # Calculate actual movement direction from position change
+    relative_pos = Coord(cur_pos.x - old_pos.x, 
+                         cur_pos.y - old_pos.y, 
+                         cur_pos.z - old_pos.z)
+    position_angle = self.mdm_lib.calculate_heading_angle(relative_pos)
+    
+    # Calculate angle difference
+    angle_delta = abs(cur_heading - position_angle)
+    if angle_delta > 180:
+        angle_delta = 360 - angle_delta
+    
+    # Apply heading confidence to get angle bounds
+    angle_low = max(0, angle_delta - cur_heading_conf)
+    angle_high = min(180, angle_delta + cur_heading_conf)
+    
+    # Calculate factors using circle segment geometry
+    x_low = distance * np.cos(angle_low * np.pi / 180)
+    x_high = distance * np.cos(angle_high * np.pi / 180)
+    
+    # Factor for current position uncertainty
+    if cur_pos_conf.x == 0:
+        cur_factor_low = 1.0 if angle_low <= self.params.MAX_HEADING_CHANGE else 0.0
+        cur_factor_high = 1.0 if angle_high <= self.params.MAX_HEADING_CHANGE else 0.0
+    else:
+        cur_factor_low = self.mdm_lib.calculate_circle_segment(
+            cur_pos_conf.x, cur_pos_conf.x + x_low) / (np.pi * cur_pos_conf.x ** 2)
+        cur_factor_high = self.mdm_lib.calculate_circle_segment(
+            cur_pos_conf.x, cur_pos_conf.x + x_high) / (np.pi * cur_pos_conf.x ** 2)
+    
+    # Factor for old position uncertainty
+    if old_pos_conf.x == 0:
+        old_factor_low = 1.0 if angle_low <= self.params.MAX_HEADING_CHANGE else 0.0
+        old_factor_high = 1.0 if angle_high <= self.params.MAX_HEADING_CHANGE else 0.0
+    else:
+        old_factor_low = 1 - self.mdm_lib.calculate_circle_segment(
+            old_pos_conf.x, old_pos_conf.x - x_low) / (np.pi * old_pos_conf.x ** 2)
+        old_factor_high = 1 - self.mdm_lib.calculate_circle_segment(
+            old_pos_conf.x, old_pos_conf.x - x_high) / (np.pi * old_pos_conf.x ** 2)
+    
+    # Average all factors
+    factor = (cur_factor_low + old_factor_low + cur_factor_high + old_factor_high) / 4
+    return factor
 ```
 
-**Logic (Legacy):**
+**Legacy Implementation:**
 ```python
-if time_delta >= POS_HEADING_TIME or distance < 1 or cur_speed < 1:
-    return 1.0
-
-position_angle = atan2(Δx, Δy)
-angle_delta = |cur_heading - position_angle|
-
-return 1.0 if angle_delta <= MAX_HEADING_CHANGE else 0.0
+def position_heading_consistency_check(self, cur_heading, cur_pos,
+                                       old_pos, time_delta, cur_speed):
+    if time_delta >= self.params.POS_HEADING_TIME:
+        return 1.0
+    
+    distance = self.mdm_lib.calculate_distance(cur_pos, old_pos)
+    if distance < 1 or cur_speed < 1:
+        return 1.0
+    
+    relative_pos = Coord(cur_pos.x - old_pos.x, 
+                         cur_pos.y - old_pos.y, 
+                         cur_pos.z - old_pos.z)
+    position_angle = self.mdm_lib.calculate_heading_angle(relative_pos)
+    
+    angle_delta = abs(cur_heading - position_angle)
+    if angle_delta > 180:
+        angle_delta = 360 - angle_delta
+    
+    return 1.0 if angle_delta <= self.params.MAX_HEADING_CHANGE else 0.0
 ```
 
 **Misbehavior detected when:**
 - Reported heading differs significantly from actual movement direction
-- Example: Vehicle claims to drive north but position moves east
 
 ---
 
@@ -350,40 +523,58 @@ return 1.0 if angle_delta <= MAX_HEADING_CHANGE else 0.0
 - `size` - Vehicle dimensions (default: 5m × 1.8m × 1.5m)
 - `delta_time` - Time difference between messages
 
-**Logic (Catch):**
+**CaTCH Implementation:**
 ```python
-# Model vehicles as ellipses (rectangle + uncertainty)
-ellipse_width = vehicle_width + 2 × pos_conf
-ellipse_length = vehicle_length + 2 × pos_conf
-
-# Calculate intersection area using Shapely geometry
-intersection_factor = ellipse_ellipse_intersection_factor(...)
-
-# Weight by time difference (recent = more important)
-time_factor = (MAX_DELTA_INTERSECTION - delta_time) / MAX_DELTA_INTERSECTION
-
-factor = 1.01 - intersection_factor × time_factor
-return clamp(factor, 0.0, 1.0)
+def intersection_check(self, pos_1, pos_1_conf, pos_2, pos_2_conf,
+                       heading_1, heading_2, size, delta_time):
+    # Normalize positions to local coordinate system
+    origin_x = min(pos_1.x, pos_2.x)
+    origin_y = min(pos_1.y, pos_2.y)
+    
+    pos_1_norm = Coord(pos_1.x - origin_x, pos_1.y - origin_y, pos_1.z)
+    pos_2_norm = Coord(pos_2.x - origin_x, pos_2.y - origin_y, pos_2.z)
+    
+    # Model vehicles as ellipses (rectangle + uncertainty)
+    # and calculate intersection factor using Shapely geometry
+    factor = self.mdm_lib.ellipse_ellipse_intersection_factor(
+        pos_1_norm, pos_1_conf, pos_2_norm, pos_2_conf,
+        heading_1, heading_2, size, size
+    )
+    
+    # Weight by time difference (recent = more important)
+    time_factor = (self.params.MAX_DELTA_INTERSECTION - delta_time) / \
+                   self.params.MAX_DELTA_INTERSECTION
+    
+    # Invert: high intersection → low factor (misbehavior)
+    factor = 1.01 - factor * time_factor
+    
+    return max(0.0, min(1.0, factor))
 ```
 
-**Logic (Legacy):**
+**Legacy Implementation:**
 ```python
-# Model vehicles as rectangles
-intersection = rectangle_rectangle_intersection(...)
-weighted = intersection × (MAX_DELTA_INTERSECTION - delta_time) / MAX_DELTA_INTERSECTION
-
-return 0.0 if weighted > 0.5 else 1.0
+def intersection_check(self, pos_1, pos_2, node_size_1, node_size_2, 
+                       heading_1, heading_2):
+    # Model vehicles as rectangles
+    intersection = self.mdm_lib.rect_rect_factor(
+        pos_1, pos_2, heading_1, heading_2, node_size_1, node_size_2)
+    
+    # Weight by time window
+    inter = intersection * ((self.params.MAX_DELTA_INTERSECTION - 
+                             self.params.MAX_TIME_DELTA) / 
+                            self.params.MAX_DELTA_INTERSECTION)
+    
+    return 0.0 if inter > 0.5 else 1.0
 ```
 
 **Misbehavior detected when:**
 - Two vehicles claim positions that would physically overlap
-- Checked against all recently seen vehicles within time window
 
 ---
 
 ### 9. Sudden Appearance Check
 
-**Purpose:** Detect vehicles that suddenly appear within communication range (should approach gradually).
+**Purpose:** Detect vehicles that suddenly appear within communication range.
 
 **Inputs:**
 - `receiver_pos`, `receiver_pos_conf`
@@ -391,54 +582,39 @@ return 0.0 if weighted > 0.5 else 1.0
 
 **Precondition:** Only checked when sender is new OR not seen for > MAX_SA_TIME seconds.
 
-**Logic (Catch):**
+**CaTCH Implementation:**
 ```python
-distance = euclidean_distance(sender_pos, receiver_pos)
-detection_range = MAX_SA_RANGE + receiver_pos_conf
-
-if sender_pos_conf <= 0:
-    return 0.0 if distance < detection_range else 1.0
-else:
+def sudden_appearance_check(self, receiver_pos, receiver_pos_conf,
+                            sender_pos, sender_pos_conf):
+    distance = self.mdm_lib.calculate_distance(sender_pos, receiver_pos)
+    
+    # Detection zone radius including receiver uncertainty
+    r2 = self.params.MAX_SA_RANGE + receiver_pos_conf.x
+    
+    # No sender uncertainty: simple threshold
+    if sender_pos_conf.x <= 0:
+        return 0.0 if distance < r2 else 1.0
+    
     # Calculate what fraction of sender's uncertainty circle
-    # falls within the sudden appearance detection zone
-    overlap_area = circle_circle_intersection(sender_conf, detection_range, distance)
-    factor = 1 - overlap_area / sender_circle_area
+    # falls OUTSIDE the sudden appearance detection zone
+    overlap_area = self.mdm_lib.calculate_circle_circle_intersection(
+        sender_pos_conf.x, r2, distance)
+    
+    sender_area = np.pi * sender_pos_conf.x ** 2
+    factor = 1 - overlap_area / sender_area
+    
+    return factor
 ```
 
-**Logic (Legacy):**
+**Legacy Implementation:**
 ```python
-distance = euclidean_distance(sender_pos, receiver_pos)
-return 0.0 if distance < MAX_SA_RANGE else 1.0
+def sudden_appearance_check(self, sender_pos, receiver_pos):
+    distance = self.mdm_lib.calculate_distance(sender_pos, receiver_pos)
+    return 0.0 if distance < self.params.MAX_SA_RANGE else 1.0
 ```
 
 **Misbehavior detected when:**
 - A vehicle appears inside the detection zone without being tracked approaching
-- Suggests spoofed vehicle or replay attack
-
----
-
-## Output Metrics
-
-```json
-{
-  "tp": 1234,      // True Positives: Correctly detected attacks
-  "tn": 5678,      // True Negatives: Correctly passed benign messages
-  "fp": 123,       // False Positives: Benign flagged as attack
-  "fn": 456,       // False Negatives: Attacks missed
-  "accuracy": 0.92,
-  "precision": 0.91,
-  "recall": 0.73,
-  "f1": 0.81
-}
-```
-
-**Formulas:**
-```
-Accuracy  = (TP + TN) / (TP + TN + FP + FN)
-Precision = TP / (TP + FP)
-Recall    = TP / (TP + FN)
-F1-Score  = 2 × (Precision × Recall) / (Precision + Recall)
-```
 
 ---
 

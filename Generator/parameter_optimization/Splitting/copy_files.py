@@ -21,17 +21,6 @@ def copy_files_from_csv(csv_file, source_dir, destination_dir):
                 else:
                     print(f"File not found: {file_name}")
 
-        # Copy ground truth file
-        file_name = "traceGroundTruthJSON-7.json"
-        source_file_path = os.path.join(source_dir, file_name)
-        if os.path.isfile(source_file_path):
-            destination_file_path = os.path.join(destination_dir, file_name)
-            shutil.copy2(source_file_path, destination_file_path)
-            print(f"Copied: {file_name}")
-        else:
-            print(f"File not found: {file_name}")
-
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Copy files for train/validation/test split.")
 

@@ -1,54 +1,38 @@
 # Data Enrichment
 
-Enriches V2X messages with additional information from SUMO.
-
-## Function
-
 Calculates the **distance to the nearest road edge** (`distance_to_road_edge`) for each message. This information is essential for the **Position Plausibility Check**.
-
-## Usage
-
-```bash
-python enrichMsgs.py <messages_folder> <sumo_config.sumocfg> [--workers N]
-```
-
-**Example:**
-```bash
-python enrichMsgs.py ./traces ./scenario.sumocfg --workers 8
-```
 
 ## Algorithm
 
-1. Extract position (x,y) from message
-2. Via TraCI: Find nearest road edge (`edge_id`)
+1. Get position of the nearest lane
+   ![](../../Resources/distance-Step1.pdf)
+2. Get Heading of the lane
+   ![](../../Resources/distance-Step2.pdf)
 3. Calculate road center (considering all lanes)
-4. Calculate distance from position to road edge
-
-
+   ![](../../Resources/distance-Step3.pdf)
+4. Calculate distance from position to road center
+   ![](../../Resources/distance-Step4.pdf)
+5. Calculate the total width of the street (one direction)
+   ![](../../Resources/distance-Step5.pdf)
+6. Add total width to the distance from the car to the middle
+   ![](../../Resources/distance-Step6.pdf)
 
 ## TraCI Functions
 
-| Function | Usage |
-|----------|-------|
-| `traci.simulation.convertRoad(x, y)` | Position → Edge/Lane |
-| `traci.edge.getShape(edge_id)` | Edge geometry |
-| `traci.lane.getWidth(lane_id)` | Lane width |
-| `traci.edge.getAngle(edge_id, pos)` | Heading direction |
-| `traci.simulation.convert2D(...)` | Edge position → Coordinates |
-| `traci.simulation.getDistance2D(...)` | Calculate distance |
+| Function                              | Usage                       |
+|---------------------------------------|-----------------------------|
+| `traci.simulation.convertRoad(x, y)`  | Position → Edge/Lane        |
+| `traci.edge.getShape(edge_id)`        | Edge geometry               |
+| `traci.lane.getWidth(lane_id)`        | Lane width                  |
+| `traci.edge.getAngle(edge_id, pos)`   | Heading direction           |
+| `traci.simulation.convert2D(...)`     | Edge position → Coordinates |
+| `traci.simulation.getDistance2D(...)` | Calculate distance          |
 
 ## Parallelization
 
 - Starts N SUMO instances on different ports (8873 + worker_id)
 - Each worker processes a chunk of JSON files
 - One SUMO instance per worker (avoids reconnects)
-
-```python
-chunk_size = total_files // max_workers
-# Worker 0: Files 0-99
-# Worker 1: Files 100-199
-# ...
-```
 
 ## Output
 

@@ -9,7 +9,7 @@
   "jsonPath" : "<your path>",
   "simulationTime": {
     "start": 25200,
-    "end": 25600
+    "end": 25500
   },
   "simulationArea": {
     "minX": 48.749772,

@@ -2,11 +2,7 @@
 
 Generates realistic attacks on V2X messages by manipulating vehicle data.
 
-## Usage
-
-```bash
-python attackGenerator.py <input_folder> <attack_type> <sumo_config.sumocfg>
-```
+---
 
 ## Attacker Ratio
 
@@ -31,7 +27,7 @@ Adds a constant offset to the reported position for each attacker vehicle.
 | `offset_lon` | ±20 to ±70 m | Constant offset in Y direction |
 
 **Attack labeling:**
-- ✅ `attacker=1`: Always (every message from attacker)
+- `attacker=1`: Always (every message from attacker)
 - The offset is randomly chosen once per attacker and stays constant
 
 ---
@@ -46,7 +42,7 @@ Adds a random offset to the position that changes with each message.
 | `offset_lon` | ±20 to ±70 m | Random offset per message |
 
 **Attack labeling:**
-- ✅ `attacker=1`: Always (every message from attacker)
+- `attacker=1`: Always (every message from attacker)
 - New random offset generated for each message
 
 ---
@@ -60,7 +56,7 @@ Mirrors the vehicle position to the opposite side of the road.
 | `offset` | Calculated | Distance from vehicle to road edge × 2 |
 
 **Attack labeling:**
-- ✅ `attacker=1`: Always
+- `attacker=1`: Always
 - Requires SUMO for road edge calculation
 
 ---
@@ -76,7 +72,7 @@ Adds a constant offset to the reported speed.
 | `speedOffset` | ±1 to ±7 m/s | Constant speed modification |
 
 **Attack labeling:**
-- ✅ `attacker=1`: Always (every message from attacker)
+- `attacker=1`: Always (every message from attacker)
 
 ---
 
@@ -89,7 +85,7 @@ Adds a random offset to speed that changes with each message.
 | `offset` | ±1 to ±7 m/s | Random offset per message |
 
 **Attack labeling:**
-- ✅ `attacker=1`: Always (every message from attacker)
+- `attacker=1`: Always (every message from attacker)
 
 ---
 
@@ -102,8 +98,8 @@ Reports speed as 0 regardless of actual movement.
 | `sender_spd` | 0 | Speed always set to zero |
 
 **Attack labeling:**
-- ✅ `attacker=1`: Only if original speed > 1 m/s AND vehicle has moved > 1m since last message
-- ❌ `attacker=0`: If vehicle is actually stationary or nearly stationary
+- `attacker=1`: Only if original speed > 1 m/s AND vehicle has moved > 1m since last message
+- `attacker=0`: If vehicle is actually stationary or nearly stationary
 
 This prevents false positives when a vehicle legitimately stops.
 
@@ -120,9 +116,9 @@ Simulates a sudden stop - the vehicle reports stopped position/speed while actua
 | `stop_time` | Timestamp | When the stop was triggered |
 
 **Attack labeling:**
-- ✅ `attacker=1` at trigger: Only if original speed > 1 m/s AND acceleration ≥ 0
-- ✅ `attacker=1` after trigger: Only if original speed > 1 m/s OR distance to "stopped" position ≥ 20m
-- ❌ `attacker=0`: If vehicle was already slow/stopping
+- `attacker=1` at trigger: Only if original speed > 1 m/s AND acceleration ≥ 0
+- `attacker=1` after trigger: Only if original speed > 1 m/s OR distance to "stopped" position ≥ 20m
+- `attacker=0`: If vehicle was already slow/stopping
 
 ---
 
@@ -137,8 +133,8 @@ Speed value freezes at a certain point while actual speed changes.
 | `speed_freeze_time` | Timestamp | When freeze was triggered |
 
 **Attack labeling:**
-- ✅ `attacker=1`: Only if |current_speed - frozen_speed| > 1 m/s
-- ❌ `attacker=0`: If speed difference is minimal (vehicle maintains similar speed)
+- `attacker=1`: Only if |current_speed - frozen_speed| > 1 m/s
+- `attacker=0`: If speed difference is minimal (vehicle maintains similar speed)
 
 ---
 
@@ -153,8 +149,8 @@ Reports heading rotated by 180° (driving direction reversed).
 | Heading modification | +180° | Added to original heading (mod 360) |
 
 **Attack labeling:**
-- ✅ `attacker=1`: Only if speed > 1 m/s AND vehicle has moved > 1m
-- ❌ `attacker=0`: If vehicle is stationary (heading doesn't matter when not moving)
+- `attacker=1`: Only if speed > 1 m/s AND vehicle has moved > 1m
+- `attacker=0`: If vehicle is stationary (heading doesn't matter when not moving)
 
 ---
 
@@ -166,11 +162,9 @@ Reports fake braking by negating and multiplying acceleration.
 |-----------|-------------|-------------|
 | `feigned_braking` | 2.0 to 4.0 | Multiplier for negated acceleration |
 
-**Calculation:** `new_accel = original_accel × -1 × multiplier`
-
 **Attack labeling:**
-- ✅ `attacker=1`: Only if original acceleration > 0.25 m/s² (actually accelerating)
-- ❌ `attacker=0`: If vehicle is not accelerating or barely accelerating
+- `attacker=1`: Only if original acceleration > 0.25 m/s² (actually accelerating)
+- `attacker=0`: If vehicle is not accelerating or barely accelerating
 
 ---
 
@@ -183,8 +177,8 @@ Multiplies the reported acceleration value.
 | `accelerationMult` | 2.0 to 4.0 | Multiplier for acceleration |
 
 **Attack labeling:**
-- ✅ `attacker=1`: Only if |original_accel| > 0.5 m/s²
-- ❌ `attacker=0`: If acceleration is minimal (multiplication has little effect)
+- `attacker=1`: Only if |original_accel| > 0.5 m/s²
+- `attacker=0`: If acceleration is minimal (multiplication has little effect)
 
 ---
 
@@ -198,10 +192,8 @@ Delays the timestamps of messages.
 |-----------|-------------|-------------|
 | `timeDelay` | 2-4 seconds | Delay added to sendTime and rcvTime |
 
-**Note:** Internally stored as nanoseconds (2,000,000,000 - 4,000,000,000 ns)
-
 **Attack labeling:**
-- ✅ `attacker=1`: Always (every message from attacker)
+- `attacker=1`: Always (every message from attacker)
 
 ---
 
@@ -218,7 +210,7 @@ Replays messages from nearby vehicles as if they were the attacker's own.
 | Time window | 5 seconds | How far back to look for messages |
 
 **Attack labeling:**
-- ✅ `attacker=1`: Always when a message is replaced with replayed data
+- `attacker=1`: Always when a message is replaced with replayed data
 - Messages without nearby victims remain unchanged
 
 ---
@@ -235,7 +227,7 @@ Duplicates messages to flood the network.
 | Frequency | 500ms / amount | Time between duplicates |
 
 **Attack labeling:**
-- ✅ `attacker=1`: Always (original and all copies)
+- `attacker=1`: Always (original and all copies)
 
 ---
 
@@ -253,7 +245,7 @@ Creates phantom vehicles around the attacker to simulate traffic congestion.
 | Speed variation | ±5% | Slight speed differences |
 
 **Attack labeling:**
-- ✅ `attacker=1`: Always (all phantom vehicles)
+- `attacker=1`: Always (all phantom vehicles)
 - Original attacker message remains unchanged
 
 ---

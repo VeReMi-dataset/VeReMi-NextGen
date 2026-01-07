@@ -1,20 +1,17 @@
-# Eclipse MOSAIC Simulation Documentation
+# Eclipse MOSAIC 
 
 Documentation for the Eclipse MOSAIC V2X simulation for generating CAM communication datasets.
 
 ---
 
-## Documentation
-
-### [Simulation Configuration](Simulation-Configuration.md)
+### [Simulation Configuration](./Config)
 
 Configuration of the simulation environment:
 - Scenario parameters (duration, seed, projection)
 - Federate configuration (OMNeT++, SUMO, Application)
 - Network and communication settings (IEEE 802.11p)
-- Output configuration (CSV, WebSocket)
 
-### [CamApp](CamApp.md)
+### [CamApp](./Application)
 
 ETSI CAM Sending Application:
 - CAM trigger logic and sending intervals

@@ -1,46 +1,5 @@
 # Architecture
 
-## High-Level Overview
-
-The VeReMi NextGen project follows a modular pipeline architecture for generating, enriching, and evaluating misbehavior in V2X communications.
-
-```
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│                            VeReMi NextGen Repository                            │
-├─────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                 │
-│  ┌──────────────────────────────────────────────────────────────────────────┐   │
-│  │                         VeReMi_NextGen/ (Dataset)                        │   │
-│  │  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐         │   │
-│  │  │ constPos... │ │ randSpeed...│ │ suddenStop  │ │   mixAll    │  ...    │   │
-│  │  │  *.json     │ │  *.json     │ │  *.json     │ │  *.json     │         │   │
-│  │  └─────────────┘ └─────────────┘ └─────────────┘ └─────────────┘         │   │
-│  └──────────────────────────────────────────────────────────────────────────┘   │
-│                                                                                 │
-│                                                                                 │
-│  ┌──────────────────────────────────────────────────────────────────────────┐   │
-│  │                      Test_Train_Split/ (ML-Ready)                        │   │
-│  │  ┌─────────────────────────────────────────────────────────────────────┐ │   │
-│  │  │ constantPositionOffset/    randomSpeedOffset/    suddenStop/   ...  │ │   │
-│  │  │  ├── train/                 ├── train/            ├── train/        │ │   │
-│  │  │  ├── test/                  ├── test/             ├── test/         │ │   │
-│  │  └─────────────────────────────────────────────────────────────────────┘ │   │
-│  └──────────────────────────────────────────────────────────────────────────┘   │
-│                                                                                 │
-│                                                                                 │
-│  ┌──────────────────────────────────────────────────────────────────────────┐   │
-│  │                        Implementation/ (Code)                            │   │
-│  │  ┌────────────┐  ┌────────────┐  ┌────────────┐  ┌────────────────────┐  │   │
-│  │  │  Attack    │  │   Data     │  │    MBD     │  │    Parameter       │  │   │
-│  │  │ Generator  │─▶│ Enrichment │─▶│  Systems   │◀─│   Optimization     │  │   │
-│  │  └────────────┘  └────────────┘  └────────────┘  └────────────────────┘  │   │
-│  └──────────────────────────────────────────────────────────────────────────┘   │
-│                                                                                 │
-└─────────────────────────────────────────────────────────────────────────────────┘
-```
-
----
-
 ## Component Architecture
 
 ### Implementation Module Structure
@@ -97,7 +56,7 @@ Implementation/
 │       ├── Attacker selection (20%)
 │       └── Configuration management
 │
-├── enrichMsgsWithFutherInfo/             # SUMO Integration
+├── enrichMsgsWithFutherInfo/             # Calculate distance to road edge
 │   │
 │   └── enrichMsgs.py
 │       ├── TraCI connection management
@@ -115,28 +74,25 @@ Implementation/
 │       └── application/           # app running on vehicle OS
 │           └── CamApp/
 │               └── src/main/java/
-|                   ├── etsi/
-|                   |   ├── AbstractCamSendingApp.java    # Abstract base class (ETSI-compliant)
-|                   |   └── VehicleCamSendingApp.java     # Vehicle-specific implementation
-|                   |
-|                   ├── entities/
-|                   |   ├── ConfigSettings.java           # Configuration parameters
-|                   |   ├── DriverProfile.java            # Driver profiles (AGGRESSIVE, NORMAL, PASSIVE)
-|                   |   └── VehicleAdditionalInformation.java  # Additional CAM payload data
-|                   |
-|                   └── util/
-|                       ├── SensorErrorModel.java         # Sensor error model
-|                       ├── GaussMarkovNoise.java         # Gauss-Markov noise process
-|                       ├── JSONParser.java               # JSON output
-|                       ├── SerializationUtils.java       # Byte serialization
-|                       └── Pair.java                     # Utility class
-|
+│                   ├── etsi/
+│                   │   ├── AbstractCamSendingApp.java    # Abstract base class
+│                   │   └── VehicleCamSendingApp.java     # Vehicle-specific implementation
+│                   │
+│                   ├── entities/
+│                   │   ├── ConfigSettings.java           # Configuration parameters
+│                   │   ├── DriverProfile.java            # Driver profiles (AGGRESSIVE, NORMAL, PASSIVE)
+│                   │   └── VehicleAdditionalInformation.java  # Additional CAM payload data
+│                   │
+│                   └── util/
+│                       ├── SensorErrorModel.java         # Sensor error model
+│                       ├── GaussMarkovNoise.java         # Gauss-Markov noise process
+│                       ├── JSONParser.java               # JSON output
+│                       ├── SerializationUtils.java       # Byte serialization
+│                       └── Pair.java                     # Utility class
+│
 └── parameter_optimization/                # Hyperparameter Tuning
     │
-    ├── test.py                           # Optuna optimization
-    │   ├── Objective function
-    │   ├── Parameter search spaces
-    │   └── Best trial tracking
+    ├── test.py                           # Parameter optimization with optuna
     │
     ├── Bin_generator/
     │   └── convert_to_bin.py             # JSON → Parquet
