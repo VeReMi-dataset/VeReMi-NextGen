@@ -5,7 +5,7 @@
 ### Implementation Module Structure
 
 ```
-Implementation/
+Generator/
 │
 ├── MBD_systems/                          # Misbehavior Detection System
 │   │
