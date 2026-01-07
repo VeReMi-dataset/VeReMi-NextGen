@@ -75,7 +75,7 @@ They provide insight how the profiles are actually distributed and how they diff
 
 ## Parameter Optimization
 
-The following values were used to run the given MBD systems and assess the values provided later.
+The following values were used to run the given MBD system and obtain the values provided later.
 
 | **Parameter** | **Urban 2AM** | **Urban 7AM** | **Highway 2AM** | **Highway 7AM** |
 |---------------|---------------|---------------|-----------------|-----------------|
@@ -93,7 +93,7 @@ The following values were used to run the given MBD systems and assess the value
 | MNRS          | 0.051         | 0.000         | 0.490           | 0.265           |
 
 ## MBD Results of VeReMi NextGen
-The following tables show the values assessed by using the newly generated dataset with the proposed MBD system 
+The following tables show the values obtained by using the newly generated dataset with the proposed MBD system 
 
 ### Urban - low density
 | **Attack Type**             | **TP** | **TN** | **FP** | **FN** |
