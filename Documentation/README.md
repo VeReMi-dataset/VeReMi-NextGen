@@ -4,8 +4,8 @@ Welcome to the documentation of the **VeReMi NextGen** project – an extended d
 
 ## Table of Contents
 - [Architecture](./Architecture) – System design & Overview
-- [Processes](./Processes) – Processes that occure during simulation
-- [Evaluation](./Evaluation) – Tools used for evluating VeReMi NextGen 
+- [Processes](./Processes) – Processes that occur during simulation
+- [Evaluation](./Evaluation) – Tools used for evaluating VeReMi NextGen 
 - [Post-Processing](./Post-Processing) – Post-Processing pipeline for integrating MB and more
 - [Eclipse MOSAIC](./Eclipse%20MOSAIC) - Eclipse MOSAIC Simulation Setup
 
