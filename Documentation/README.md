@@ -2,6 +2,13 @@
 
 Welcome to the documentation of the **VeReMi NextGen** project – an extended dataset and evaluation framework for Misbehavior Detection in Vehicle-to-Everything (V2X) communication.
 
+## Table of Contents
+- [Architecture](./Architecture) – System design & Overview
+- [Processes](./Processes) – Processes that occure during simulation
+- [Evaluation](./Evaluation) – Tools used for evluating VeReMi NextGen 
+- [Post-Processing](./Post-Processing) – Post-Processing pipeline for integrating MB and more
+- [Eclipse MOSAIC](./Eclipse%20MOSAIC) - Eclipse MOSAIC Simulation Setup
+
 ## Project Overview
 
 VeReMi NextGen is a comprehensive resource for researching and evaluating misbehavior detection systems in vehicular ad-hoc networks (VANETs). 
