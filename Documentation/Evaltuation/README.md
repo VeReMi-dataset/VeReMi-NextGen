@@ -23,7 +23,7 @@ Parameter optimization workflow for CaTCH:
 
 ### [Results](./Results)
 
-Results acquired in the evaluation
+Results acquired in the process of generating VeReMi NextGen
 
 - Characteristics of driver profiles
 - Optimized Parameter for Evaluation

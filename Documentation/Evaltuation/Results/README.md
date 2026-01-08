@@ -1,6 +1,6 @@
 # Results
 
-Documentation of all metrics used and results regarding the creation and evaluation of the VeReMi NextGen Dataset.
+Documentation of all metrics used and results collected regarding the creation and evaluation of the VeReMi NextGen Dataset.
 
 ## Metrics
 

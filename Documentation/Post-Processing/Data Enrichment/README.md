@@ -1,6 +1,6 @@
 # Data Enrichment
 
-Calculates the **distance to the nearest road edge** (`distance_to_road_edge`) for each message. This information is essential for the **Position Plausibility Check**.
+Documentation explaining how the distance to the nearest road edge (`distance_to_road_edge`) is calculated for each message. This information is essential for the Position Plausibility Check.
 
 ## Algorithm
 

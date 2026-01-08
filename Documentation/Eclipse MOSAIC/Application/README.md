@@ -5,13 +5,13 @@
 The CamApp is an Eclipse MOSAIC application for simulating Cooperative Awareness Messages (CAM). It extends the standard MOSAIC framework with realistic sensor error models, driver profiles, and pseudonym changes for creating Misbehavior Detection datasets.
 
 >[!NOTE]
-> If you are interested in the detailed processes during the simulation, have a look at the [Processes](../../Processes) documentation
+> If you are interested in detailed process-diagrams related to the simulation and models which are explained down below, have a look at the [Processes](../../Processes) documentation
 
 ## Architecture
 
 ```
 etsi/
-├── AbstractCamSendingApp.java    # Abstract base class (ETSI-compliant)
+├── AbstractCamSendingApp.java    # Abstract base class
 └── VehicleCamSendingApp.java     # Vehicle-specific implementation
 
 entities/
@@ -99,76 +99,237 @@ When `enableDriverProfiles` is enabled, each vehicle is randomly assigned a prof
 | NORMAL     | 80%         | 1.0     | 2.6          | 4.5          | 1.0         | 0.5   | 2.5        | DEFAULT        | NORMAL     |
 | PASSIVE    | 10%         | 1.5     | 2.1          | 4.0          | 0.9         | 0.5   | 3.0        | CAUTIOUS       | CAUTIOUS   |
 
-**Parameter Explanation:**
+### Parameter Explanation
 - **tau**: Driver reaction time
 - **accel/decel**: Maximum acceleration/deceleration
 - **speedFactor**: Factor relative to allowed speed
 - **sigma**: Imperfection parameter (driver error)
 - **minGap**: Minimum gap to the vehicle ahead
+- **LaneChangeMode**: Controls how and why a vehicle changes lanes
+- **SpeedMode**: Controls how fast a vehicle drives and its acceleration/braking logic
+
+### Characteristics of the different profiles
+
+#### Normal Driver
+
+- Represents the average driver and serves as the baseline profile
+- Uses mostly SUMO default parameters
+- Balanced reaction time, acceleration, and deceleration
+
+- Speed Mode (Normal)
+  - Observes safe speed limits
+  - Observes maximum acceleration and deceleration
+  - Observes right-of-way at intersections
+  - Does **not** brake hard to avoid running a red light
+
+- Lane-Change Model (Default)
+  - Strategic lane changes
+  - Cooperative lane changes
+  - Speed-gain maneuvers
+  - Right-lane changes
+  - Consideration of other vehicles’ speed and braking gaps
+
+#### Aggressive Driver
+
+- Models assertive and fast driving behavior
+- Shorter reaction time and smaller safety gaps
+- Stronger acceleration and braking
+
+- Speed Mode (Aggressive)
+  - Does **not** observe safe speed limits
+  - Observes maximum acceleration
+  - Observes maximum deceleration
+  - Does **not** respect right-of-way at intersections
+  - Does **not** brake hard at red lights
+
+- Lane-Change Model (Aggressive)
+  - Strategic lane changes
+  - Speed-gain lane changes
+  - No cooperative behavior
+  - No right-lane changes
+  - Limited consideration of other vehicles
+
+
+#### Cautious Driver
+
+- Models defensive and conservative driving behavior
+- Longer reaction time and larger safety gaps
+- Lower acceleration and deceleration
+
+- Speed Mode (Cautious)
+  - Observes safe speed limits
+  - Observes maximum acceleration
+  - Observes maximum deceleration
+  - Respects right-of-way at intersections
+  - Brakes hard to avoid running red lights
+
+- Lane-Change Model (Cautious)
+  - Strategic lane changes
+  - Cooperative lane changes
+  - Considers speed and braking gaps of others
+  - Avoids unnecessary acceleration and deceleration
+  - Right-lane changes when possible
 
 ## Sensor Error Model
 
-The `SensorErrorModel` simulates realistic GPS and vehicle sensor errors.
+The `SensorErrorModels` simulate realistic vehicle sensor errors for the position, speed, acceleration and heading.
 
-### Position Error
+### Position Noise
 
-```
-Initial error: Uniform(-5m, +5m) for X and Y
-Subsequent errors: Gauss-Markov process
-  μ = (initialError + previousError) / 2
-  σ = 0.03 × |initialError|
-```
+Position noise models inaccuracies of the GPS sensor. The error is generated using a temporally correlated Gaussian process.
 
-### Speed Error
+$$
+\mathcal{E}_{0}^{P} \sim U([-5,5])
+$$
 
-```
-Initial error: Gaussian(μ=0, σ=0.00016)
-correctedSpeed = trueSpeed × (1 + initialError)
-speedError = trueSpeed - correctedSpeed
-```
+$$
+\mu = \frac{\mathcal{E}_{0}^{P} + \mathcal{E}_{t-1}^{P}}{2}, \quad
+\sigma = 0.03\,\mathcal{E}_{0}^{P}
+$$
 
-### Acceleration Error
+$$
+\mathcal{E}_{t}^{P} \sim N(\mu,\ \sigma^{2})
+$$
 
-Derived from the difference in speed errors:
+$$
+P_{t}^{\mathcal{E}} = P_{t} + \mathcal{E}_{t}^{P}
+$$
 
-```
-accelerationError = (currentSpeedError - previousSpeedError) / Δt
-```
+where $\mathcal{E}^{P}_t$ denotes the position error at time $t$, $P_t$ the true position, and $P_{t}^{\mathcal{E}}$ the noisy position. The initial error is sampled uniformly, while subsequent errors depend on previous values.
 
-### Heading Error
+### Speed Noise
 
-Velocity-dependent exponential decay:
+Speed noise is modeled as a relative error proportional to the current velocity.
 
-```
-initialError: Uniform(-20°, +20°)
-currentError = initialError × exp(-0.1 × velocity)
-```
+$$
+\mu = 0, \quad \sigma = 0.00016
+$$
 
-## Pseudonym Change (Alias)
+$$
+\mathcal{E}_{0}^{V} \sim N(\mu,\ \sigma^{2})
+$$
 
-The application implements distance- and time-based pseudonym changes:
+$$
+V_{t}^{\mathcal{E}} = V_{t} + V_{t} \cdot \mathcal{E}_{0}^{V}
+$$
 
-### Phase 1 (First Change)
-- Change after random distance: **800m - 1500m**
+where $\mathcal{E}^{V}$ represents the relative speed error, $V_t$ the true velocity, and $V_{t}^{\mathcal{E}}$ the noisy velocity.
 
-### Phase 2 (Subsequent Changes)
-- Condition 1: Distance since last change > randomDistance
-- Condition 2: Time since last change > **120s - 360s** (random)
-- Both conditions must be met
 
-### Alias Format
+### Acceleration Noise
+
+Acceleration noise is derived from the temporal change in speed error.
+
+$$
+A_{t}^{\mathcal{E}} = A_{t} + \frac{\mathcal{E}_{t}^{V} - \mathcal{E}_{t-1}^{V}}{\delta t}
+$$
+
+where $A_t$ is the true acceleration, $\delta t$ the time interval, and $A_{t}^{\mathcal{E}}$ the noisy acceleration.
+
+
+### Heading Noise
+
+Heading accuracy depends on vehicle speed and degrades at low velocities.
+
+$$
+\mathcal{E}_{0}^{H} \sim U([-20,20])
+$$
+
+$$
+\mathcal{E}_{t}^{H} = \mathcal{E}_{0}^{H} \cdot e^{-0.1\,V_{t}}
+$$
+
+$$
+H_{t}^{\mathcal{E}} = H_{t} + \mathcal{E}_{t}^{H}
+$$
+
+where $\mathcal{E}^{H}_t$ is the heading error, $H_t$ the true heading, and $H_{t}^{\mathcal{E}}$ the noisy heading.
+
+
+## Pseudonym Change Model
+
+The **Pseudonym Change Model** determines whether a vehicle should update its pseudonym after a successful message transmission. The decision is based on a combination of distance-based and time-based criteria to introduce randomness and improve location privacy.
+
+
+### Configuration Parameters
+
+The model uses thresholds generated from predefined intervals to avoid static and predictable behavior.
+
+| Parameter          | Symbol       | Interval        | Generation Behavior                                                        |
+|--------------------|--------------|-----------------|----------------------------------------------------------------------------|
+| Distance Threshold | $D_{thresh}$ | $[800, 1500]$ m | Generated **once** during the first pseudonym change and remains constant. |
+| Time Threshold     | $T_{thresh}$ | $[120, 360]$ s  | **Regenerated** randomly after every successful pseudonym change.          |
+
+
+### Functional Logic
+
+The decision process is divided into two phases: the initial pseudonym change and all subsequent changes.
+
+### A. Initial Change (First Exchange)
+
+- **Condition**: Only the **distance-based** criterion must be satisfied.
+- **Workflow**:  
+  During the first evaluation, the system generates a random distance threshold $D_{thresh}$.  
+  The vehicle's traveled distance is monitored, and the pseudonym is changed immediately once the distance exceeds $D_{thresh}$.
+
+#### B. Subsequent Changes
+
+- **Condition**: Both **distance** and **time** criteria must be satisfied.
+- **Workflow**:
+  - The system first checks whether the traveled distance since the last change exceeds the constant threshold $D_{thresh}$.
+  - Once the distance condition is fulfilled, a new random time threshold $T_{thresh}$ is generated.
+  - The pseudonym change is executed only after the elapsed time also exceeds $T_{thresh}$.
+  - After a successful change, the process restarts with a newly generated time threshold.
+
+### Summary
+
+After each successful message transmission, the following evaluation is performed:
+
+1. **Check Phase**: Is this the *first pseudonym change*?
+   - **Yes**: Change the pseudonym if the traveled distance $\geq D_{thresh}$.
+   - **No**: Change the pseudonym only if  
+     $(\text{distance} \geq D_{thresh}) \;\land\; (\text{time} \geq T_{thresh})$.
+
+2. **Post-Change**:  
+   If a pseudonym change occurs, reset all counters and regenerate the time threshold $T_{thresh}$ for the next cycle.
+
+### Pseudonym Format
 10-digit random number: `1,000,000,000` to `9,999,999,999`
 
 ## CAM Trigger Logic
 
-A CAM is sent when one of the following conditions is met:
+The system determines whether to transmit a message based on two main criteria:
 
-1. **MAX_INTERVAL**: Time since last CAM ≥ `maxInterval`
-2. **HEADING_CHANGE**: Δheading > `headingChange`
-3. **VELOCITY_CHANGE**: Δspeed > `velocityChange`
-4. **POSITION_CHANGE**: Δposition > `positionChange`
+1. **Sufficient data change**  
+2. **Expiration of the maximum inter-message interval**
 
-The check is performed at the `minInterval` rate.
+The decision-making process is as follows:
+
+### Initial Message Check
+- The system first verifies if there is existing data to determine whether this is the first message.  
+- **If this is the first message:**
+  - New data generation begins, but only if vehicle data is available.
+  - **If vehicle data is unavailable**, the process terminates and no message is sent.
+  - **If vehicle data is available**:
+    - Sensor errors are generated.
+    - Current vehicle values are stored.
+    - Transmission is withheld to establish a baseline for future comparisons.
+
+### Subsequent Messages
+- For messages following the initial one, the system performs the same validation checks.
+- **Data generation failure** prevents message transmission.
+- Successfully generated data is compared to existing values to calculate the delta.
+
+### Transmission Criteria Evaluation
+The system evaluates the following four conditions for transmission:
+
+1. Maximum inter-message interval has expired.
+2. Heading change exceeds the defined threshold.
+3. Speed change exceeds the defined threshold.
+4. Position change exceeds the defined threshold.
+
+- **If any of the criteria are met**, the message is transmitted.
+- **If none of the criteria are met**, the message is suppressed.
 
 ## JSON Output Format
 

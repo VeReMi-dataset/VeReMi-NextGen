@@ -1,6 +1,6 @@
 # VeReMi NextGen
 
-Welcome to the documentation of the **VeReMi NextGen** project – an extended dataset and evaluation framework for Misbehavior Detection in Vehicle-to-Everything (V2X) communication.
+Welcome to the documentation of the **VeReMi NextGen** project – A comprehensive dataset and dataset generator for evaluating **Misbehavior Detection** in Vehicle-to-Everything (V2X) communication.
 
 ## Table of Contents
 - [Architecture](./Architecture) – System design & Overview
@@ -95,7 +95,7 @@ VeReMi-NextGen/
     ├── enrichMsgsWithFutherInfo/                                   # Data Enrichment
     │   └── enrichMsgs.py
     │
-    └── parameter_optimization/                                     # Hyperparameter Tuning
+    └── parameter_optimization/                                     # Hyperparameter optimization
         ├── test.py
         ├── Bin_generator/
         │   └── convert_to_bin.py
@@ -109,32 +109,32 @@ VeReMi-NextGen/
 
 ## Dataset: VeReMi NextGen
 
-The dataset contains V2X Basic Safety Messages (BSMs) captured from traffic simulations with injected misbehavior. Each subset represents a different attack type.
+The dataset contains V2X Cooperative Awareness Messages (CAM) captured from traffic simulations with injected misbehavior. Each subset represents a different attack type.
 
 ### Available Attack Subsets
 
-| Category                    | Attack Type | Description |
-|-----------------------------|-------------|-------------|
-| **Position**                | `constantPositionOffset` | Fixed position shift |
-|                             | `randomPositionOffset` | Random position shift per message |
-|                             | `positionMirroring` | Position mirrored to opposite lane |
-| **Speed**                   | `constantSpeedOffset` | Fixed speed manipulation |
-|                             | `randomSpeedOffset` | Random speed offset per message |
-|                             | `zeroSpeedReport` | Always reports speed = 0 |
-|                             | `suddenConstantSpeed` | Speed value freezes |
-| **Heading**                 | `reversedHeading` | Heading rotated 180° |
-| **Accel**                   | `feignedBraking` | Fake braking (negative acceleration) |
-|                             | `accelerationMultiplication` | Acceleration multiplied |
-| **Timing**                  | `timeDelayAttack` | Delayed timestamps |
-| **Multi-parameter Attacks** | `dosAttack` | Message duplication (flooding) |
-|                             | `trafficCongestionSybil` | Creates phantom vehicles |
-|                             | `suddenStop` | Fake sudden stop while moving |
-|                             | `dataReplay` | Replays messages from other vehicles |
+| Category                    | Attack Type                  | Description                          |
+|-----------------------------|------------------------------|--------------------------------------|
+| **Position**                | `constantPositionOffset`     | Fixed position offset                |
+|                             | `randomPositionOffset`       | Random position offset per message   |
+|                             | `positionMirroring`          | Position mirrored to opposite lane   |
+| **Speed**                   | `constantSpeedOffset`        | Fixed speed offset                   |
+|                             | `randomSpeedOffset`          | Random speed offset per message      |
+|                             | `zeroSpeedReport`            | Always reports speed = 0             |
+|                             | `suddenConstantSpeed`        | Speed value freezes                  |
+| **Heading**                 | `reversedHeading`            | Heading rotated 180°                 |
+| **Accel**                   | `feignedBraking`             | Fake braking (negative acceleration) |
+|                             | `accelerationMultiplication` | Acceleration multiplied              |
+| **Timing**                  | `timeDelayAttack`            | Delayed timestamps                   |
+| **Multi-parameter Attacks** | `dosAttack`                  | Message duplication (flooding)       |
+|                             | `trafficCongestionSybil`     | Creates phantom vehicles             |
+|                             | `suddenStop`                 | Fake sudden stop while moving        |
+|                             | `dataReplay`                 | Replays messages from other vehicles |
 
 
 ### Message Format
 
-Each JSON file contains an array of BSM messages:
+Each JSON file contains an array of CAM messages:
 
 ```json
 [
@@ -205,7 +205,7 @@ Pre-computed splits for machine learning experiments. Each attack type has its o
 
 ### Split Statistics
 
-Each split folder contains `<scenario>_<attack type>_p_d_values.csv` with:
+For Each split the Train/Validate/Test dataset contains a `<scenario>_<attack type>_p_d_values.csv` with:
 - p- and d-values for distribution similarity tests for the fields:
   - rcvRate
   - sumMsgs

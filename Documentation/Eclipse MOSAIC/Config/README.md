@@ -1,6 +1,6 @@
 # Simulation Configuration
 
-This wiki page documents the configuration files for the **InTAS** (Ingolstadt Traffic Scenario) Eclipse MOSAIC simulation, designed for generating V2X communication datasets with CAM (Cooperative Awareness Message) transmission.
+Documentation of the used configuration files for the **InTAS** (Ingolstadt Traffic Scenario) Eclipse MOSAIC simulation, designed for generating V2X communication datasets with CAM (Cooperative Awareness Message) transmission.
 
 ## Overview
 

@@ -1,7 +1,6 @@
 # Attack Generator
 
-Generates realistic attacks on V2X messages by manipulating vehicle data.
-
+Documentation of the attack generator used to manipulate simulation messages in order to implement misbehavior.
 ## Attacker Ratio
 
 By default, **20%** of vehicles are randomly selected as attackers:

@@ -1,6 +1,6 @@
 # CaTCH-MBD System - Misbehavior Detection
 
-The core module for detecting misbehavior in V2X messages using plausibility and consistency checks.
+Documentation of the CaTCH-MBD System which utilizes plausibility and consistency checks.
 
 ## Files
 
@@ -549,6 +549,9 @@ def intersection_check(self, pos_1, pos_2, node_size_1, node_size_2,
 - Two vehicles claim positions that would physically overlap
 
 ### 9. Sudden Appearance Check
+
+>[!NOTE]
+> Wasn't used in the evaluation of VeReMi NextGen and the comparison with VeReMi Extension
 
 **Purpose:** Detect vehicles that suddenly appear within communication range.
 

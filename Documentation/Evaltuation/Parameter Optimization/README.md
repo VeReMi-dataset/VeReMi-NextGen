@@ -1,6 +1,6 @@
 # Parameter Optimization
 
-Hyperparameter optimization of MBD system parameters using Optuna.
+Documentation of the hyperparameter optimization for the MBD system parameters using Optuna.
 
 ## Files
 

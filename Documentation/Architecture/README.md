@@ -1,8 +1,8 @@
 # Architecture
 
-## Component Architecture
+Documentation of the general structure of the generator component.
 
-### Implementation Module Structure
+## Folder structure
 
 ```
 Generator/
