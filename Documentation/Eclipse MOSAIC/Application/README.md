@@ -195,7 +195,7 @@ $$
 P_{t}^{\mathcal{E}} = P_{t} + \mathcal{E}_{t}^{P}
 $$
 
-where $\mathcal{E}^{P}_t$ denotes the position error at time $t$, $P_t$ the true position, and $P_{t}^{\mathcal{E}}$ the noisy position. The initial error is sampled uniformly, while subsequent errors depend on previous values.
+where $E_{t}^{P}$ denotes the position error at time t, $P_{t}$ the true position, and $P_{t}^{E}$ the noisy position. The initial error is sampled uniformly, while subsequent errors depend on previous values.
 
 ### Speed Noise
 
@@ -243,7 +243,7 @@ $$
 H_{t}^{\mathcal{E}} = H_{t} + \mathcal{E}_{t}^{H}
 $$
 
-where $\mathcal{E}^{H}_t$ is the heading error, $H_t$ the true heading, and $H_{t}^{\mathcal{E}}$ the noisy heading.
+where $E_{t}^{H}$ is the heading error, $H_{t}$ the true heading, and $H_{t}^{E}$ the noisy heading.
 
 
 ## Pseudonym Change Model
