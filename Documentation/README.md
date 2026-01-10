@@ -3,6 +3,7 @@
 Welcome to the documentation of the **VeReMi NextGen** project – A comprehensive dataset and dataset generator for evaluating **Misbehavior Detection** in Vehicle-to-Everything (V2X) communication.
 
 ## Table of Contents
+- [Getting Started](./Documentation/Getting%20Started) - Guide to run the simulation on you own machine
 - [Architecture](./Architecture) – System design & Overview
 - [Processes](./Processes) – Processes that occur during simulation
 - [Evaluation](./Evaluation) – Tools used for evaluating VeReMi NextGen 
@@ -218,6 +219,7 @@ For Each split the Train/Validate/Test dataset contains a `<scenario>_<attack ty
 
 ## Links
 
+- [Getting Started](./Documentation/Getting%20Started)
 - [Architecture Overview](./Architecture)
 - [Eclipse MOSAIC](./Eclipse%20MOSAIC)
 - [Evaluation](./Evaltuation)
