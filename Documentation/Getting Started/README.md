@@ -18,15 +18,15 @@ enables you to run the simulation in the exactly same environment as we did.
 
 The image with the `latest` tag represents the latest versions of Eclipse MOSAIC, Eclipse SUMO and 
 OmNET++ available at the time the image was build. You can build your Image, selecting the versions you need, with the Dockerfile provided
-under `Generator/docker`. Detailed documentation on how to build your own Image can be found **here**.
+under `Generator/docker`. Detailed documentation on how to build your own Image can be found down below.
 
 ### Step-by-Step instruction
 
 1. Create a new folder for the simulation, containing the subfolders `logs`, `json` and `scenarios`
 2. Copy the scenarios from `Generator/docker/scenarios` to the created `scenarios` folder 
-    >   [!NOTE]
-        You can add whichever scenario you want to simulate. In this case you just have to copy the application folder into your scenario 
-        and adjust the config in the `EtsiApplication.json` regarding `simulation time` and `simulation area` 
+>   [!NOTE]
+>   You can add whichever scenario you want to simulate. In this case you just have to copy the application folder into your scenario 
+>   and adjust the config in the `EtsiApplication.json` regarding `simulation time` and `simulation area` 
 3. If needed, make adjustments to the configs defined in the scenario itself
 4. To start the simulation, open a terminal in the simulation folder and run the following command:
 
