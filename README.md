@@ -32,6 +32,7 @@ VeReMi-NextGen/
 **[Full Documentation](./Documentation)**
 
 - [Home](./Documentation) – Overview, message format, quick start
+- [Getting Started](./Getting%20Started) - Guide to run the simulation on you own machine
 - [Architecture](./Documentation/Architecture) – System design & Overview
 - [Processes](./Documentation/Processes) – Processes that occure during simulation
 - [Evaluation](./Documentation/Evaluation) – Tools used for evluating VeReMi NextGen 
