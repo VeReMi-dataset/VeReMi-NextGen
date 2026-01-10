@@ -6,9 +6,6 @@
   <img src="https://img.shields.io/badge/INET-4.5.4-red?style=flat-square">
 </p>
 
-# VeReMi NextGen Framework
-
-
 # VeReMi NextGen
 
 A comprehensive dataset and dataset generator for evaluating **Misbehavior Detection** in Vehicle-to-Everything (V2X) communication.
