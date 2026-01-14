@@ -241,7 +241,7 @@ Randomly assigns one of three attacks to each attacker:
 | randomSpeedOffset | ✅ | - |
 | timeDelayAttack | ✅ | - |
 | dosAttack | ✅ | - |
-| trafficCongestionSybil | ✅(phantom vehicles) | - |
+| trafficCongestionSybil | ✅ (phantom vehicles) | - |
 | dataReplay | ✅ (when replaying) | - |
 | zeroSpeedReport | - | speed > 1 m/s AND moved |
 | suddenStop | - | speed > 1 m/s or distance ≥ 20m |
