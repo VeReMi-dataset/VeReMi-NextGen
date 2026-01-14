@@ -22,7 +22,7 @@ Adds a constant offset to the reported position for each attacker vehicle.
 | `offset_lon` | ±20 to ±70 m | Constant offset in Y direction |
 
 **Attack labeling:**
-- `attacker=1`: Always (every message from attacker)
+- `attacker=1`: Always
 - The offset is randomly chosen once per attacker and stays constant
 
 #### `randomPositionOffset`
@@ -35,7 +35,7 @@ Adds a random offset to the position that changes with each message.
 | `offset_lon` | ±20 to ±70 m | Random offset per message |
 
 **Attack labeling:**
-- `attacker=1`: Always (every message from attacker)
+- `attacker=1`: Always
 - New random offset generated for each message
 
 #### `positionMirroring`
@@ -61,7 +61,7 @@ Adds a constant offset to the reported speed.
 | `speedOffset` | ±1 to ±7 m/s | Constant speed modification |
 
 **Attack labeling:**
-- `attacker=1`: Always (every message from attacker)
+- `attacker=1`: Always
 
 #### `randomSpeedOffset`
 
@@ -72,7 +72,7 @@ Adds a random offset to speed that changes with each message.
 | `offset` | ±1 to ±7 m/s | Random offset per message |
 
 **Attack labeling:**
-- `attacker=1`: Always (every message from attacker)
+- `attacker=1`: Always
 
 #### `zeroSpeedReport`
 
@@ -153,7 +153,7 @@ Delays the timestamps of messages.
 | `timeDelay` | 2-4 seconds | Delay added to sendTime and rcvTime |
 
 **Attack labeling:**
-- `attacker=1`: Always (every message from attacker)
+- `attacker=1`: Always
 
 ### Multi-parameter Attacks
 
