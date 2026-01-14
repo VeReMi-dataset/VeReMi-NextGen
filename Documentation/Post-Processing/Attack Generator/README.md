@@ -248,6 +248,6 @@ Randomly assigns one of three attacks to each attacker:
 | suddenConstantSpeed | - | speed diff > 1 m/s |
 | reversedHeading | - | speed > 1 m/s AND moved |
 | feignedBraking | - | accel > 0.25 m/s² |
-| accelerationMultiplication | - | |accel| > 0.5 m/s² |
+| accelerationMultiplication | - | \|accel\| > 0.5 m/s² |
 
 The conditional labeling prevents false positives when the manipulation has no practical effect (e.g., reversing heading of a stationary vehicle).
