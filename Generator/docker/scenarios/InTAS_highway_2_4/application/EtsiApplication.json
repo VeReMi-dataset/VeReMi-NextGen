@@ -1,0 +1,21 @@
+{
+  "minimalPayloadLength": 200,
+  "maxStartOffset": "1s",
+  "minInterval": "500ms",
+  "maxInterval": "1s",
+  "positionChange": 4,
+  "headingChange": 4,
+  "velocityChange": 0.5,
+  "jsonPath" : "/opt/mosaic/output/",
+  "simulationTime": {
+    "start": 500,
+    "end": 600
+  },
+  "simulationArea": {
+    "minX": 48.749772,
+    "minY": 11.453732,
+    "maxX": 48.767821,
+    "maxY": 11.463387
+  },
+  "enableDriverProfiles": true
+}

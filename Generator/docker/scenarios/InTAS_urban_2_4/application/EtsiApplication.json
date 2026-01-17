@@ -1,0 +1,22 @@
+{
+  "minimalPayloadLength": 200,
+  "maxStartOffset": "1s",
+  "minInterval": "500ms",
+  "maxInterval": "1s",
+  "positionChange": 4,
+  "headingChange": 4,
+  "velocityChange": 0.5,
+  "jsonPath" : "/home/ubuntu/simulation_with_receiver/JSON_urban_2_4/",
+  "simulationTime": {
+    "start": 7200,
+    "end": 14400
+  },
+  "simulationArea": {
+    "minX": 48.756441,
+    "minY": 11.410236,
+    "maxX": 48.773643,
+    "maxY": 11.436188
+  },
+  "enableDriverProfiles": true
+}
+
