@@ -8,8 +8,8 @@
   "velocityChange": 0.5,
   "jsonPath" : "/opt/mosaic/output/",
   "simulationTime": {
-    "start": 500,
-    "end": 600
+    "start": 7200,
+    "end": 14400
   },
   "simulationArea": {
     "minX": 48.749772,
