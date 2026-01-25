@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2025-08-21 23:53:28 by Eclipse SUMO sumo Version 1.20.0
-<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+<!-- generated on 2026-01-25 20:56:02 by Eclipse SUMO sumo Version 1.24.0
+<sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
-        <net-file value=".\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/ingolstadt.net.xml"/>
-        <route-files value=".\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/routes/ped.rou.xml,.\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/routes/BusRoutes.flow.xml,.\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/routes/InTAS_001.rou.xml,.\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/routes/InTAS_002.rou.xml,.\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/routes/InTAS_003.rou.xml,.\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/routes/InTAS_004.rou.xml,.\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/routes/InTAS_005.rou.xml,.\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/routes/InTAS_006.rou.xml,.\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/routes/InTAS_007.rou.xml,.\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/routes/InTAS_008.rou.xml,.\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/routes/InTAS_009.rou.xml,.\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/routes/InTAS_010.rou.xml,.\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/routes/InTAS_011.rou.xml,.\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/routes/InTAS_012.rou.xml,.\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/routes/InTAS_013.rou.xml,.\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/routes/InTAS_014.rou.xml,.\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/routes/InTAS_015.rou.xml,.\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/routes/InTAS_016.rou.xml,.\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/routes/InTAS_017.rou.xml,.\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/routes/InTAS_018.rou.xml,.\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/routes/InTAS_019.rou.xml,.\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/routes/InTAS_020.rou.xml,.\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/routes/InTAS_021.rou.xml,.\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/routes/InTAS_022.rou.xml"/>
-        <additional-files value=".\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/BusStations.add.xml,.\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/InTAS_E1.add.xml,.\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/InTAS.poly.xml"/>
+        <net-file value="/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/ingolstadt.net.xml"/>
+        <route-files value="/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/routes/ped.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/routes/BusRoutes.flow.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/routes/InTAS_001.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/routes/InTAS_002.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/routes/InTAS_003.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/routes/InTAS_004.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/routes/InTAS_005.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/routes/InTAS_006.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/routes/InTAS_007.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/routes/InTAS_008.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/routes/InTAS_009.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/routes/InTAS_010.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/routes/InTAS_011.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/routes/InTAS_012.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/routes/InTAS_013.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/routes/InTAS_014.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/routes/InTAS_015.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/routes/InTAS_016.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/routes/InTAS_017.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/routes/InTAS_018.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/routes/InTAS_019.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/routes/InTAS_020.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/routes/InTAS_021.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/routes/InTAS_022.rou.xml"/>
+        <additional-files value="/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/BusStations.add.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/InTAS_E1.add.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/InTAS.poly.xml"/>
     </input>
 
     <output>
-        <summary-output value=".\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/InTAS.simulation.summary.xml"/>
-        <tripinfo-output value=".\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/InTAS.simulation.tripinfo.xml"/>
-        <statistic-output value=".\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/InTAS.simulation.statistic.xml"/>
+        <summary-output value="/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/InTAS.simulation.summary.xml"/>
+        <tripinfo-output value="/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/InTAS.simulation.tripinfo.xml"/>
+        <statistic-output value="/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/InTAS.simulation.statistic.xml"/>
     </output>
 
     <time>
@@ -48,15 +48,15 @@
     <report>
         <verbose value="true"/>
         <no-warnings value="true"/>
-        <log value=".\simulation\mosaic\scenarios/InTAS_urban_2_4/sumo/InTAS.simulation.log"/>
+        <log value="/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/InTAS.simulation.log"/>
         <no-step-log value="true"/>
     </report>
 
     <traci_server>
-        <remote-port value="50864"/>
+        <remote-port value="40621"/>
     </traci_server>
 
-</configuration>
+</sumoConfiguration>
 -->
 
 <tripinfos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/tripinfo_file.xsd">
