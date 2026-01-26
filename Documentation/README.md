@@ -22,8 +22,6 @@ The project consists of three main components:
 2. **Documentation/** – Containing the project documentation
 3. **Generator/** – Containing the dataset generator to recreate and extend **VeReMi NextGen**
 
----
-
 ## Repository Structure
 
 ```
@@ -31,30 +29,21 @@ The project consists of three main components:
 VeReMi-NextGen/
 │
 ├── Dataset/
-│   ├──VeReMi_NextGen/                                              # Dataset
-│   │  ├── <Scenario>_constant_position_offset/                     # Attack subset
-│   │  │   ├── vehicle_001.json
-│   │  │   ├── vehicle_002.json
-│   │  │   └── ...  
-│   │  ├── <Scenario>_random_speed_offset/
-│   │  ├── <Scenario>_sudden_stop/
-│   │  └── [15 attack type folders per scenario]
-│   │
-│   └── Train_Validation_Test_Split/                                # ML-ready splits
-│       ├── <Scenario>_constant_position_offset/
-│       │   ├── train/
-│       │   │   ├── vehicle_001.json
-│       │   │   └── ...
-│       │   ├── test/
-│       │   │   ├── vehicle_050.json
-│       │   │   └── ...
-│       │   └── split_statistics.csv
-│       ├── <Scenario>_random_speed_offset/
-│       │   ├── train/
-│       │   └── test/
-│       └── [splits for all attack types]
+│   ├── <Scenario>_constant_position_offset/                     # Attack subset
+│   │   ├── train/
+│   │   │   ├── vehicle_001.json
+│   │   │   └── ...
+│   │   ├── validaiton/
+│   │   │   ├── vehicle_0026.json
+│   │   │   └── ...
+│   │   └── test/
+│   │       ├── vehicle_050.json
+│   │       └── ...
+│   ├── <Scenario>_random_speed_offset/
+│   ├── <Scenario>_sudden_stop/
+│   └── [15 attack type folders per scenario]
 │
-├── Dataset/
+├── Documentation/
 │   └── [project documentation]
 │
 └── Generator/  
@@ -95,6 +84,10 @@ VeReMi-NextGen/
     │
     ├── enrichMsgsWithFutherInfo/                                   # Data Enrichment
     │   └── enrichMsgs.py
+    ├── docker/
+    │   ├── scenarios/
+    │   ├── Dockerfile                                
+    │   └── entrypoint.sh
     │
     └── parameter_optimization/                                     # Hyperparameter optimization
         ├── test.py
@@ -105,8 +98,6 @@ VeReMi-NextGen/
             ├── train_test_dataset.py
             └── copy_files.py
 ```
-
----
 
 ## Dataset: VeReMi NextGen
 
@@ -194,28 +185,14 @@ Each JSON file contains an array of CAM messages:
 | `driversProfile`        | ENUM    | NORMAL, AGGRESSIVE, or CAUTIOUS  |
 | `distance_to_road_edge` | float   | Distance to road edge (m)        |
 
----
-
 ## Train/Validation/Test-Splits
 
-Pre-computed splits for machine learning experiments. Each attack type has its own Train/Validation/Test split ensuring:
+Pre-computed splits for machine learning experiments. Each attack type has its own Train/Validation/Test split:
 
-- **Statistical similarity** between train, validation and test sets (Kolmogorov-Smirnov test)
-- **Balanced distribution** of message counts, attack ratios, and driver profiles
-- **Default split ratio**: 70% train / 20% Validation / 10% test
+- **Second Simulation for Training and Validation**: To Train and validate the model on differend data as well as to generelize the capabilities of the model, we simulated a complete distict area.
+- **Time-related splits**: The Train/Validation Splits were splited based on the timestamp to represent differend realistic timeframes   
+- **Split ratio**: 50% train / 10% Validation / 40% test
 
-### Split Statistics
-
-For Each split the Train/Validate/Test dataset contains a `<scenario>_<attack type>_p_d_values.csv` with:
-- p- and d-values for distribution similarity tests for the fields:
-  - rcvRate
-  - sumMsgs
-  - sumMalMsgs
-  - normalProfiles
-  - aggressiveProfiles
-  - cautiousProfiles
-
----
 
 ## Links
 
