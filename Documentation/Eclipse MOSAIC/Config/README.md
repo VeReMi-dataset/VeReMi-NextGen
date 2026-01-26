@@ -89,19 +89,33 @@ CAM messages are triggered when any of the following thresholds are exceeded:
 
 Only vehicle in this defined area and the defined time window will send and receive CAM messages. 
 
-**Time Window:**
+**Time Window (Test-Set):**
 
 | Traffic Density | Start Time        | End Time          | Duration  | Description                        |
 |-----------------|-------------------|-------------------|-----------|------------------------------------|
 | Low Density     | `7200` s (2:00h)  | `14400` s (4:00h) | 2 hours   | Early morning / low traffic period |
 | High Density    | `25200` s (7:00h) | `25500` s (7:05h) | 5 minutes | Rush hour / high traffic period    |
 
-**Geographic Area (Bounding Box):**
+**Geographic Area (Bounding Box, Test-Set):**
 
 | Simulated Area | Min(Longitude/Latitude) | Max(Longitude/Latitude) |
 |----------------|-------------------------|-------------------------|
 | Highway        | `48.749772`/`11.453732` | `48.767821`/`11.463387` |
-| Urban          | `48.756441`/`48.756441` | `48.773643`/`11.436188` |
+| Urban          | `48.756441`/`11.410236` | `48.773643`/`11.436188` |
+
+**Time Window (Train/Validaiotn-Sets):**
+
+| Traffic Density | Start Time        | End Time          | Duration  | Description                        |
+|-----------------|-------------------|-------------------|-----------|------------------------------------|
+| Low Density     | `3600` s (1:00h)  | `14400` s (4:00h) | 3 hours   | Early morning / low traffic period |
+| High Density    | `25200` s (7:00h) | `25650` s (7:07h) | 7,5 minutes | Rush hour / high traffic period    |
+
+**Geographic Area (Bounding Box, Train/Validation-Sets):**
+
+| Simulated Area | Min(Longitude/Latitude) | Max(Longitude/Latitude) |
+|----------------|-------------------------|-------------------------|
+| Highway        | `48.767558`/`11.456784` | `48.790177`/`11.463225` |
+| Urban          | `48.735035`/`11.418320` | `48.750877`/`11.447123` |
 
 #### Additional Settings
 
