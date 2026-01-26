@@ -103,7 +103,7 @@ Only vehicle in this defined area and the defined time window will send and rece
 | Highway        | `48.749772`/`11.453732` | `48.767821`/`11.463387` |
 | Urban          | `48.756441`/`11.410236` | `48.773643`/`11.436188` |
 
-**Time Window (Train/Validaiotn-Sets):**
+**Time Window (Train/Validation-Sets):**
 
 | Traffic Density | Start Time        | End Time          | Duration  | Description                        |
 |-----------------|-------------------|-------------------|-----------|------------------------------------|
