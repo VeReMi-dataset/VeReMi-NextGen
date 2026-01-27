@@ -610,6 +610,6 @@ def sudden_appearance_check(self, sender_pos, receiver_pos):
 
 ## References
 
-1. J. Kamel, A. Kaiser, I. Ben Jemaa, P. Cincilla, and P. Urien, *CaTch: A Confidence Range Tolerant Misbehavior Detection Approach*, in 2019 IEEE Wireless Communications and Networking Conference (WCNC), Marrakech, Morocco, 2019. doi:10.1109/WCNC.2019.8885740
+1. J. Kamel, A. Kaiser, I. Ben Jemaa, P. Cincilla, and P. Urien, *CaTch: A Confidence Range Tolerant Misbehavior Detection Approach*, in 2019 IEEE Wireless Communications and Networking Conference (WCNC), Marrakech, Morocco, 2019,  https://doi.org/10.1109/WCNC.2019.8885740
 
 
