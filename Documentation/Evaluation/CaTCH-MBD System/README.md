@@ -605,10 +605,11 @@ def sudden_appearance_check(self, sender_pos, receiver_pos):
 | `calculate_max_min_dist(v1, v2, t, a, d)` | Expected distance range given speeds |
 | `ellipse_ellipse_intersection_factor(...)` | Intersection of oriented ellipses |
 | `calculate_heading_angle(coord)` | Convert position delta to heading angle |
+| `ns_to_seconds(ns)` | Convert nanoseconds to seconds |
 
 
 ## References
 
 1. J. Kamel, A. Kaiser, I. Ben Jemaa, P. Cincilla, and P. Urien, *CaTch: A Confidence Range Tolerant Misbehavior Detection Approach*, in 2019 IEEE Wireless Communications and Networking Conference (WCNC), Marrakech, Morocco, 2019. doi:10.1109/WCNC.2019.8885740
 
-| `ns_to_seconds(ns)` | Convert nanoseconds to seconds |
+
