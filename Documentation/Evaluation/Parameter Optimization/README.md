@@ -120,12 +120,6 @@ Performs hyperparameter optimization using Optuna to find the best MBD parameter
   }
 }
 
-## References
-Hermann, A., Trkulja, N., Eisermann, D., Erb, B., and Kargl, F. (2025).  
-*Hyperparameter Optimization-Based Trust Quantification for Misbehavior Detection Systems*.  
-2025 IEEE International Conference on Intelligent Transportation Systems (ITSC), Gold Coast, Australia.  
-https://doi.org/10.18725/OPARU-57502
-
 ```
 
 
