@@ -6,16 +6,16 @@
   "positionChange": 4,
   "headingChange": 4,
   "velocityChange": 0.5,
-  "jsonPath" : "/home/ubuntu/simulation_with_receiver/JSON_highway_7_9/",
+  "jsonPath" : "/opt/mosaic/output/",
   "simulationTime": {
     "start": 25200,
-    "end": 25600
+    "end": 25500
   },
   "simulationArea": {
     "minX": 48.749772,
     "minY": 11.453732,
     "maxX": 48.767821,
-    "maxY": 11.463387
+    "maxY": 11.463387 
   },
   "enableDriverProfiles": true
 }

@@ -6,10 +6,10 @@
   "positionChange": 4,
   "headingChange": 4,
   "velocityChange": 0.5,
-  "jsonPath" : "/home/ubuntu/simulation_with_receiver/JSON_urban_7_9/",
+  "jsonPath" : "/opt/mosaic/output/",
   "simulationTime": {
     "start": 25200,
-    "end": 25600
+    "end": 25500
   },
   "simulationArea": {
     "minX": 48.756441,
@@ -19,4 +19,3 @@
   },
   "enableDriverProfiles": true
 }
-
