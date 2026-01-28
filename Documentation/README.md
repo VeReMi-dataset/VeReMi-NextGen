@@ -18,7 +18,7 @@ and a complete refactored structure.
 
 The project consists of three main components:
 
-1. **Datasets/** – Containing both the dataset itself and the Train/Validation/Test Split for every attack type, incl. ground truth files and base datasets without MB implementation
+1. **Datasets/** – Containing the dataset (Train/Validation/Test Set) for every attack type, incl. ground truth files and base datasets without MB implementation
 2. **Documentation/** – Containing the project documentation
 3. **Generator/** – Containing the dataset generator to recreate and extend **VeReMi NextGen**
 
@@ -185,12 +185,12 @@ Each JSON file contains an array of CAM messages:
 | `driversProfile`        | ENUM    | NORMAL, AGGRESSIVE, or CAUTIOUS  |
 | `distance_to_road_edge` | float   | Distance to road edge (m)        |
 
-## Train/Validation/Test-Splits
+## Train/Validation/Test-Sets
 
-Pre-computed splits for machine learning experiments. Each attack type has its own Train/Validation/Test split:
+Pre-computed sets for machine learning experiments. Each attack type has its own Train/Validation/Test set:
 
 - **Second Simulation for Training and Validation**: To Train and validate the model on differend data as well as to generelize the capabilities of the model, we simulated a complete distict area.
-- **Time-related splits**: The Train/Validation Splits were splited based on the timestamp to represent differend realistic timeframes   
+- **Time-related splits**: The Train/Validation Sets were splited based on the timestamp to represent differend realistic timeframes   
 - **Split ratio**: 50% train / 10% Validation / 40% test
 
 

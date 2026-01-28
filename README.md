@@ -15,7 +15,7 @@ A comprehensive dataset and dataset generator for evaluating **Misbehavior Detec
 VeReMi NextGen provides:
 
 - **Dataset** with 15+ attack types on V2X Basic Safety Messages
-- **Train/Val/Test Splits** for machine learning experiments
+- **Train/Val/Test Sets** for machine learning experiments
 - **Plug'n Play Solution** for recreating the VeReMi Baseline with the option to change parameters
 - **Attack Generator** to create custom attack scenarios 
 - **CaTCH-MBD System** implementing CaTCH adopted to VeReMi NextGen
@@ -26,7 +26,7 @@ VeReMi NextGen provides:
 
 ```
 VeReMi-NextGen/
-├── Dataset/          # VeReMi-NextGen and Train/Val/Test Split
+├── Dataset/          # VeReMi-NextGen including Train/Val/Test Sets
 ├── Generator/        # Everything to recreate VeReMi NextGen or an own new Dataset
 └── Documentation/    # Detailed documentation of VeReMi NextGen 
 ```

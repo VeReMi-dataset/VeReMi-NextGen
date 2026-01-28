@@ -1,6 +1,6 @@
 # Parameter Optimization
 
-Documentation of the hyperparameter optimization for the MBD system parameters using Optuna.
+Documentation of the hyperparameter optimization for the MBD system parameters using Optuna based on [1].
 
 ## Files
 
@@ -119,4 +119,10 @@ Performs hyperparameter optimization using Optuna to find the best MBD parameter
     ...
   }
 }
+
 ```
+
+
+## References
+
+1. A. Hermann, N. Trkulja, D. Eisermann, B. Erb, and F. Kargl,  *Hyperparameter Optimization-Based Trust Quantification for Misbehavior Detection Systems*, In Proceedings of the 2025 IEEE International Conference on Intelligent Transportation Systems (ITSC), Gold Coast, Australia,  https://doi.org/10.18725/OPARU-57502
