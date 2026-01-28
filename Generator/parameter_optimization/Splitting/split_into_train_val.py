@@ -5,14 +5,12 @@ import glob
 
 
 def split_json_by_timestamp(input_folder, output_folder, split_timestamp):
-    # 1. Define and create target directories
     train_dir = os.path.join(output_folder, "train")
     val_dir = os.path.join(output_folder, "validation")
 
     os.makedirs(train_dir, exist_ok=True)
     os.makedirs(val_dir, exist_ok=True)
 
-    # 2. Identify all JSON files in the source folder
     search_pattern = os.path.join(input_folder, "*.json")
     json_files = glob.glob(search_pattern)
 
@@ -37,7 +35,6 @@ def split_json_by_timestamp(input_folder, output_folder, split_timestamp):
                 train_messages = [m for m in data if int(m['sendTime']) <= split_timestamp]
                 val_messages = [m for m in data if int(m['sendTime']) > split_timestamp]
 
-                # 3. Save files with original names if they contain messages
                 if train_messages:
                     with open(os.path.join(train_dir, filename), 'w', encoding='utf-8') as f_out:
                         json.dump(train_messages, f_out, indent=2)
@@ -53,7 +50,6 @@ def split_json_by_timestamp(input_folder, output_folder, split_timestamp):
     print(f"Results stored in: {output_folder}")
 
 
-# --- EXAMPLE USAGE ---
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Split vehicle JSON data into train/val folders by timestamp.")
 
