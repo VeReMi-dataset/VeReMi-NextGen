@@ -17,7 +17,7 @@ A comprehensive dataset and dataset generator for evaluating **Misbehavior Detec
 
 VeReMi NextGen provides:
 
-- **Dataset** with 15 attack types on V2X Basic Safety Messages
+- **Dataset** with 15 attack types on V2X Cooperative Awareness Messages
 - **Train/Val/Test Sets** for machine learning experiments
 - **Plug'n Play Solution** for recreating the VeReMi Baseline with the option to change parameters
 - **Attack Generator** to create custom attack scenarios 
