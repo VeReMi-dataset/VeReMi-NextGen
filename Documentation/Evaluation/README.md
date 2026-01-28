@@ -17,7 +17,7 @@ Overview of the CaTCH-MBD system:
 Parameter optimization workflow for CaTCH:
 
 - Data preprocessing pipeline
-- Dataset splitting into train/validation/test using KS-test–based distribution matching
+- Dataset splitting into train/validation/test using defined time periods
 - Hyperparameter optimization with Optuna targeting F1 score
 - Definition of parameter search spaces
 
