@@ -29,19 +29,7 @@ The project consists of three main components:
 VeReMi-NextGen/
 │
 ├── Dataset/
-│   ├── <Scenario>_constant_position_offset/                     # Attack subset
-│   │   ├── train/
-│   │   │   ├── vehicle_001.json
-│   │   │   └── ...
-│   │   ├── validation/
-│   │   │   ├── vehicle_0026.json
-│   │   │   └── ...
-│   │   └── test/
-│   │       ├── vehicle_050.json
-│   │       └── ...
-│   ├── <Scenario>_random_speed_offset/
-│   ├── <Scenario>_sudden_stop/
-│   └── [15 attack type folders per scenario]
+│   └── [Download-Links]
 │
 ├── Documentation/
 │   └── [project documentation]
