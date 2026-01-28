@@ -26,6 +26,7 @@ VeReMi NextGen provides:
 
 ```
 VeReMi-NextGen/
+├── Dataset/          # Download-Links for each set of VeReMi NextGen
 ├── Generator/        # Everything to recreate VeReMi NextGen or an own new Dataset
 └── Documentation/    # Detailed documentation of VeReMi NextGen 
 ```
