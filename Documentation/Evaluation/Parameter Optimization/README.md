@@ -4,23 +4,16 @@ Documentation of the hyperparameter optimization for the MBD system parameters u
 
 ## Files
 
-| File                                         | Function                                 |
-|----------------------------------------------|------------------------------------------|
-| `test.py`                                    | Optuna optimization, calls MBD_systems   |
-| `Bin_generator/convert_to_bin.py`            | JSON → Parquet conversion                |
-| `Splitting/csv_table.py`                     | Generate statistics per file             |
-| `Splitting/train_validation_test_dataset.py` | Train/Validation/Test split with KS test |
-| `Splitting/copy_files.py`                    | Copy files after split                   |
+| File                              | Function                                 |
+|-----------------------------------|------------------------------------------|
+| `test.py`                         | Optuna optimization, calls MBD_systems   |
+| `split_into_train_val.py`         | Creates Train and Validation parts by splitting at an defined timestamp |
+| `Bin_generator/convert_to_bin.py` | JSON → Parquet conversion                |
+
+> The optimization directly uses the **already provided Train or Validation datasets**.
 
 ## Workflow
 
-```
-1. JSON → Parquet               (convert_to_bin.py)
-2. Statistics                   (csv_table.py)
-3. Train/Validation/Test Split  (train_validation_test_dataset.py)
-4. Copy files                   (copy_files.py)
-5. Optimization                 (test.py)
-```
 
 ## 1. JSON to Parquet (`convert_to_bin.py`)
 
@@ -34,49 +27,13 @@ Aggregates all JSON files from a folder into a single Parquet file for faster I/
 
 **Output:** Statistics on processed files, message count, and file size.
 
-## 2. Generate Statistics (`csv_table.py`)
-
-Extracts statistical features from each JSON file for subsequent distribution analysis.
-
-**Calculated metrics per file:**
-- **avgRcvMsg**: Average time between received messages
-- **numMessages**: Total number of messages
-- **numMaliciousMessages**: Number of attacker messages (`attacker = true`)
-- **Driver Profile Distribution**: Count of NORMAL, AGGRESSIVE, and CAUTIOUS profiles
-
-**Output:** `output.csv` with one row per file.
-
-## 3. Train/Validation/Test Split (`train_validation_test_dataset.py`)
-
-Splits the dataset into train/validation/test sets and ensures similar distributions across all subsets using the Kolmogorov-Smirnov test.
-
-**Split Algorithm:**
-- Files are randomly shuffled
-- Splitting is based on message count (not file count) to ensure balanced data volume
-- Files are sequentially assigned to train, validation, or test until the respective ratio is reached
-
-**Distribution Validation:**
-- 30,000 random splits are performed
-- For each split, pairwise KS tests are executed between all combinations (Train↔Val, Train↔Test, Val↔Test)
-- All 6 metrics are tested: avgRcvMsg, numMessages, numMaliciousMessages, and the three driver profiles
-- A split is only valid if all p-values > 0.05 (null hypothesis: identical distribution)
-- The split with the highest average p-value is selected
-
-**Output:**
-- `train.csv`, `val.csv`, `test.csv` – File lists
-- `p_d_values.csv` – KS test results (p-values and D-statistics)
-
-## 4. Copy Files (`copy_files.py`)
-
-Copies the actual JSON files based on the split CSVs into separate folders.
-
-**Process:**
-- Reads filenames from the first column of each CSV
-- Copies the corresponding files from source to destination folder
-
-## 5. Optuna Optimization (`test.py`)
+## 2. Optuna Optimization (`test.py`)
 
 Performs hyperparameter optimization using Optuna to find the best MBD parameters.
+
+**Dataset usage:**
+- The optimization is executed on an **existing dataset split**.
+- Depending on the experiment setup, either the **Train** or the **Validation** dataset is used as input.
 
 **Optimization Process:**
 - Optuna samples parameters from defined search spaces
@@ -120,7 +77,6 @@ Performs hyperparameter optimization using Optuna to find the best MBD parameter
   }
 }
 
-```
 
 
 ## References
