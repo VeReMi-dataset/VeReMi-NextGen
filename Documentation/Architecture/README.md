@@ -64,6 +64,11 @@ Generator/
 │       ├── Parallel worker processes
 │       └── JSON in-place modification
 │
+├── docker/
+│   ├── scenarios/
+│   ├── Dockerfile                                
+│   └── entrypoint.sh
+│
 |── simulation/                    # Simulation Setup
 │   └── mosaic/
 │       ├── bin/                   # bin of federates
