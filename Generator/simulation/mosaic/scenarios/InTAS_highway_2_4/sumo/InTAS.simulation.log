@@ -1,38 +1,38 @@
-***Starting server on port 8880 ***
-Loading net-file from './../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/ingolstadt.net.xml' ... done (547ms).
-Loading additional-files from './../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/BusStations.add.xml' ... done (10ms).
-Loading additional-files from './../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/InTAS_E1.add.xml' ... done (8ms).
-Loading additional-files from './../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/InTAS.poly.xml' ... done (926ms).
-Loading route-files incrementally from './../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/ped.rou.xml'
-Loading route-files incrementally from './../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/BusRoutes.flow.xml'
-Loading route-files incrementally from './../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_001.rou.xml'
-Loading route-files incrementally from './../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_002.rou.xml'
-Loading route-files incrementally from './../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_003.rou.xml'
-Loading route-files incrementally from './../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_004.rou.xml'
-Loading route-files incrementally from './../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_005.rou.xml'
-Loading route-files incrementally from './../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_006.rou.xml'
-Loading route-files incrementally from './../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_007.rou.xml'
-Loading route-files incrementally from './../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_008.rou.xml'
-Loading route-files incrementally from './../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_009.rou.xml'
-Loading route-files incrementally from './../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_010.rou.xml'
-Loading route-files incrementally from './../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_011.rou.xml'
-Loading route-files incrementally from './../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_012.rou.xml'
-Loading route-files incrementally from './../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_013.rou.xml'
-Loading route-files incrementally from './../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_014.rou.xml'
-Loading route-files incrementally from './../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_015.rou.xml'
-Loading route-files incrementally from './../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_016.rou.xml'
-Loading route-files incrementally from './../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_017.rou.xml'
-Loading route-files incrementally from './../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_018.rou.xml'
-Loading route-files incrementally from './../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_019.rou.xml'
-Loading route-files incrementally from './../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_020.rou.xml'
-Loading route-files incrementally from './../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_021.rou.xml'
-Loading route-files incrementally from './../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_022.rou.xml'
+***Starting server on port 8929 ***
+Loading net-file from '/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/ingolstadt.net.xml' ... done (858ms).
+Loading additional-files from '/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/BusStations.add.xml' ... done (15ms).
+Loading additional-files from '/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/InTAS_E1.add.xml' ... done (13ms).
+Loading additional-files from '/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/InTAS.poly.xml' ... done (1549ms).
+Loading route-files incrementally from '/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/ped.rou.xml'
+Loading route-files incrementally from '/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/BusRoutes.flow.xml'
+Loading route-files incrementally from '/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_001.rou.xml'
+Loading route-files incrementally from '/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_002.rou.xml'
+Loading route-files incrementally from '/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_003.rou.xml'
+Loading route-files incrementally from '/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_004.rou.xml'
+Loading route-files incrementally from '/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_005.rou.xml'
+Loading route-files incrementally from '/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_006.rou.xml'
+Loading route-files incrementally from '/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_007.rou.xml'
+Loading route-files incrementally from '/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_008.rou.xml'
+Loading route-files incrementally from '/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_009.rou.xml'
+Loading route-files incrementally from '/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_010.rou.xml'
+Loading route-files incrementally from '/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_011.rou.xml'
+Loading route-files incrementally from '/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_012.rou.xml'
+Loading route-files incrementally from '/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_013.rou.xml'
+Loading route-files incrementally from '/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_014.rou.xml'
+Loading route-files incrementally from '/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_015.rou.xml'
+Loading route-files incrementally from '/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_016.rou.xml'
+Loading route-files incrementally from '/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_017.rou.xml'
+Loading route-files incrementally from '/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_018.rou.xml'
+Loading route-files incrementally from '/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_019.rou.xml'
+Loading route-files incrementally from '/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_020.rou.xml'
+Loading route-files incrementally from '/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_021.rou.xml'
+Loading route-files incrementally from '/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_022.rou.xml'
 Loading done.
 Simulation version 1.24.0 started with time: 0.00.
 Simulation ended at time: 0.00.
 Reason: TraCI requested termination.
 Performance:
- Duration: 4.88s
+ Duration: 22.79s
  TraCI-Duration: 0.00s
  Real time factor: 0
  UPS: 0.000000

@@ -1,18 +1,45 @@
-Loading net-file from 'D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\ingolstadt.net.xml' ... done (1334ms).
-Loading additional-files from 'D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\BusStations.add.xml' ... done (15ms).
-Loading additional-files from 'D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\InTAS_E1.add.xml' ... done (14ms).
-Loading additional-files from 'D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\InTAS.poly.xml' ... done (1156ms).
+***Starting server on port 8922 ***
+Loading net-file from '../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/ingolstadt.net.xml' ... done (863ms).
+Loading additional-files from '../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/BusStations.add.xml' ... done (15ms).
+Loading additional-files from '../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/InTAS_E1.add.xml' ... done (14ms).
+Loading additional-files from '../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/InTAS.poly.xml' ... done (1605ms).
+Loading route-files incrementally from '../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/ped.rou.xml'
+Loading route-files incrementally from '../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/BusRoutes.flow.xml'
+Loading route-files incrementally from '../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_001.rou.xml'
+Loading route-files incrementally from '../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_002.rou.xml'
+Loading route-files incrementally from '../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_003.rou.xml'
+Loading route-files incrementally from '../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_004.rou.xml'
+Loading route-files incrementally from '../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_005.rou.xml'
+Loading route-files incrementally from '../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_006.rou.xml'
+Loading route-files incrementally from '../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_007.rou.xml'
+Loading route-files incrementally from '../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_008.rou.xml'
+Loading route-files incrementally from '../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_009.rou.xml'
+Loading route-files incrementally from '../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_010.rou.xml'
+Loading route-files incrementally from '../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_011.rou.xml'
+Loading route-files incrementally from '../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_012.rou.xml'
+Loading route-files incrementally from '../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_013.rou.xml'
+Loading route-files incrementally from '../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_014.rou.xml'
+Loading route-files incrementally from '../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_015.rou.xml'
+Loading route-files incrementally from '../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_016.rou.xml'
+Loading route-files incrementally from '../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_017.rou.xml'
+Loading route-files incrementally from '../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_018.rou.xml'
+Loading route-files incrementally from '../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_019.rou.xml'
+Loading route-files incrementally from '../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_020.rou.xml'
+Loading route-files incrementally from '../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_021.rou.xml'
+Loading route-files incrementally from '../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_022.rou.xml'
 Loading done.
-Simulation ended at time: 0.00
-Performance: 
- Duration: 2373.92s
+Simulation version 1.24.0 started with time: 0.00.
+Simulation ended at time: 0.00.
+Reason: TraCI requested termination.
+Performance:
+ Duration: 117.06s
+ TraCI-Duration: 0.00s
  Real time factor: 0
  UPS: 0.000000
-Vehicles: 
+Vehicles:
  Inserted: 0 (Loaded: 265)
  Running: 0
  Waiting: 0
-Persons: 
- Inserted: 2
+Persons:
+ Inserted: 0 (Loaded: 2)
  Running: 0
-

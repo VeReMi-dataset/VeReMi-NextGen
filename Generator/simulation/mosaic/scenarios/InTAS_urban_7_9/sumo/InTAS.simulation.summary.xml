@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2025-08-27 17:43:55 by Eclipse SUMO GUI Version 1.20.0
-<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+<!-- generated on 2026-01-27 13:46:09 by Eclipse SUMO sumo Version 1.24.0
+<sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
-        <net-file value="D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\ingolstadt.net.xml"/>
-        <route-files value="D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\routes/ped.rou.xml,D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\routes/BusRoutes.flow.xml,D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\routes/InTAS_001.rou.xml,D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\routes/InTAS_002.rou.xml,D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\routes/InTAS_003.rou.xml,D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\routes/InTAS_004.rou.xml,D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\routes/InTAS_005.rou.xml,D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\routes/InTAS_006.rou.xml,D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\routes/InTAS_007.rou.xml,D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\routes/InTAS_008.rou.xml,D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\routes/InTAS_009.rou.xml,D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\routes/InTAS_010.rou.xml,D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\routes/InTAS_011.rou.xml,D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\routes/InTAS_012.rou.xml,D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\routes/InTAS_013.rou.xml,D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\routes/InTAS_014.rou.xml,D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\routes/InTAS_015.rou.xml,D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\routes/InTAS_016.rou.xml,D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\routes/InTAS_017.rou.xml,D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\routes/InTAS_018.rou.xml,D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\routes/InTAS_019.rou.xml,D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\routes/InTAS_020.rou.xml,D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\routes/InTAS_021.rou.xml,D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\routes/InTAS_022.rou.xml"/>
-        <additional-files value="D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\BusStations.add.xml,D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\InTAS_E1.add.xml,D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\InTAS.poly.xml"/>
+        <net-file value="../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/ingolstadt.net.xml"/>
+        <route-files value="../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/ped.rou.xml,../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/BusRoutes.flow.xml,../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_001.rou.xml,../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_002.rou.xml,../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_003.rou.xml,../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_004.rou.xml,../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_005.rou.xml,../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_006.rou.xml,../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_007.rou.xml,../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_008.rou.xml,../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_009.rou.xml,../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_010.rou.xml,../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_011.rou.xml,../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_012.rou.xml,../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_013.rou.xml,../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_014.rou.xml,../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_015.rou.xml,../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_016.rou.xml,../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_017.rou.xml,../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_018.rou.xml,../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_019.rou.xml,../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_020.rou.xml,../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_021.rou.xml,../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/routes/InTAS_022.rou.xml"/>
+        <additional-files value="../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/BusStations.add.xml,../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/InTAS_E1.add.xml,../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/InTAS.poly.xml"/>
     </input>
 
     <output>
-        <summary-output value="D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\InTAS.simulation.summary.xml"/>
-        <tripinfo-output value="D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\InTAS.simulation.tripinfo.xml"/>
-        <statistic-output value="D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\InTAS.simulation.statistic.xml"/>
+        <summary-output value="../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/InTAS.simulation.summary.xml"/>
+        <tripinfo-output value="../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/InTAS.simulation.tripinfo.xml"/>
+        <statistic-output value="../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/InTAS.simulation.statistic.xml"/>
     </output>
 
     <time>
@@ -48,10 +48,15 @@
     <report>
         <verbose value="true"/>
         <no-warnings value="true"/>
-        <log value="D:\Dokumente\Uni\Bachlorarbeit\2025-ba-remmers-taf-and-mbd-dataset\simulation\mosaic\scenarios\InTAS_urban_7_9\sumo\InTAS.simulation.log"/>
+        <log value="../Generator/simulation/mosaic/scenarios/InTAS_urban_7_9/sumo/InTAS.simulation.log"/>
+        <no-step-log value="true"/>
     </report>
 
-</configuration>
+    <traci_server>
+        <remote-port value="8924"/>
+    </traci_server>
+
+</sumoConfiguration>
 -->
 
 <summary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/summary_file.xsd">

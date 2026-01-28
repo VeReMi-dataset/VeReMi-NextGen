@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2026-01-27 10:30:10 by Eclipse SUMO sumo Version 1.24.0
+<!-- generated on 2026-01-27 17:52:04 by Eclipse SUMO sumo Version 1.24.0
 <sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
-        <net-file value="./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/ingolstadt.net.xml"/>
-        <route-files value="./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/ped.rou.xml,./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/BusRoutes.flow.xml,./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_001.rou.xml,./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_002.rou.xml,./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_003.rou.xml,./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_004.rou.xml,./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_005.rou.xml,./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_006.rou.xml,./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_007.rou.xml,./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_008.rou.xml,./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_009.rou.xml,./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_010.rou.xml,./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_011.rou.xml,./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_012.rou.xml,./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_013.rou.xml,./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_014.rou.xml,./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_015.rou.xml,./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_016.rou.xml,./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_017.rou.xml,./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_018.rou.xml,./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_019.rou.xml,./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_020.rou.xml,./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_021.rou.xml,./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_022.rou.xml"/>
-        <additional-files value="./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/BusStations.add.xml,./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/InTAS_E1.add.xml,./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/InTAS.poly.xml"/>
+        <net-file value="/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/ingolstadt.net.xml"/>
+        <route-files value="/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/ped.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/BusRoutes.flow.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_001.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_002.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_003.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_004.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_005.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_006.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_007.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_008.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_009.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_010.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_011.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_012.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_013.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_014.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_015.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_016.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_017.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_018.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_019.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_020.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_021.rou.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_022.rou.xml"/>
+        <additional-files value="/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/BusStations.add.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/InTAS_E1.add.xml,/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/InTAS.poly.xml"/>
     </input>
 
     <output>
-        <summary-output value="./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/InTAS.simulation.summary.xml"/>
-        <tripinfo-output value="./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/InTAS.simulation.tripinfo.xml"/>
-        <statistic-output value="./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/InTAS.simulation.statistic.xml"/>
+        <summary-output value="/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/InTAS.simulation.summary.xml"/>
+        <tripinfo-output value="/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/InTAS.simulation.tripinfo.xml"/>
+        <statistic-output value="/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/InTAS.simulation.statistic.xml"/>
     </output>
 
     <time>
@@ -48,19 +48,19 @@
     <report>
         <verbose value="true"/>
         <no-warnings value="true"/>
-        <log value="./../Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/InTAS.simulation.log"/>
+        <log value="/home/ubuntu/veremi_nextgen/VeReMi-NextGen/Generator/simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/InTAS.simulation.log"/>
         <no-step-log value="true"/>
     </report>
 
     <traci_server>
-        <remote-port value="8874"/>
+        <remote-port value="8931"/>
     </traci_server>
 
 </sumoConfiguration>
 -->
 
 <statistics xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/statistic_file.xsd">
-    <performance clockBegin="1769509811.02" clockEnd="1769509815.90" clockDuration="4.88" traciDuration="0.00" realTimeFactor="0.00" vehicleUpdatesPerSecond="0.00" personUpdatesPerSecond="0.00" begin="0.00" end="0.00" duration="0.00"/>
+    <performance clockBegin="1769536324.33" clockEnd="1769536347.13" clockDuration="22.79" traciDuration="0.00" realTimeFactor="0.00" vehicleUpdatesPerSecond="0.00" personUpdatesPerSecond="0.00" begin="0.00" end="0.00" duration="0.00"/>
     <vehicles loaded="265" inserted="0" running="0" waiting="0"/>
     <teleports total="0" jam="0" yield="0" wrongLane="0"/>
     <safety collisions="0" emergencyStops="0" emergencyBraking="0"/>
