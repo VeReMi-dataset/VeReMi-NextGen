@@ -31,10 +31,11 @@ If you are using our dataset, please use the following citation:
 > Hermann, A., Remmers, J. N.,  Eissermann, D., Erb, B and Kargl, F. 2026. VeReMi NextGen: A Dataset for Evaluating Misbehavior Detection Systems in VANETs. *Proceedings of the 2026 IEEE Vehicular Networking Conference Conference (Montreal, Canada, 2026)*.
 ```
 @inproceedings{Hermann2025mbd,
-	author = {Hermann, Artur and Remmers, Jan-Niklas and Eisermann, Dennis and Erb, Benjamin and Kargl, Frank},
-	booktitle = {2025 {IEEE} {Vehicular} {Networking} {Conference}},
+	author = {Hermann, Artur and Remmers, Jan Niklas and Eisermann, Dennis and Erb, Benjamin and Kargl, Frank},
+	booktitle = {2026 {IEEE} {Vehicular} {Networking} {Conference} ({VNC})},
 	date = {2026-06},
-	title = {{VeReMi} {NextGen}: {A} {Dataset} for {Evaluating} {Misbehavior} {Detection} {Systems} in {VANETs}},
+	location = {Montreal, Canada},
+	title = {VeReMi {NextGen}: A {Dataset} for {Evaluating} {Misbehavior} {Detection} {Systems} in {VANETs}},
 }
 ```
 
