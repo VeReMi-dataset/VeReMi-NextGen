@@ -13,18 +13,6 @@
 
 A comprehensive dataset and dataset generator for evaluating **Misbehavior Detection** in Vehicle-to-Everything (V2X) communication.
 
-## Overview
-
-VeReMi NextGen provides:
-
-- **Dataset** with 15 attack types on V2X Cooperative Awareness Messages
-- **Train/Val/Test Sets** for machine learning experiments
-- **Plug'n Play Solution** for recreating the VeReMi Baseline with the option to change parameters
-- **Attack Generator** to create custom attack scenarios 
-- **CaTCH-MBD System** implementing CaTCH adopted to VeReMi NextGen
-- **Parameter Optimization** for systematically obtaining the best thresholds  
-  
-
 ## Paper Reference
 If you are using our dataset, please use the following citation:
 
@@ -38,6 +26,18 @@ If you are using our dataset, please use the following citation:
 	title = {VeReMi {NextGen}: A {Dataset} for {Evaluating} {Misbehavior} {Detection} {Systems} in {VANETs}},
 }
 ```
+
+## Overview
+
+VeReMi NextGen provides:
+
+- **Dataset** with 15 attack types on V2X Cooperative Awareness Messages
+- **Train/Val/Test Sets** for machine learning experiments
+- **Plug'n Play Solution** for recreating the VeReMi Baseline with the option to change parameters
+- **Attack Generator** to create custom attack scenarios 
+- **CaTCH-MBD System** implementing CaTCH adopted to VeReMi NextGen
+- **Parameter Optimization** for systematically obtaining the best thresholds  
+  
 
 
 ## Repository Structure
