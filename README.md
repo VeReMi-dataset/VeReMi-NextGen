@@ -25,7 +25,7 @@ VeReMi NextGen provides:
 - **Parameter Optimization** for systematically obtaining the best thresholds  
   
 
-### Paper Reference
+## Paper Reference
 If you are using our dataset, please use the following citation:
 
 > Hermann, A., Remmers, J. N.,  Eissermann, D., Erb, B and Kargl, F. 2026. VeReMi NextGen: A Dataset for Evaluating Misbehavior Detection Systems in VANETs. *Proceedings of the 2026 IEEE Vehicular Networking Conference Conference (Montreal, Canada, 2026)*.
