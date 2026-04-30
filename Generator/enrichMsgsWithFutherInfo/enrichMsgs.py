@@ -50,7 +50,7 @@ def get_distance_to_nearest_road(x: float, y: float) -> float:
                                 lane_pos = (i / (len(edge_shape) - 1)) * traci.edge.getLength(edge_id)
                     lane_index = 0
             except Exception as e:
-                print(f"Fallback fehlgeschlagen für Position ({x}, {y}): {e}")
+                print(f"Fallback failed for position ({x}, {y}): {e}")
                 return 0
 
         if edge_id is None:
@@ -87,7 +87,7 @@ def get_distance_to_nearest_road(x: float, y: float) -> float:
         return distance_edge
 
     except Exception as e:
-        print(f"Fehler: {e}")
+        print(f"Error: {e}")
         import traceback
         traceback.print_exc()
         return 0
@@ -136,17 +136,17 @@ def reconstruct_nested(row):
 
 
 def worker_process_batch(json_files: List[str], sumo_config: str, worker_id: int):
-    """Worker verarbeitet mehrere JSON-Dateien mit einer SUMO-Instanz"""
+    """Worker processes multiple JSON files with a single SUMO instance."""
     results = []
     port = 8873 + worker_id
 
     try:
-        # SUMO einmal starten
+        # Start SUMO once
         sumo_binary = "sumo"
         traci.start([sumo_binary, "-c", sumo_config, "--no-step-log", "true"],
                     port=port, label=str(port))
 
-        # Alle zugewiesenen Dateien verarbeiten
+        # Process all assigned files
         for json_file in json_files:
             try:
                 with open(json_file, 'r') as f:
@@ -180,30 +180,30 @@ def worker_process_batch(json_files: List[str], sumo_config: str, worker_id: int
 
 def main():
     if len(sys.argv) < 3:
-        print("Verwendung: py enrichMsgs_multithreading <messages_folder> <sumo_config.sumocfg> [--workers N]")
+        print("Usage: py enrichMsgs_multithreading <messages_folder> <sumo_config.sumocfg> [--workers N]")
         sys.exit(1)
 
     input_folder = Path(sys.argv[1])
     sumo_config = sys.argv[2]
 
-    # Optionale Worker-Anzahl
+    # Optional number of workers
     max_workers = os.cpu_count() or 4
     if len(sys.argv) > 4 and sys.argv[3] == '--workers':
         max_workers = int(sys.argv[4])
 
-    # Sammle alle JSON-Dateien
+    # Collect all JSON files
     json_files = list(input_folder.glob('*.json'))
     total_files = len(json_files)
 
     if total_files == 0:
-        print("Keine JSON-Dateien gefunden!")
+        print("No JSON files found!")
         sys.exit(1)
 
     print(f"Starting processing with {max_workers} workers...", file=sys.stderr)
     count = 0
     errors = []
 
-    # Dateien auf Worker aufteilen
+    # Split files across workers
     chunk_size = max(1, total_files // max_workers)
     chunks = [json_files[i:i + chunk_size] for i in range(0, total_files, chunk_size)]
 
@@ -217,7 +217,7 @@ def main():
                                 worker_id)
             futures.append(f)
 
-        # Ergebnisse sammeln
+        # Collect results
         for future in as_completed(futures):
             try:
                 for result in future.result():
@@ -230,13 +230,13 @@ def main():
             except Exception as e:
                 print(f"[ERROR] Worker failed: {e}", file=sys.stderr)
 
-    # Zusammenfassung
+    # Summary
     if errors:
-        print(f"\n{len(errors)} Dateien mit Fehlern:", file=sys.stderr)
+        print(f"\n{len(errors)} files with errors:", file=sys.stderr)
         for file, error in errors:
             print(f"  - {file}: {error}", file=sys.stderr)
     else:
-        print(f"\nAlle {total_files} Dateien erfolgreich verarbeitet!")
+        print(f"\nAll {total_files} files processed successfully!")
 
 
 if __name__ == "__main__":
