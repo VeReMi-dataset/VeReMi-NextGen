@@ -6,8 +6,8 @@
 ## InTAS_highway_2
 | Asset | Download |
 |---|---|
-| `InTAS_highway_2.zip` | [![Download](https://img.shields.io/badge/Download-zip-2ea44f?style=for-the-badge&logo=github)](https://github.com/vs-uulm/VeReMi-NextGen/releases/download/v1.0.0/InTAS_highway_2.zip) |
-| `InTAS_highway_2_accelerationMultiplication.zip` | [![Download](https://img.shields.io/badge/Download-zip-2ea44f?style=for-the-badge&logo=github)](https://github.com/vs-uulm/VeReMi-NextGen/releases/download/v1.0.0/InTAS_highway_2_accelerationMultiplication.zip) |
+| `InTAS_highway_2.zip` | [![Download](https://img.shields.io/badge/Download-zip-2ea44f?style=for-the-badge&logo=github)](https://zenodo.org/records/19665762/files/InTAS_highway_2.zip) |
+| `InTAS_highway_2_accelerationMultiplication.zip` | [![Download](https://img.shields.io/badge/Download-zip-2ea44f?style=for-the-badge&logo=github)](https://zenodo.org/records/19665762/files/InTAS_highway_2_accelerationMultiplication.zip) |
 | `InTAS_highway_2_constantPositionOffset.zip` | [![Download](https://img.shields.io/badge/Download-zip-2ea44f?style=for-the-badge&logo=github)](https://github.com/vs-uulm/VeReMi-NextGen/releases/download/v1.0.0/InTAS_highway_2_constantPositionOffset.zip) |
 | `InTAS_highway_2_constantSpeedOffset.zip` | [![Download](https://img.shields.io/badge/Download-zip-2ea44f?style=for-the-badge&logo=github)](https://github.com/vs-uulm/VeReMi-NextGen/releases/download/v1.0.0/InTAS_highway_2_constantSpeedOffset.zip) |
 | `InTAS_highway_2_dataReplay.zip` | [![Download](https://img.shields.io/badge/Download-zip-2ea44f?style=for-the-badge&logo=github)](https://github.com/vs-uulm/VeReMi-NextGen/releases/download/v1.0.0/InTAS_highway_2_dataReplay.zip) |
