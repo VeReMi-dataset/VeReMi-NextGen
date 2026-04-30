@@ -32,7 +32,7 @@ def json_folder_to_parquet(input_folder, output_file):
             all_data.extend(messages)
 
         except Exception as e:
-            print(f"Fehler bei {file_path.name}: {e}", file=sys.stderr)
+            print(f"Error at {file_path.name}: {e}", file=sys.stderr)
             continue
 
     df = pd.json_normalize(all_data, sep='_')
@@ -40,27 +40,27 @@ def json_folder_to_parquet(input_folder, output_file):
     df.to_parquet(output_file, compression='snappy', index=False)
 
     file_size_gb = Path(output_file).stat().st_size / (1024 ** 3)
-    print(f"\n=== Fertig ===")
-    print(f"Dateien verarbeitet: {file_count}")
-    print(f"Nachrichten gesamt: {len(df)}")
-    print(f"Spalten: {len(df.columns)}")
+    print(f"\n=== Finished ===")
+    print(f"Files processed: {file_count}")
+    print(f"Total messages: {len(df)}")
+    print(f"Comumns: {len(df.columns)}")
     print(f"Unique source_files: {df['source_file'].nunique()}")
-    print(f"Dateigröße: {file_size_gb:.2f} GB")
-    print(f"Nachrichten pro Datei: {len(df) / df['source_file'].nunique():.1f}")
+    print(f"File size: {file_size_gb:.2f} GB")
+    print(f"Messages per file: {len(df) / df['source_file'].nunique():.1f}")
 
     return df
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Konvertiert JSON-Dateien zu Parquet')
-    parser.add_argument('input_folder', help='Ordner mit JSON-Dateien')
+    parser = argparse.ArgumentParser(description='Convert JSON-Files to Parquet')
+    parser.add_argument('input_folder', help='Directory with JSON-Files')
     parser.add_argument('-o', '--output', default='combined_data.parquet',
                         help='Output Parquet-Datei (default: combined_data.parquet)')
 
     args = parser.parse_args()
 
     if not Path(args.input_folder).exists():
-        print(f"Fehler: Ordner {args.input_folder} existiert nicht!")
+        print(f"Error: Directory {args.input_folder} does not exist!")
         sys.exit(1)
 
     df = json_folder_to_parquet(args.input_folder, args.output)

@@ -67,10 +67,10 @@ def objective(trial):
     process = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
     if process.returncode != 0:
-        print(f"FEHLER: Script hat Fehlercode {process.returncode} zurückgegeben")
+        print(f"ERROR: Script has returned error code {process.returncode}")
         print(f"STDERR: {process.stderr}")
         print(f"STDOUT: {process.stdout}")
-        raise RuntimeError(f"Script fehlgeschlagen mit Code {process.returncode}")
+        raise RuntimeError(f"Script failed with error code {process.returncode}")
 
     output = process.stdout.strip().splitlines()
     f1_score = float(output[0])
