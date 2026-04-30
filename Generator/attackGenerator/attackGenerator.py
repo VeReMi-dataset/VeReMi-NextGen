@@ -8,6 +8,8 @@ import random
 import numpy as np
 from pathlib import Path
 
+ATTACK_RATIO = 0.2
+
 parser = argparse.ArgumentParser(description="Sortiere ein JSON-Array nach sendTime.")
 parser.add_argument("input_folder", help="Pfad zu den Eingabedateien")
 parser.add_argument("misbehavior", help="Fehlverhalten angeben")
@@ -60,6 +62,8 @@ three_misbehaviors = [
     "randomSpeedOffset",
     "suddenStop",
 ]
+
+
 
 
 ###### support methods #######
@@ -806,7 +810,7 @@ if __name__ == "__main__":
     misbehavior_config = dict()
     messages_lookup = {}
     sender_lookup = {}
-    misbehavior_config['ratio'] = 0.2
+    misbehavior_config['ratio'] = ATTACK_RATIO
     output_dir = input_folder.parent / f"{input_folder.name}_{args.misbehavior}"
     output_dir.mkdir(exist_ok=True)
 
