@@ -92,7 +92,7 @@ class MDMLib:
         d1, d2 = np.float64(0), np.float64(0)
 
         if d > 0:
-            # Verwende float64 für alle Berechnungen
+            # Use of float64 for all calculations
             r1_sq = r1 * r1
             r2_sq = r2 * r2
             d_sq = d * d
@@ -112,7 +112,7 @@ class MDMLib:
                 d1 = d1 - shift
                 d2 = d2 + shift
 
-            # Rest der Implementierung mit float64
+
         if r1 <= 0 and r2 <= 0:
             return np.float64(1.0) if range_val >= d else np.float64(0.0)
         elif r1 <= 0:
@@ -619,21 +619,20 @@ class MDMLib:
             print(f"Warning: Ellipse intersection calculation failed: {e}")
             return np.float64(0.0)
 
-        # Berechne Flächen mit float64
         area1 = np.pi * (dx1 / np.float64(2)) * (dy1 / np.float64(2))
         area2 = np.pi * (dx2 / np.float64(2)) * (dy2 / np.float64(2))
 
-        # Verhindere Division durch Null
+        # Prevent division by zero
         union_area = area1 + area2 - int_area
         if union_area <= 0:
             return np.float64(0.0)
 
         area_factor = int_area / union_area
 
-        # Berechne Importance Factor
+        # Calculate Importance Factor
         distance = distance + np.float64(0.0001) if distance == 0 else distance
 
-        # Berechne Winkel zwischen Zentren
+        # Calculate the angle between the centers
         centers_angle = MDMLib.calculate_heading_angle(
             Coord(
                 x=np.float64(pos2.x - pos1.x),
@@ -641,16 +640,16 @@ class MDMLib:
             )
         )
 
-        # Konvertiere zu Radians mit float64
+        # Convert radians mit float64
         c1 = np.deg2rad(centers_angle)
         h1 = np.deg2rad(heading1)
         h2 = np.deg2rad(heading2)
 
-        # Berechne Winkeldifferenzen
+        # Calculate angle differences
         diff_angle1 = np.arctan2(np.sin(h1 - c1), np.cos(h1 - c1))
         diff_angle2 = np.arctan2(np.sin(h2 - c1), np.cos(h2 - c1))
 
-        # Normalisiere Winkel
+        # Normalize angles
         if diff_angle1 > np.pi / 2:
             diff_angle1 -= np.pi
         if diff_angle1 < -np.pi / 2:
@@ -660,20 +659,20 @@ class MDMLib:
         if diff_angle2 < -np.pi / 2:
             diff_angle2 += np.pi
 
-        # Berechne importance radii
+        # Calculate importance radii
         imp_r1 = (dx1 / np.float64(2)) * np.sin(diff_angle1) + \
                  (dy1 / np.float64(2)) * np.cos(diff_angle1)
         imp_r2 = (dx2 / np.float64(2)) * np.sin(diff_angle2) + \
                  (dy2 / np.float64(2)) * np.cos(diff_angle2)
 
-        # Importance factor mit float64
+        # Importance factor with float64
         imp_factor = MDMLib.importance_factor(
             np.float64(imp_r1),
             np.float64(imp_r2),
             distance
         )
 
-        # Kombiniere Faktoren
+        # Combine factors
         factor1 = imp_factor * area_factor
         factor2 = area_factor
 

@@ -13,7 +13,7 @@ import data_processing
 
 
 def worker_process_json(input_file: str, option: int, params_dict: Dict[str, Any], source_file: str):
-    """Worker für JSON-Datei Verarbeitung"""
+    """Worker for JSON-File Processing"""
     try:
         input_path = Path(input_file)
         params = Parameters(**params_dict)
@@ -24,7 +24,7 @@ def worker_process_json(input_file: str, option: int, params_dict: Dict[str, Any
 
 
 def worker_process_parquet_group(parquet_file: str, option: int, params_dict: Dict[str, Any], source_file: str):
-    """Worker für Parquet-Gruppe Verarbeitung"""
+    """Worker for Parquet-Group Processing"""
     try:
         parquet_path = Path(parquet_file)
         params = Parameters(**params_dict)
@@ -85,7 +85,7 @@ def main():
     parser.add_argument('--msat', required=False, type=float)
     parser.add_argument('--mnrs', required=False, type=float)
     parser.add_argument('--workers', required=False, type=int, default=os.cpu_count() or 4,
-                        help="Anzahl paralleler Prozesse (default: CPU count)")
+                        help="Number of parallel processes (default: CPU count)")
     args = parser.parse_args()
 
     input_folder = Path(args.input_folder)
