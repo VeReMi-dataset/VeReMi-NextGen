@@ -10,10 +10,10 @@ from pathlib import Path
 
 ATTACK_RATIO = 0.2
 
-parser = argparse.ArgumentParser(description="Sortiere ein JSON-Array nach sendTime.")
-parser.add_argument("input_folder", help="Pfad zu den Eingabedateien")
-parser.add_argument("misbehavior", help="Fehlverhalten angeben")
-parser.add_argument("sumoConf", help="Pfad zum .sumocfg vom Szenario")
+parser = argparse.ArgumentParser(description="Sort a JSON array by sendTime.")
+parser.add_argument("input_folder", help="Path to the input files")
+parser.add_argument("misbehavior", help="Specify the misbehavior")
+parser.add_argument("sumoConf", help="Path to the scenario .sumocfg file")
 args = parser.parse_args()
 
 input_folder = Path(args.input_folder)
@@ -74,7 +74,7 @@ def get_distance(pos1: str, pos2: str):
     return np.linalg.norm(p2 - p1)
 
 
-def zufalls_float_mit_intervallen(pos_min, pos_max, neg_min, neg_max):
+def random_float_with_intervals(pos_min, pos_max, neg_min, neg_max):
     intervall = random.choice(['positiv', 'negativ'])
     if intervall == 'positiv':
         return random.uniform(pos_min, pos_max)
@@ -156,7 +156,7 @@ def get_distance_to_nearest_road(x: float, y: float, x_with_error: float, y_with
         return distance_mittle + offset_to_other_side
 
     except Exception as e:
-        print(f"Fehler: {e}")
+        print(f"Error: {e}")
         import traceback
         traceback.print_exc()
         return 0
@@ -218,8 +218,8 @@ def random_position_offset(msg: pd.Series):
         attack_msg['receiver_driversProfile'] = msg['receiver_driversProfile']
         return attack_msg
 
-    msg['sender_pos_lat'] += zufalls_float_mit_intervallen(20, 70, -70, -20)
-    msg['sender_pos_lon'] += zufalls_float_mit_intervallen(20, 70, -70, -20)
+    msg['sender_pos_lat'] += random_float_with_intervals(20, 70, -70, -20)
+    msg['sender_pos_lon'] += random_float_with_intervals(20, 70, -70, -20)
     msg['attacker'] = 1
     messages_lookup[msg['messageID']] = msg.copy()
     return msg
@@ -257,7 +257,7 @@ def random_speed_offset(msg: pd.Series):
         attack_msg['receiver_driversProfile'] = msg['receiver_driversProfile']
         return attack_msg
 
-    msg['sender_spd'] += zufalls_float_mit_intervallen(1, 7, -7, -1)
+    msg['sender_spd'] += random_float_with_intervals(1, 7, -7, -1)
     msg['attacker'] = 1
     messages_lookup[msg['messageID']] = msg.copy()
     return msg
@@ -419,10 +419,10 @@ def traffic_congestion_sybil(msg: pd.Series):
             new_row['sender_id'] = 'veh_' + str(random.randint(1000000, 9000000))
             new_row['sender_alias'] = random.randint(1111111111, 9999999999)
             heading_rad = math.radians(msg['sender_hed'])
-            lateral_offset = zufalls_float_mit_intervallen(2, 3, -3, -2)
+            lateral_offset = random_float_with_intervals(2, 3, -3, -2)
             new_row['sender_pos_lat'] += -math.sin(heading_rad) * lateral_offset
             new_row['sender_pos_lon'] += math.cos(heading_rad) * lateral_offset
-            longitudinal_offset = zufalls_float_mit_intervallen(5, 6, -6, -5)
+            longitudinal_offset = random_float_with_intervals(5, 6, -6, -5)
             new_row['sender_pos_lat'] += math.cos(heading_rad) * (longitudinal_offset * math.ceil(i / 2))
             new_row['sender_pos_lon'] += math.sin(heading_rad) * (longitudinal_offset * math.ceil(i / 2))
             new_row['attacker'] = 1
@@ -592,20 +592,20 @@ def process_single_file(json_file):
         data = json.load(f)
 
     if len(data) < 1:
-        print(f"Datei {json_file} ist leer, überspringe...")
+        print(f"File {json_file} is empty, skipping...")
         return
 
     df = pd.json_normalize(data, sep='_')
     df['attacker'] = 0
 
-    # Metadaten Felder
+    # Metadata fields
     df['rcvTime'] = df['rcvTime'].astype(int)
     df['sendTime'] = df['sendTime'].astype(int)
     df['sender_id'] = df['sender_id'].astype(str)
     df['sender_alias'] = df['sender_alias'].astype(int)
     df['messageID'] = df['messageID'].astype(int)
 
-    # Receiver Felder
+    # Receiver fields
     df['receiver_pos'] = df['receiver_pos'].astype(str)
     df['receiver_pos_noise'] = df['receiver_pos_noise'].astype(str)
     df['receiver_spd'] = df['receiver_spd'].astype(float)
@@ -616,7 +616,7 @@ def process_single_file(json_file):
     df['receiver_hed_noise'] = df['receiver_hed_noise'].astype(float)
     df['receiver_driversProfile'] = df['receiver_driversProfile'].astype(str)
 
-    # Sender Felder
+    # Sender fields
     df['sender_pos'] = df['sender_pos'].astype(str)
     df['sender_pos_noise'] = df['sender_pos_noise'].astype(str)
     df['sender_spd'] = df['sender_spd'].astype(float)
@@ -678,7 +678,7 @@ def process_single_file(json_file):
             case "dataReplay":
                 manipulation_function = insert_data_replay
             case _:
-                raise ValueError(f"Missbehavior '{args.misbehavior}' ist nicht gefunden!")
+                raise ValueError(f"Misbehavior '{args.misbehavior}' was not found!")
 
     # Apply misbehavior
     df.loc[df['sender_id'].isin(attackerIDs)] = df.loc[df['sender_id'].isin(attackerIDs)].apply(manipulation_function,
@@ -699,10 +699,10 @@ def process_single_file(json_file):
 
     df.sort_values(by='rcvTime', ascending=True, inplace=True)
 
-    # Konvertiere zurück zur verschachtelten Struktur
+    # Convert back to nested structure
     nested_data = df.apply(reconstruct_nested, axis=1).tolist()
 
-    # Speichern
+    # Save
     output_file = input_folder.parent / f"{input_folder.name}_{args.misbehavior}" / f"{json_file.name}"
     with open(output_file, 'w') as f:
         json.dump(nested_data, f, indent=4)
@@ -715,12 +715,12 @@ def set_up_misbehavior_config():
             misbehavior_config[attacker_id]["assigned_misbehavior"] = assignments[attacker_id]
             assigned = assignments[attacker_id]
             if assigned == "constantPositionOffset":
-                misbehavior_config[attacker_id]["offset_lat"] = zufalls_float_mit_intervallen(20, 70, -70, -20)
-                misbehavior_config[attacker_id]["offset_lon"] = zufalls_float_mit_intervallen(20, 70, -70, -20)
+                misbehavior_config[attacker_id]["offset_lat"] = random_float_with_intervals(20, 70, -70, -20)
+                misbehavior_config[attacker_id]["offset_lon"] = random_float_with_intervals(20, 70, -70, -20)
             elif assigned == "timeDelayAttack":
                 misbehavior_config[attacker_id]["timeDelay"] = random.randint(2000000000, 4000000000)
             elif assigned == "constantSpeedOffset":
-                misbehavior_config[attacker_id]["speedOffset"] = zufalls_float_mit_intervallen(1, 7, -7, -1)
+                misbehavior_config[attacker_id]["speedOffset"] = random_float_with_intervals(1, 7, -7, -1)
             elif assigned == "suddenStop":
                 misbehavior_config[attacker_id]["msg"] = None
                 misbehavior_config[attacker_id]["stop_time"] = None
@@ -750,8 +750,8 @@ def set_up_misbehavior_config():
             misbehavior_config[attacker_id]["assigned_misbehavior"] = assignments[attacker_id]
             assigned = assignments[attacker_id]
             if assigned == "constantPositionOffset":
-                misbehavior_config[attacker_id]["offset_lat"] = zufalls_float_mit_intervallen(20, 70, -70, -20)
-                misbehavior_config[attacker_id]["offset_lon"] = zufalls_float_mit_intervallen(20, 70, -70, -20)
+                misbehavior_config[attacker_id]["offset_lat"] = random_float_with_intervals(20, 70, -70, -20)
+                misbehavior_config[attacker_id]["offset_lon"] = random_float_with_intervals(20, 70, -70, -20)
             elif assigned == "randomSpeedOffset":
                 pass
             elif assigned == "suddenStop":
@@ -765,14 +765,14 @@ def set_up_misbehavior_config():
         match args.misbehavior:
             case "constantPositionOffset":
                 for attacker_id in attackerIDs:
-                    misbehavior_config[attacker_id]["offset_lat"] = zufalls_float_mit_intervallen(20, 70, -70, -20)
-                    misbehavior_config[attacker_id]["offset_lon"] = zufalls_float_mit_intervallen(20, 70, -70, -20)
+                    misbehavior_config[attacker_id]["offset_lat"] = random_float_with_intervals(20, 70, -70, -20)
+                    misbehavior_config[attacker_id]["offset_lon"] = random_float_with_intervals(20, 70, -70, -20)
             case "timeDelayAttack":
                 for attacker_id in attackerIDs:
                     misbehavior_config[attacker_id]["timeDelay"] = random.randint(2000000000, 4000000000)
             case "constantSpeedOffset":
                 for attacker_id in attackerIDs:
-                    misbehavior_config[attacker_id]["speedOffset"] = zufalls_float_mit_intervallen(1, 7, -7, -1)
+                    misbehavior_config[attacker_id]["speedOffset"] = random_float_with_intervals(1, 7, -7, -1)
             case "suddenStop":
                 for attacker_id in attackerIDs:
                     misbehavior_config[attacker_id]["msg"] = None
@@ -875,7 +875,7 @@ if __name__ == "__main__":
     set_up_misbehavior_config()
 
     if args.misbehavior in ["mixAll", "mixThree"]:
-        print(f"\n[INFO] Misbehavior-Zuweisung für {args.misbehavior}:")
+        print(f"\n[INFO] Misbehavior assignment for {args.misbehavior}:")
         misbehavior_counts = {}
         for attacker_id in attackerIDs:
             assigned = misbehavior_config[attacker_id].get("assigned_misbehavior")
@@ -883,7 +883,7 @@ if __name__ == "__main__":
                 misbehavior_counts[assigned] = misbehavior_counts.get(assigned, 0) + 1
 
         for misbehavior, count in sorted(misbehavior_counts.items()):
-            print(f"  - {misbehavior}: {count} Angreifer")
+            print(f"  - {misbehavior}: {count} attackers")
         print()
 
     if args.misbehavior == "dataReplay":
