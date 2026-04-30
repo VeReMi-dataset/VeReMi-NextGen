@@ -187,6 +187,6 @@ Pre-computed sets for machine learning experiments. Each attack type has its own
 - [Getting Started](./Getting%20Started)
 - [Architecture Overview](./Architecture)
 - [Eclipse MOSAIC](./Eclipse%20MOSAIC)
-- [Evaluation](./Evaltuation)
+- [Evaluation](./Evaluation)
 - [Post-Processing](./Post-Processing)
 - [Processes during the simulation](./Processes)
