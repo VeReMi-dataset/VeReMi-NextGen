@@ -103,3 +103,36 @@ The files can be downloaded under the following links:
 - [OmNET++](https://omnetpp.org/download/)
 - [Inet](https://inet.omnetpp.org/Download.html)
 - [Omnetpp-federate](https://www.dcaiti.tu-berlin.de/research/simulation/download/)
+
+
+## Run the attack integration
+
+The post-processing script is located in `Generator/attackGenerator/attackGenerator.py`.
+This script injects misbehavior/attack patterns into V2X message datasets stored as JSON files. It reads all JSON files from an input folder, selects a subset of vehicles as attackers, modifies their messages according to the selected misbehavior, and writes the manipulated dataset to a new output folder.
+
+
+### Usage
+To create attack datasets, run the attack generator with the desired input folder, misbehavior type, and SUMO scenario configuration:
+```
+python attackGenerator.py <input_folder> <misbehavior> <sumoConf>
+```
+
+| Argument | Description |
+|---|---|
+| `input_folder` | Path to the folder containing the input JSON files |
+| `misbehavior` | Misbehavior/attack type to inject |
+| `sumoConf` | Path to the SUMO scenario configuration file (`.sumocfg`) |
+
+The script reads all JSON files from the given input folder, selects a subset of vehicles as attackers, applies the specified misbehavior to their messages, and stores the resulting files in a new output folder. The output folder is created next to the input folder and follows the naming scheme `<input_folder>_<misbehavior>`.
+
+For ```sumoConf```, use the `InTAS_full_poly.sumocfg` from the directory  
+`Generator/simulation/mosaic/scenarios/<scenario>/sumo`.
+
+The attack ratio can be adjusted in the `attackGenerator.py` file using the ```ATTACK_RATIO```variable.
+
+Example: 
+```
+python inject_misbehavior.py ./Dataset/urban_2 constantPositionOffset .Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/InTAS_full_poly.sumocfg
+```
+
+
