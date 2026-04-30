@@ -135,4 +135,39 @@ Example:
 python inject_misbehavior.py ./Dataset/urban_2 constantPositionOffset .Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/InTAS_full_poly.sumocfg
 ```
 
+## Enrich messages with road-edge distance
+
+
+The script `enrichMsgs.py` enriches generated V2X message files with an additional sender attribute: `distance_to_road_edge`. It is located in `Generator/enrichMsgsWithFutherInfo/enrichMsgs.py`.
+
+It reads all JSON files from a given message folder, computes the distance of each sender position to the nearest road edge using SUMO/TraCI. The script updates the input JSON files in place. For each message, the following field is added to the sender object:
+
+```JSON
+"distance_to_road_edge": 1.23
+```
+
+### Usage
+
+```bash
+python enrichMsgs.py <messages_folder> <sumo_config.sumocfg> [--workers N]
+```
+
+| Argument | Description |
+|---|---|
+| `messages_folder` | Path to the folder containing the JSON message files |
+| `sumo_config.sumocfg` | Path to the SUMO scenario configuration file |
+| `--workers N` | Optional number of parallel worker processes |
+
+
+For ```sumoConf```, use the `InTAS_full_poly.sumocfg` from the directory  
+`Generator/simulation/mosaic/scenarios/<scenario>/sumo`.
+
+
+
+Example:
+```
+python enrichMsgs.py ./Dataset/urban_2 ./Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/InTAS_full_poly.sumocfg --workers 8
+```
+
+
 
