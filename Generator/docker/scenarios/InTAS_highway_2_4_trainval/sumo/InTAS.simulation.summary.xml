@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2025-08-30 23:08:03 by Eclipse SUMO sumo Version 1.22.0
+<sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/ingolstadt.net.xml"/>
+        <route-files value="simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/ped.rou.xml,simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/BusRoutes.flow.xml,simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_001.rou.xml,simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_002.rou.xml,simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_003.rou.xml,simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_004.rou.xml,simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_005.rou.xml,simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_006.rou.xml,simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_007.rou.xml,simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_008.rou.xml,simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_009.rou.xml,simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_010.rou.xml,simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_011.rou.xml,simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_012.rou.xml,simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_013.rou.xml,simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_014.rou.xml,simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_015.rou.xml,simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_016.rou.xml,simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_017.rou.xml,simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_018.rou.xml,simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_019.rou.xml,simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_020.rou.xml,simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_021.rou.xml,simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/routes/InTAS_022.rou.xml"/>
+        <additional-files value="simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/BusStations.add.xml,simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/InTAS_E1.add.xml,simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/InTAS.poly.xml"/>
+    </input>
+
+    <output>
+        <summary-output value="simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/InTAS.simulation.summary.xml"/>
+        <tripinfo-output value="simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/InTAS.simulation.tripinfo.xml"/>
+        <statistic-output value="simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/InTAS.simulation.statistic.xml"/>
+    </output>
+
+    <time>
+        <begin value="0"/>
+        <end value="86400"/>
+        <step-length value="0.1"/>
+    </time>
+
+    <processing>
+        <threads value="1"/>
+        <route-steps value="200"/>
+        <ignore-junction-blocker value="15"/>
+        <time-to-teleport value="300"/>
+        <time-to-teleport.highways value="300"/>
+        <max-depart-delay value="300"/>
+        <default.carfollowmodel value="Krauss"/>
+        <parking.maneuver value="true"/>
+        <pedestrian.model value="striping"/>
+        <pedestrian.striping.stripe-width value="0.55"/>
+        <pedestrian.striping.jamtime value="30"/>
+    </processing>
+
+    <routing>
+        <routing-algorithm value="dijkstra"/>
+        <persontrip.transfer.car-walk value="allJunctions"/>
+        <device.rerouting.probability value="0.82"/>
+        <device.rerouting.explicit value="default_001,default_002,default_003,default_004,default_005,default_006,default_007,default_008,default_009,default_010,default_011,default_012,default_013,default_014,default_015,default_016,default_017,default_018,default_019,default_020,default_021,default_022,random_001,random_002,random_003,random_004,random_005,random_006,random_007,random_008,random_009,random_010,random_011,random_012,random_013,random_014,random_015,random_016,random_017,random_018,random_019,random_020,random_021,random_022"/>
+        <device.rerouting.period value="300"/>
+        <device.rerouting.threads value="1"/>
+        <device.rerouting.synchronize value="true"/>
+    </routing>
+
+    <report>
+        <verbose value="true"/>
+        <no-warnings value="true"/>
+        <log value="simulation/mosaic/scenarios/InTAS_highway_2_4/sumo/InTAS.simulation.log"/>
+        <no-step-log value="true"/>
+    </report>
+
+    <traci_server>
+        <remote-port value="8923"/>
+    </traci_server>
+
+</sumoConfiguration>
+-->
+
+<summary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/summary_file.xsd">
+</summary>

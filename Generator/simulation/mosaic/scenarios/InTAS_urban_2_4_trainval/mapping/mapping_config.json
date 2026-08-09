@@ -1,0 +1,227 @@
+{
+    "prototypes": [
+        {
+            "name": "random_001",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "default_001",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "random_002",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "default_002",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "random_003",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "default_003",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "random_004",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "default_004",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },{
+            "name": "random_005",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "default_005",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "random_006",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "default_006",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "random_007",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "default_007",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "random_008",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "default_008",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "random_009",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "default_009",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "random_010",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "default_010",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "random_011",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "default_011",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "random_012",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "default_012",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "random_013",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "default_013",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "random_014",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "default_014",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },{
+            "name": "random_015",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "default_015",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "random_016",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "default_016",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "random_017",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "default_017",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "random_018",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "default_018",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "random_019",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "default_019",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "random_020",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "default_020",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "random_021",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "default_021",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "random_022",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "default_022",
+            "applications": [ "etsi.VehicleCamSendingApp" ],
+            "weight": 1.0
+        },
+        {
+            "name": "bus",
+            "applications": [ ],
+            "weight": 1.0
+        }
+    ]
+}

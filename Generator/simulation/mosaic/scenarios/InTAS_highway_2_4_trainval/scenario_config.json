@@ -1,0 +1,36 @@
+{
+    "simulation": {
+        "id": "InTAS",
+        "duration": "24h",
+        "randomSeed": 268965854,
+        "projection": {
+            "centerCoordinates": {
+                "latitude": 48.766666,
+                "longitude": 11.433333
+            },
+            "cartesianOffset": {
+                "x": -464198.88,
+                "y": -4952821.58
+            }
+        },
+        "network": {
+           "netMask": "255.248.0.0",
+           "vehicleNet": "10.0.0.0",
+           "rsuNet": "10.8.0.0",
+           "tlNet": "10.16.0.0",
+           "csNet": "10.24.0.0",
+           "serverNet": "10.32.0.0",
+           "tmcNet": "10.40.0.0"
+        }
+    },
+    "federates": {
+      "application": true,
+      "cell": false,
+      "environment": false,
+      "sns": false,
+      "ns3": false,
+      "omnetpp": true,
+      "sumo": true,
+      "output": true
+    }
+}

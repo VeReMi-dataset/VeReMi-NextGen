@@ -85,6 +85,36 @@ CAM messages are triggered when any of the following thresholds are exceeded:
 | Heading change  | `4` degrees |
 | Velocity change | `0.5` m/s   |
 
+#### Simulation Runs
+
+VeReMi NextGen consists of **eight** simulation runs – two per published dataset subset. The `_test` run
+produces the Test set, the `_trainval` run produces the Train and Validation sets. Both cover the same
+traffic density but a spatially disjoint area, so that a model is trained and evaluated on different
+regions of Ingolstadt.
+
+The scenarios are shipped ready to run in `Generator/docker/scenarios/` and
+`Generator/simulation/mosaic/scenarios/`. They are identical except for `simulationTime` and
+`simulationArea` in `application/EtsiApplication.json`.
+
+| Scenario                     | Dataset subset    | Role      | `simulationTime` | `simulationArea` (min – max) |
+|------------------------------|-------------------|-----------|------------------|------------------------------|
+| `InTAS_highway_2_4_test`     | `InTAS_highway_2` | Test      | `7200` – `14400` | `48.749772`/`11.453732` – `48.767821`/`11.463387` |
+| `InTAS_highway_2_4_trainval` | `InTAS_highway_2` | Train/Val | `3600` – `14400` | `48.767558`/`11.456784` – `48.790177`/`11.463225` |
+| `InTAS_highway_7_9_test`     | `InTAS_highway_7` | Test      | `25200` – `25500`| `48.749772`/`11.453732` – `48.767821`/`11.463387` |
+| `InTAS_highway_7_9_trainval` | `InTAS_highway_7` | Train/Val | `25200` – `25650`| `48.767558`/`11.456784` – `48.790177`/`11.463225` |
+| `InTAS_urban_2_4_test`       | `InTAS_urban_2`   | Test      | `7200` – `14400` | `48.756441`/`11.410236` – `48.773643`/`11.436188` |
+| `InTAS_urban_2_4_trainval`   | `InTAS_urban_2`   | Train/Val | `3600` – `14400` | `48.735035`/`11.418320` – `48.750877`/`11.447123` |
+| `InTAS_urban_7_9_test`       | `InTAS_urban_7`   | Test      | `25200` – `25500`| `48.756441`/`11.410236` – `48.773643`/`11.436188` |
+| `InTAS_urban_7_9_trainval`   | `InTAS_urban_7`   | Train/Val | `25200` – `25650`| `48.735035`/`11.418320` – `48.750877`/`11.447123` |
+
+> [!NOTE]
+> In `simulationArea`, `minX`/`maxX` hold the **latitude** and `minY`/`maxY` the **longitude**.
+
+The resulting durations yield the documented 50 % / 10 % / 40 % Train/Validation/Test split: for the
+`2_4` runs 10800 s (Train/Val) plus 7200 s (Test) = 18000 s, for the `7_9` runs 450 s plus 300 s = 750 s.
+Train and Validation are separated afterwards by splitting the `_trainval` output at a fixed timestamp,
+see [Getting Started](../../Getting%20Started).
+
 #### Simulation Boundaries
 
 Only vehicle in this defined area and the defined time window will send and receive CAM messages. 
@@ -98,7 +128,7 @@ Only vehicle in this defined area and the defined time window will send and rece
 
 **Geographic Area (Bounding Box, Test-Set):**
 
-| Simulated Area | Min(Longitude/Latitude) | Max(Longitude/Latitude) |
+| Simulated Area | Min(Latitude/Longitude) | Max(Latitude/Longitude) |
 |----------------|-------------------------|-------------------------|
 | Highway        | `48.749772`/`11.453732` | `48.767821`/`11.463387` |
 | Urban          | `48.756441`/`11.410236` | `48.773643`/`11.436188` |
@@ -112,7 +142,7 @@ Only vehicle in this defined area and the defined time window will send and rece
 
 **Geographic Area (Bounding Box, Train/Validation-Sets):**
 
-| Simulated Area | Min(Longitude/Latitude) | Max(Longitude/Latitude) |
+| Simulated Area | Min(Latitude/Longitude) | Max(Latitude/Longitude) |
 |----------------|-------------------------|-------------------------|
 | Highway        | `48.767558`/`11.456784` | `48.790177`/`11.463225` |
 | Urban          | `48.735035`/`11.418320` | `48.750877`/`11.447123` |
@@ -261,3 +291,18 @@ Real-time visualization via WebSocket.
 |--------------|---------|
 | Port         | `46587` |
 | Synchronized | `true`  |
+
+## Known Deviations
+
+Two settings deviate from the values documented above. They are kept as-is in all scenarios, including
+the `_trainval` ones, because changing them would alter the radio model respectively the traffic
+realisation with regard to the published dataset.
+
+| Deviation | Affected scenarios | Documented | Actual |
+|-----------|--------------------|------------|--------|
+| `*.**.nic.phy80211p.useThermalNoise` / `thermalNoise` missing in `omnetpp/omnetpp.ini` | `InTAS_urban_7_9_test`, `InTAS_urban_7_9_trainval` | `-110 dBm`, enabled | not set (INET default) |
+| `randomSeed` in `scenario_config.json` | all scenarios below `Generator/docker/scenarios/` | `268965854` | `168534930` |
+
+The scenarios below `Generator/simulation/mosaic/scenarios/` use the documented seed `268965854`. Running
+the same scenario name via Docker and via a local Eclipse MOSAIC installation therefore produces different
+traffic.
