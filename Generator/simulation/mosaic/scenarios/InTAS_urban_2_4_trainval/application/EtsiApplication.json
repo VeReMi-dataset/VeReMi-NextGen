@@ -1,0 +1,22 @@
+{
+  "minimalPayloadLength": 200,
+  "maxStartOffset": "1s",
+  "minInterval": "500ms",
+  "maxInterval": "1s",
+  "positionChange": 4,
+  "headingChange": 4,
+  "velocityChange": 0.5,
+  "jsonPath" : "<your path>",
+  "simulationTime": {
+    "start": 3600,
+    "end": 14400
+  },
+  "simulationArea": {
+    "minX": 48.735035,
+    "minY": 11.418320,
+    "maxX": 48.750877,
+    "maxY": 11.447123
+  },
+  "enableDriverProfiles": true
+}
+

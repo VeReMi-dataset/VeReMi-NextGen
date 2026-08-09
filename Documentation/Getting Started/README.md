@@ -48,6 +48,65 @@ under `Generator/docker`. Detailed documentation on how to build your own Image 
     | `-v $(pwd)/logs:/opt/mosaic/logs`           | Mounts the directory used to store simulation logs.                                    |
     | `-v $(pwd)/json:/opt/mosaic/output`         | Maps the output directory where Java writes JSON files to your local `./json` folder.  |
 
+## Simulations required for the full dataset
+
+Recreating VeReMi NextGen completely requires **eight** simulation runs – two per dataset subset. The
+`_test` run yields the Test set, the `_trainval` run yields the Train and Validation sets from a spatially
+distinct area. The parameters of every run are listed under
+[Eclipse MOSAIC → Config](../Eclipse%20MOSAIC/Config).
+
+| Dataset subset    | Test run                 | Train/Validation run         |
+|-------------------|--------------------------|------------------------------|
+| `InTAS_highway_2` | `InTAS_highway_2_4_test` | `InTAS_highway_2_4_trainval` |
+| `InTAS_highway_7` | `InTAS_highway_7_9_test` | `InTAS_highway_7_9_trainval` |
+| `InTAS_urban_2`   | `InTAS_urban_2_4_test`   | `InTAS_urban_2_4_trainval`   |
+| `InTAS_urban_7`   | `InTAS_urban_7_9_test`   | `InTAS_urban_7_9_trainval`   |
+
+Run each of them once, passing the scenario name as the last argument of the `docker run` command above:
+
+```bash
+for scenario in \
+    InTAS_highway_2_4_test InTAS_highway_2_4_trainval \
+    InTAS_highway_7_9_test InTAS_highway_7_9_trainval \
+    InTAS_urban_2_4_test   InTAS_urban_2_4_trainval \
+    InTAS_urban_7_9_test   InTAS_urban_7_9_trainval
+do
+    docker run --rm -it \
+    --user $(id -u):$(id -g) \
+    -v $(pwd)/scenarios:/opt/mosaic/scenarios \
+    -v $(pwd)/logs:/opt/mosaic/logs \
+    -v $(pwd)/json/$scenario:/opt/mosaic/output \
+    ghcr.io/vs-uulm/veremi-nextgen:<tag> \
+    $scenario
+done
+```
+
+> [!NOTE]
+> Give every run its own output directory (as done above with `json/$scenario`). The application writes
+> one JSON file per vehicle, and the file names of two runs would otherwise overwrite each other.
+
+### Splitting the Train/Validation run
+
+The `_trainval` output holds Train and Validation data in one piece and is separated by timestamp with
+`Generator/parameter_optimization/Splitting/split_into_train_val.py`. The cut-off follows from the
+50 % / 10 % / 40 % Train/Validation/Test ratio and is given in **nanoseconds**, because `sendTime` is
+MOSAIC's simulation time:
+
+| Train/Validation run | Cut-off                       | Train      | Validation      |
+|----------------------|-------------------------------|------------|-----------------|
+| `*_2_4_trainval`     | `12600` s = `12600000000000`  | 3600–12600 s | 12600–14400 s |
+| `*_7_9_trainval`     | `25575` s = `25575000000000`  | 25200–25575 s | 25575–25650 s |
+
+```bash
+python split_into_train_val.py \
+    --input ./json/InTAS_urban_2_4_trainval \
+    --output ./Dataset/InTAS_urban_2 \
+    --timestamp 12600000000000
+```
+
+This creates the subfolders `train/` and `validation/`. The `_test` run needs no splitting – it is the
+Test set as a whole.
+
 ## Build your own image
 
 In case the provided image is outdated, or you need specific versions in your simulation of one of the simulators, you can simply build you own image. To do so follow these steps:
@@ -132,7 +191,7 @@ The attack ratio can be adjusted in the `attackGenerator.py` file using the ```A
 
 Example: 
 ```
-python inject_misbehavior.py ./Dataset/urban_2 constantPositionOffset .Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/InTAS_full_poly.sumocfg
+python inject_misbehavior.py ./Dataset/urban_2 constantPositionOffset .Generator/simulation/mosaic/scenarios/InTAS_urban_2_4_test/sumo/InTAS_full_poly.sumocfg
 ```
 
 ## Enrich messages with road-edge distance
@@ -166,7 +225,7 @@ For ```sumoConf```, use the `InTAS_full_poly.sumocfg` from the directory
 
 Example:
 ```
-python enrichMsgs.py ./Dataset/urban_2 ./Generator/simulation/mosaic/scenarios/InTAS_urban_2_4/sumo/InTAS_full_poly.sumocfg --workers 8
+python enrichMsgs.py ./Dataset/urban_2 ./Generator/simulation/mosaic/scenarios/InTAS_urban_2_4_test/sumo/InTAS_full_poly.sumocfg --workers 8
 ```
 
 
